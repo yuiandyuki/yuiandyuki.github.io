@@ -3,21 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>mcs_note | luvstar</title>
+  <title>csapp | luvstar</title>
 
   <!-- keywords -->
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="现代控制系统复习笔记第一章:自动控制原理绪论 1.1 自动控制的基本概念:明确什么叫自动控制，正确理解被控对象、控制装置和自控系统等概念。1.2 控制系统的分类:明确系统常用的分类方式，掌握各类别的含义和信息特征。1.3 自动控制理论的发展:了解自动控制理论发展的四个主要阶段。1.4 对控制系统的基本要求:明确对自控系统的基本要求， 正确理解三大性能指标的含义。  控制是指通过对某个装置或生产过程">
-<meta property="og:type" content="article">
-<meta property="og:title" content="mcs_note">
-<meta property="og:url" content="http://example.com/2023/12/16/mcs-note/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="csapp">
+<meta property="og:url" content="http://example.com/2023/12/24/csapp/index.html">
 <meta property="og:site_name" content="luvstar">
-<meta property="og:description" content="现代控制系统复习笔记第一章:自动控制原理绪论 1.1 自动控制的基本概念:明确什么叫自动控制，正确理解被控对象、控制装置和自控系统等概念。1.2 控制系统的分类:明确系统常用的分类方式，掌握各类别的含义和信息特征。1.3 自动控制理论的发展:了解自动控制理论发展的四个主要阶段。1.4 对控制系统的基本要求:明确对自控系统的基本要求， 正确理解三大性能指标的含义。  控制是指通过对某个装置或生产过程">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-12-16T14:05:27.000Z">
-<meta property="article:modified_time" content="2023-12-24T12:55:33.360Z">
+<meta property="article:published_time" content="2023-12-24T12:50:12.000Z">
+<meta property="article:modified_time" content="2023-12-24T12:50:12.117Z">
 <meta property="article:author" content="拉康的a">
 <meta name="twitter:card" content="summary">
   
@@ -160,11 +158,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-mcs-note" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-csapp" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2023/12/16/mcs-note/" class="article-date">
-  	<time datetime="2023-12-16T14:05:27.000Z" itemprop="datePublished">2023-12-16</time>
+      <a href="/2023/12/24/csapp/" class="article-date">
+  	<time datetime="2023-12-24T12:50:12.000Z" itemprop="datePublished">2023-12-24</time>
 </a>
     </div>
   
@@ -177,7 +175,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      mcs_note
+      csapp
       
     </h1>
   
@@ -195,24 +193,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="现代控制系统复习笔记"><a href="#现代控制系统复习笔记" class="headerlink" title="现代控制系统复习笔记"></a>现代控制系统复习笔记</h1><h2 id="第一章-自动控制原理绪论"><a href="#第一章-自动控制原理绪论" class="headerlink" title="第一章:自动控制原理绪论"></a>第一章:自动控制原理绪论</h2><blockquote>
-<p>1.1 自动控制的基本概念:明确什么叫自动控制，正确理解被控对象、控制装置和自控系统等概念。<br>1.2 控制系统的分类:明确系统常用的分类方式，掌握各<br>类别的含义和信息特征。<br>1.3 自动控制理论的发展:了解自动控制理论发展的四个<br>主要阶段。<br>1.4 对控制系统的基本要求:明确对自控系统的基本要求， 正确理解三大性能指标的含义。</p>
-</blockquote>
-<p>控制是指通过对某个装置或生产过程的某个或某些物理量进行操作，以达到使某个变量保持恒定或沿某个预设轨迹远动的一个动态过程。</p>
-<p>控制系统是为了达到某种“目标”，设计并按照人们意愿以实施的一套系统。</p>
-<p>自动控制系统:能够对被控对象的工作状态进行自动控制的系统。它包括控制对象、参与实现被控制量自动控制的装置或元部件，一般由 控制装置和被控对象组成。一般包括三种机构:测量机构、比较机构、 执行机构。</p>
-<p>静态和动态系统 就是有无记忆性</p>
-<p>开环控制系统:系统输出不影响系统输入<br>开环控制:系统的被控制量(输出量)只受控于控制作用，而对控制作用不能反施任何影响的控制方式<br>优点:结构简单，成本低廉，易于实现<br>缺点:对扰动没有抑制能力，控制精度低</p>
-<p>闭环控制:指系统的被控制量(输出量) 与控制作用之间存在着负反馈的控制方式。<br>优点:具有自动补偿由于系统内部和外部干扰所引起的系统误差(偏差)的能力，有效提高系统的精度<br>缺点:系统参数应适当选择，否则可能不能正常工作</p>
-<p>**反馈:**把输出量送回到系统的输入端并与输入信号比较的过程。</p>
-<p>本课程考虑的系统为线性时不变，单变量负反馈系统。</p>
-<p>对控制系统性能的要求概括为三方面:稳，准，快</p>
-<p><strong>小结</strong></p>
-<p>➢明确什么叫自动控制，正确理解被控对象、控制装置和自控系统等概念<br>➢明确系统常用的分类方式，掌握各类别的含义和信息特征<br>➢明确对自控系统的基本要求，正确理解三大性能指标的含义<br>➢了解自动控制理论发展的四个主要阶段<br>➢了解自动控制理论的应用领域</p>
-<p>作业</p>
-<p>• 29页:P1.11<br>• 30页:P1.20, P1.25<br>• 33页:DP1.8</p>
-<p>感觉第一章完全不会考</p>
-<h2 id="第二章-系统数学模型"><a href="#第二章-系统数学模型" class="headerlink" title="第二章:系统数学模型"></a>第二章:系统数学模型</h2>
+        
       
     </div>
     
@@ -221,18 +202,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2023/12/16/Buddha-awe-System-note/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/12/24/Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">&lt;</strong>
       <div class="article-nav-title">
         
-          Buddha-awe System note
+          Redis设计与实现
         
       </div>
     </a>
   
   
-    <a href="/2023/12/16/why-writing/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">why write</div>
+    <a href="/2023/12/24/%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90kubernetes/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">深入剖析kubernetes</div>
       <strong class="article-nav-caption">&gt;</strong>
     </a>
   
