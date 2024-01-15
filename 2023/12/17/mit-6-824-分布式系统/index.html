@@ -9,15 +9,15 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="mit 6.824这篇文章用来做自己学习这门课程的笔记和过程 寒假就开始做 分布式系统还是有用的 在学校没学这门课 就自学吧 而且还是用go语言">
+  <meta name="description" content="mit 6.824这篇文章用来做自己学习这门课程的笔记和过程 寒假就开始做 分布式系统还是有用的 在学校没学这门课 就自学吧 而且还是用go语言   lecture部分Lecture 1: IntroductionWhat is a distributed system?  multiple cooperating computers  storage for big web sites, Map">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mit 6.824 分布式系统">
 <meta property="og:url" content="http://example.com/2023/12/17/mit-6-824-%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="luvstar">
-<meta property="og:description" content="mit 6.824这篇文章用来做自己学习这门课程的笔记和过程 寒假就开始做 分布式系统还是有用的 在学校没学这门课 就自学吧 而且还是用go语言">
+<meta property="og:description" content="mit 6.824这篇文章用来做自己学习这门课程的笔记和过程 寒假就开始做 分布式系统还是有用的 在学校没学这门课 就自学吧 而且还是用go语言   lecture部分Lecture 1: IntroductionWhat is a distributed system?  multiple cooperating computers  storage for big web sites, Map">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-12-17T11:53:38.000Z">
-<meta property="article:modified_time" content="2023-12-17T12:01:45.725Z">
+<meta property="article:modified_time" content="2024-01-15T11:36:27.136Z">
 <meta property="article:author" content="拉康的a">
 <meta name="twitter:card" content="summary">
   
@@ -115,7 +115,7 @@
 				
 				<section class="switch-part switch-part4">
 				
-					<div id="js-aboutme">I am a lover of ACG and programming. Feel free to befriend me.</div>
+					<div id="js-aboutme">喜欢可爱的东西</div>
 				</section>
 				
 			</div>
@@ -196,7 +196,44 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="mit-6-824"><a href="#mit-6-824" class="headerlink" title="mit 6.824"></a>mit 6.824</h1><p>这篇文章用来做自己学习这门课程的笔记和过程 寒假就开始做 分布式系统还是有用的 在学校没学这门课 就自学吧 而且还是用go语言  </p>
-
+<h2 id="lecture部分"><a href="#lecture部分" class="headerlink" title="lecture部分"></a>lecture部分</h2><p>Lecture 1: Introduction<br>What is a distributed system?<br>  multiple cooperating computers<br>  storage for big web sites, MapReduce, peer-to-peer sharing, &amp;c<br>  lots of critical infrastructure is distributed</p>
+<p>Why do people build distributed systems?<br>  to increase capacity via parallelism<br>  to tolerate faults via replication<br>  to place computing physically close to external entities<br>  to achieve security via isolation<br>  But:<br>  many concurrent parts, complex interactions<br>  must cope with partial failure<br>  tricky to realize performance potential</p>
+<p>This is a course about infrastructure for applications.</p>
+<ul>
+<li>Storage.</li>
+<li>Communication.</li>
+<li>Computation.</li>
+</ul>
+<p>The big goal: abstractions that hide the complexity of distribution.<br>  A couple of topics will come up repeatedly in our search.</p>
+<p>Topic: implementation<br>Topic: performance 性能<br>  The goal: scalable throughput<br>  Scaling gets harder as N grows:<br>  Some performance problems aren’t easily solved by scaling</p>
+<p>Topic: fault tolerance 容错<br>Availability – app can make progress despite failures 可用<br>Recoverability – app will come back to life when failures are repaired 可恢复</p>
+<p>Topic: consistency 一致性<br>Consistency and performance are enemies.</p>
+<p>CASE STUDY: MapReduce 论文有详细讲</p>
+<h2 id="lab部分"><a href="#lab部分" class="headerlink" title="lab部分"></a>lab部分</h2><p>Lab 1: MapReduce<br>遇到的第一个问题是我选取的版本是go version go1.21.2 darwin&#x2F;arm64<br>然后做的是mit6.824spring2020这个版本<br>只有在package main 下的go程序才能直接运行<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_46047387/article/details/127432122">关于vscode中出现gopls was not able to find modules in your workspace报错的解决方案</a> 顺利解决<br>看了下框架 暂时感觉有点无从下手呀<br>跑通了mrsequential.go<br>学到了more这个命令 go的编译还有plugin模式 插件是一种在运行时动态加载的可执行文件<br>go run的时候可以直接提供<br>这一串命令能不能要脚本来完成 学一下shell<br>Lab 2: replication for fault-tolerance using Raft<br>Lab 3: fault-tolerant key&#x2F;value store<br>Lab 4: sharded key&#x2F;value store</p>
+<h2 id="论文部分"><a href="#论文部分" class="headerlink" title="论文部分"></a>论文部分</h2><h3 id="MapReduce-Simplified-Data-Processing-on-Large-Clusters"><a href="#MapReduce-Simplified-Data-Processing-on-Large-Clusters" class="headerlink" title="MapReduce: Simplified Data Processing on Large Clusters"></a>MapReduce: Simplified Data Processing on Large Clusters</h3><p>MapReduce is a programming model and an associ- ated implementation for processing and generating large data sets.Users specify a map function that processes a key&#x2F;value pair to generate a set of intermediate key&#x2F;value pairs, and a reduce function that merges all intermediate values associated with the same intermediate key.<br>MapReduce是啥<br>MapReduce是一种用于处理和生成大型数据集的编程模型及其相关实现。用户需要指定一个map函数，该函数处理键&#x2F;值对以生成一组中间键&#x2F;值对，以及一个reduce函数，该函数合并与同一中间键关联的所有中间值。</p>
+<p>Programs written in this functional style are automati- cally parallelized and executed on a large cluster of com- modity machines. The run-time system takes care of the details of partitioning the input data, scheduling the pro- gram’s execution across a set of machines, handling ma- chine failures, and managing the required inter-machine communication. This allows programmers without any experience with parallel and distributed systems to eas- ily utilize the resources of a large distributed system.<br>MapReduce有啥用<br>使用这种函数式风格编写的程序会自动并行化并在大型通用计算机集群上执行。运行时系统负责处理输入数据的分区、调度程序在一组计算机上的执行、处理计算机故障以及管理所需的机器间通信的细节。这使得没有并行和分布式系统经验的程序员能够轻松地利用大型分布式系统的资源。</p>
+<p>Our implementation of MapReduce runs on a large cluster of commodity machines and is highly scalable: a typical MapReduce computation processes many ter- abytes of data on thousands of machines. Programmers find the system easy to use: hundreds of MapReduce pro- grams have been implemented and upwards of one thou- sand MapReduce jobs are executed on Google’s clusters every day.<br>MapReduce的应用<br>我们的MapReduce实现在一个大型通用计算机集群上运行，并且具有很高的可扩展性：一个典型的MapReduce计算可以在数千台机器上处理数TB的数据。程序员们发现这个系统易于使用：已经实现了数百个MapReduce程序，每天在Google的计算机集群上执行超过一千个MapReduce作业。</p>
+<p>introduction部分总结<br>这项工作的主要贡献是一个简单而强大的接口，实现了大规模计算的自动并行化和分布，并配以在大型通用个人计算机集群上实现高性能的接口实现。</p>
+<p>Example部分总结<br>具体应用大概有Distributed Grep, Count of URL Access Frequency, Reverse Web-Link Graph, Term-Vector per Host, Inverted Index, Distributed Sort</p>
+<p>Implementation部分总结<br>![截屏2024-01-15 09.14.38](&#x2F;Users&#x2F;lsh&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;截屏2024-01-15 09.14.38.png)</p>
+<ol>
+<li>The MapReduce library in the user program first splits the input files into M pieces of typically 16 megabytes to 64 megabytes (MB) per piece (con- trollable by the user via an optional parameter). It then starts up many copies of the program on a clus- ter of machines.</li>
+<li>One of the copies of the program is special – the master. The rest are workers that are assigned work by the master. There are M map tasks and R reduce tasks to assign. The master picks idle workers and assigns each one a map task or a reduce task.</li>
+<li>A worker who is assigned a map task reads the contents of the corresponding input split. It parses key&#x2F;value pairs out of the input data and passes each pair to the user-defined Map function. The interme- diate key&#x2F;value pairs produced by the Map function are buffered in memory.</li>
+<li>Periodically, the buffered pairs are written to local disk, partitioned into R regions by the partitioning function. The locations of these buffered pairs on the local disk are passed back to the master, who is responsible for forwarding these locations to the reduce workers.</li>
+<li>When a reduce worker is notified by the master about these locations, it uses remote procedure calls to read the buffered data from the local disks of the map workers. When a reduce worker has read all in- termediate data, it sorts it by the intermediate keys so that all occurrences of the same key are grouped together. The sorting is needed because typically many different keys map to the same reduce task. If the amount of intermediate data is too large to fit in memory, an external sort is used.</li>
+<li>The reduce worker iterates over the sorted interme- diate data and for each unique intermediate key en- countered, it passes the key and the corresponding set of intermediate values to the user’s Reduce func- tion. The output of the Reduce function is appended to a final output file for this reduce partition.</li>
+<li>When all map tasks and reduce tasks have been completed, the master wakes up the user program. At this point, the MapReduce call in the user pro- gram returns back to the user code.<br> 这个说的还挺清晰的 mapreduce的流程</li>
+</ol>
+<p>其余部分</p>
+<p>容错 （Fault Tolerance）<br>Worker Failure：Master 周期性的 ping 每个 Worker，如果指定时间内没回应就是挂了。将这个 Worker 标记为失效，分配给这个失效 Worker 的任务将被重新分配给其他 Worker。<br>Master Failure：平时有断点记录，中止整个 MapReduce 运算，重新执行。一般很少出现 Master 故障，因为只有一台。</p>
+<p>面对故障时的语义处理方式（Semantics in the Presence of Failures）<br>当用户提供的map和reduce操作是它们输入值的确定性函数时，分布式实现将产生与整个程序非故障顺序执行所产生的相同输出。为实现这一属性，文本描述了对映射和减少任务输出的原子提交的依赖，并使用临时文件和原子重命名操作来确保数据的一致性。</p>
+<p>Locality<br>在撰写该 paper 时，网络带宽是一个相当匮乏的资源。Master 在调度 Map 任务时会考虑输入文件的位置信息，尽量将一个 Map 任务调度在包含相关输入数据拷贝的机器上执行；如果找不到，Master 将尝试在保存输入数据拷贝的附近的机器上执行 Map 任务。</p>
+<p>Task Granularity 任务粒度<br>There are practical bounds on how large M and R can be in our implementation, since the master must make O(M + R) scheduling decisions and keeps O(M ∗ R) state in memory as described above. </p>
+<p>Backup Tasks<br>Master 调度备用任务进程来执行剩下的、处于处理中的任务。无论是最初的进程还是备用任务进程任务完成了任务，都将该任务标记为已完成。以此来解决stragglers的问题。<br>简而言之就是你干的慢，大伙做完自己的事就来帮你干。</p>
+<p>Refinements部分<br>Partitioning Function 可以用hash<br>Ordering Guarantees<br>Combiner Function<br>就是在本地把相同的key给合并了<br>Combiner 函数的代码通常和 Reduce 函数的代码相同，启动这个功能的好处是可以减少通过网络发送到 Reduce 函数的数据量。<br>Input and Output Types 提供了接口自定义输入格式<br>Skipping Bad Records 跳过损坏记录 标记一下 以免有bug直接崩了<br>Local Execution 提供本地运行的 以此来方便debug<br>Status Information 提供运行时信息<br>Counters 提供了一个counter功能 运行时可看</p>
+<p>后面讲的就是使用MapReduce的性能提升了 略过不表</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
       
     </div>
     
