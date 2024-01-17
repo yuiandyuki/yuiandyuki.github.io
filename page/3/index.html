@@ -158,6 +158,196 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-深入剖析kubernetes" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/24/%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90kubernetes/" class="article-date">
+  	<time datetime="2023-12-24T12:49:59.000Z" itemprop="datePublished">2023-12-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/24/%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90kubernetes/">
+        深入剖析kubernetes
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-go语言精进之路-note" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/24/go%E8%AF%AD%E8%A8%80%E7%B2%BE%E8%BF%9B%E4%B9%8B%E8%B7%AF-note/" class="article-date">
+  	<time datetime="2023-12-24T09:25:17.000Z" itemprop="datePublished">2023-12-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/24/go%E8%AF%AD%E8%A8%80%E7%B2%BE%E8%BF%9B%E4%B9%8B%E8%B7%AF-note/">
+        go语言精进之路_note
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="go语言精进之路-note"><a href="#go语言精进之路-note" class="headerlink" title="go语言精进之路_note"></a>go语言精进之路_note</h1><h2 id="第一部分-熟知Go语言的一切"><a href="#第一部分-熟知Go语言的一切" class="headerlink" title="第一部分 熟知Go语言的一切"></a>第一部分 熟知Go语言的一切</h2><h3 id="第1条-了解Go语言的诞生与演进"><a href="#第1条-了解Go语言的诞生与演进" class="headerlink" title="第1条 了解Go语言的诞生与演进"></a>第1条 了解Go语言的诞生与演进</h3><p>略</p>
+<h3 id="第2条-选择适当的Go语言版本"><a href="#第2条-选择适当的Go语言版本" class="headerlink" title="第2条 选择适当的Go语言版本"></a>第2条 选择适当的Go语言版本</h3><p>建议一直使用最新版本</p>
+<h3 id="第3条-理解Go语言的设计哲学"><a href="#第3条-理解Go语言的设计哲学" class="headerlink" title="第3条 理解Go语言的设计哲学"></a>第3条 理解Go语言的设计哲学</h3><p>追求简单，少即是多<br>偏好组合，正交解耦<br>原生并发，轻量高效<br>面向工程，“自带电池”<br>看看就好 用久了才能体会到</p>
+<h4 id="第4条-使用Go语言原生编程思维来写Go代码"><a href="#第4条-使用Go语言原生编程思维来写Go代码" class="headerlink" title="第4条 使用Go语言原生编程思维来写Go代码"></a>第4条 使用Go语言原生编程思维来写Go代码</h4><p>“萨丕尔-沃夫假说”，这个假说的内容是这样的:“语言影响或决定人类的思维方式。”<br>艾伦·佩利(Alan J. Perlis) “不能影响到你的编程思维方式的编程语言不值得学习和使用。”<br>经典问题 素数筛<br>c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LIMIT 50 </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRIMES 10</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">sieve</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="type">int</span> c,i,j,numbers[LIMIT], primes[PRIMES];</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;LIMIT;i++)&#123;</span><br><span class="line">		numbers[i]=i+<span class="number">2</span>; <span class="comment">/*fill the array with natural numbers*/</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;LIMIT;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span> (numbers[i]!=<span class="number">-1</span>)&#123;</span><br><span class="line">			<span class="keyword">for</span> (j=<span class="number">2</span>*numbers[i]<span class="number">-2</span>;j&lt;LIMIT;j+=numbers[i])</span><br><span class="line">					numbers[j]=<span class="number">-1</span>; <span class="comment">/* 筛除非素数 */</span> </span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	c = j = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;LIMIT&amp;&amp;j&lt;PRIMES;i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (numbers[i]!=<span class="number">-1</span>) &#123;</span><br><span class="line">			primes[j++] = numbers[i]; <span class="comment">/*transfer the primes to their own array*/</span> </span><br><span class="line">			c++;</span><br><span class="line">			&#125; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;c;i++) <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,primes[i]); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Haskell</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">sieve</span> [] = []</span><br><span class="line"><span class="title">sieve</span> (x:xs) = x : sieve (filter (\a -&gt; not $ a `mod` x == <span class="number">0</span>) xs)</span><br><span class="line"><span class="title">n</span> = <span class="number">100</span></span><br><span class="line"><span class="title">main</span> = print $ sieve [<span class="number">2</span>..n]</span><br></pre></td></tr></table></figure>
+<p>不懂 去看看haskell</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Generate</span><span class="params">(ch <span class="keyword">chan</span>&lt;- <span class="type">int</span>)</span></span> &#123; </span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">2</span>; ; i++ &#123;</span><br><span class="line">		ch &lt;- i </span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Filter</span><span class="params">(in &lt;-<span class="keyword">chan</span> <span class="type">int</span>, out <span class="keyword">chan</span>&lt;- <span class="type">int</span>, prime <span class="type">int</span>)</span></span> &#123; </span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		i := &lt;-in</span><br><span class="line">		<span class="keyword">if</span> i%prime != <span class="number">0</span> &#123;</span><br><span class="line">				out &lt;- i </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;		 </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>) </span><br><span class="line">	<span class="keyword">go</span> Generate(ch)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		prime := &lt;-ch <span class="built_in">print</span>(prime, <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">		ch1 := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>) </span><br><span class="line">		<span class="keyword">go</span> Filter(ch, ch1, prime) </span><br><span class="line">		ch = ch1</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>C版本的素数筛程序是一个常规实现。它定义了两个数组 numbers和primes，“筛”的过程在numbers这个数组中进行(基于纯内存修改)，非素数的数组元素被设置为-1， 便于后续提取。 </p>
+<p>Haskell版本采用了函数递归的思路，通过“filter操作集合”，用谓词(过滤条件)\a -&gt; not $ a <code>mod</code> x &#x3D;&#x3D; 0筛除素数的倍数，将未筛除的数的集合作为参数传递归递给下去。 </p>
+<p>Go版本程序实现了一个并发素数筛，它采用的是goroutine的并发组合。程序从素数2开始，依次为每个素数建立一个goroutine，用于作为筛除该素数的倍数。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-寒假计划" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/22/%E5%AF%92%E5%81%87%E8%AE%A1%E5%88%92/" class="article-date">
+  	<time datetime="2023-12-22T05:22:14.000Z" itemprop="datePublished">2023-12-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/22/%E5%AF%92%E5%81%87%E8%AE%A1%E5%88%92/">
+        寒假计划
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="2024寒假计划"><a href="#2024寒假计划" class="headerlink" title="2024寒假计划"></a>2024寒假计划</h2><p>先写下来 可能很多都读不完 可能要想办法找工作了 技术类的书多读一点吧 </p>
+<p>每天写代码时间8小时</p>
+<h3 id="非技术类"><a href="#非技术类" class="headerlink" title="非技术类"></a>非技术类</h3><p>《呼吸》<br>《斯通纳》<br>《奇幻文学导论》</p>
+<h3 id="技术类"><a href="#技术类" class="headerlink" title="技术类"></a>技术类</h3><p>《深入剖析Kubernetes》￼￼<br>《Redis设计与实现》<br>《Mysql技术内幕》<br>《go语言精进之路》<br>《leetcode cookbook》看一部分吧<br>《深入理解计算机系统》 继续看吧 之前看到链接那一部分<br>《sicp》的后2章 （option）</p>
+<h3 id="面经总结"><a href="#面经总结" class="headerlink" title="面经总结"></a>面经总结</h3><p>看完这2个网站的内容 优先级高<br><a target="_blank" rel="noopener" href="https://javaguide.cn/">https://javaguide.cn</a><br><a target="_blank" rel="noopener" href="https://www.csview.cn/">https://www.csview.cn</a></p>
+<h3 id="投实习"><a href="#投实习" class="headerlink" title="投实习"></a>投实习</h3><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/jobs/recommend/campus">https://www.nowcoder.com/jobs/recommend/campus</a></p>
+<h3 id="实验室"><a href="#实验室" class="headerlink" title="实验室"></a>实验室</h3><p>联系一下梁上松教授 看情况吧</p>
+<h3 id="准备项目"><a href="#准备项目" class="headerlink" title="准备项目"></a>准备项目</h3><p>暂时想着的是 1个跟培训班 做的项目 java<br>1个自己用rust在树莓派上写操作系统 rust<br>还有mit6.824 go</p>
+<h3 id="技术学习"><a href="#技术学习" class="headerlink" title="技术学习"></a>技术学习</h3><p>javaweb那一套东西 优先级最高吧<br>在苹果的testflight上整一个app<br>想学完mit6.824<br>rpc框架 那个接着看完吧<br>数据库 cs186 有空就搞<br>cmu 15445看着办吧 c++不太会<br>搞懂rust得异步和并发编程 把那个rust redis实现了 rust自己用的不太熟练 岗位太少了<br>基本的云原生一套，包括Docker容器技术，Spring Cloud，以及Jenkins自动化部署等。<br>用学生身份去腾讯云或阿里云租一个云服务器，每个月十块钱，把研发-测试-集成-部署这一套都摸清<br>自己的GitHub主页和博客主页，记录一下项目心得<br>视频项目一般都是电商类，里面的业务其实不是很重要，主要是拿来练手技术栈的<br>除了跟着视频做项目，自己给自己想需求、提需求，个人独立开发一个项目<br>租一个腾讯云服务器，然后自己开发一个工具类的小程序，有前端有后端，然后自己去试着做好小程序的备案、服务器域名备案、小程序上架。<br>小程序上架之后，写一个用户使用说明书，把源代码整理出来，个人去申请一个软件著作权<br>体验了一个比较完整的研发闭环，写在简历上，相对普通的项目经历来说更出彩一点<br>完成这样一件事，从开始小程序备案到软件著作权下发证书，用时大概2个月左右<br>一段日常实习经历，一个跟着视频做的项目经历，一个自己的小程序闭环项目经历，然后再放一个实验室项目经历，这样子简历整体就比较丰满了。<br>投一下<br>这个项目好像很有意思 在树莓派上写一个操作系统<br><a target="_blank" rel="noopener" href="https://github.com/rust-embedded/rust-raspberrypi-OS-tutorials">https://github.com/rust-embedded/rust-raspberrypi-OS-tutorials</a><br>用java 写游戏<br>CS193p – Developing Apps for iOS (Stanford University) 搞搞ios开发</p>
+<h3 id="已经投过的实习"><a href="#已经投过的实习" class="headerlink" title="已经投过的实习"></a>已经投过的实习</h3><p>中国移动</p>
+<h3 id="刷题"><a href="#刷题" class="headerlink" title="刷题"></a>刷题</h3><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/exam/oj?page=1&tab=%E7%AE%97%E6%B3%95%E7%AF%87&topicId=295&fromPut=pc_kol_qjzt">https://www.nowcoder.com/exam/oj?page=1&amp;tab=算法篇&amp;topicId=295&amp;fromPut=pc_kol_qjzt</a></p>
+<p>剑指offer</p>
+<p>编程珠玑</p>
+<p>编程之美</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-十字路口" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -481,8 +671,11 @@
 <p>Topic: fault tolerance 容错<br>Availability – app can make progress despite failures 可用<br>Recoverability – app will come back to life when failures are repaired 可恢复</p>
 <p>Topic: consistency 一致性<br>Consistency and performance are enemies.</p>
 <p>CASE STUDY: MapReduce 论文有详细讲</p>
-<h2 id="lab部分"><a href="#lab部分" class="headerlink" title="lab部分"></a>lab部分</h2><p>Lab 1: MapReduce<br>遇到的第一个问题是我选取的版本是go version go1.21.2 darwin&#x2F;arm64<br>然后做的是mit6.824spring2020这个版本<br>只有在package main 下的go程序才能直接运行<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_46047387/article/details/127432122">关于vscode中出现gopls was not able to find modules in your workspace报错的解决方案</a> 顺利解决<br>看了下框架 暂时感觉有点无从下手呀<br>跑通了mrsequential.go<br>学到了more这个命令 go的编译还有plugin模式 插件是一种在运行时动态加载的可执行文件<br>go run的时候可以直接提供<br>这一串命令能不能要脚本来完成 学一下shell<br>Lab 2: replication for fault-tolerance using Raft<br>Lab 3: fault-tolerant key&#x2F;value store<br>Lab 4: sharded key&#x2F;value store</p>
-<h2 id="论文部分"><a href="#论文部分" class="headerlink" title="论文部分"></a>论文部分</h2><h3 id="MapReduce-Simplified-Data-Processing-on-Large-Clusters"><a href="#MapReduce-Simplified-Data-Processing-on-Large-Clusters" class="headerlink" title="MapReduce: Simplified Data Processing on Large Clusters"></a>MapReduce: Simplified Data Processing on Large Clusters</h3><p>MapReduce is a programming model and an associ- ated implementation for processing and generating large data sets.Users specify a map function that processes a key&#x2F;value pair to generate a set of intermediate key&#x2F;value pairs, and a reduce function that merges all intermediate values associated with the same intermediate key.<br>MapReduce是啥<br>MapReduce是一种用于处理和生成大型数据集的编程模型及其相关实现。用户需要指定一个map函数，该函数处理键&#x2F;值对以生成一组中间键&#x2F;值对，以及一个reduce函数，该函数合并与同一中间键关联的所有中间值。</p>
+<h2 id="lab部分"><a href="#lab部分" class="headerlink" title="lab部分"></a>lab部分</h2><h3 id="Lab-1-MapReduce"><a href="#Lab-1-MapReduce" class="headerlink" title="Lab 1: MapReduce"></a>Lab 1: MapReduce</h3><p>遇到的第一个问题是我选取的版本是go version go1.21.2 darwin&#x2F;arm64<br>然后做的是mit6.824spring2020这个版本<br>只有在package main 下的go程序才能直接运行<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_46047387/article/details/127432122">关于vscode中出现gopls was not able to find modules in your workspace报错的解决方案</a> 顺利解决<br>看了下框架 暂时感觉有点无从下手呀<br>跑通了mrsequential.go<br>学到了more这个命令 go的编译还有plugin模式 插件是一种在运行时动态加载的可执行文件<br>go run的时候可以直接提供<br>这一串命令能不能要脚本来完成 学一下shell<br>重新看了一下online go tutorial<br>go语言<br>只有发送者才能关闭信道，而接收者不能。向一个已经关闭的信道发送数据会引发程序恐慌。<br>Chan与文件不同，通常情况下无需关闭它们。只有在必须告诉接收者不再有需要发送的值时才有必要关闭，例如终止一个 range 循环。<br>过完了一遍online go tutorial<br>写代码的时候记得关闭github copilot<br>发现自己vscode的go语言配的环境不是很舒服 没有函数跳转 和自动提示结构体字段<br><a target="_blank" rel="noopener" href="https://blog.devops.dev/best-list-of-vscode-plugin-as-golang-developer-in-backend-position-4c3c945a903c">Best List of Vscode Plugin as Golang developer in Backend position</a><br>安装go for vsc 更新失败 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/603809967">解决方法</a><br>然后在vscode的json里面添加goroot和gopath<br>不折腾了 还是用ide吧<br>还是不具体贴代码了 太长了 代码上传到github上了<br>step 1<br>定义好rpc中的worker和master的类型消息 请求任务 完成任务 的参数和返回<br>step 2<br>定义master的结构 以及写好2个handle 派任务和完成任务<br>step 3<br>写好worker的work函数的骨架 大概就是不停的请求任务 执行任务 返回执行好的任务<br>step 4<br>写好worker处理中间那一堆中间key-value对 主要是命名和排序<br>step 5<br>写好worker调用mapf那一块 创建中间文件并命名好<br>step 6<br>写好worker调用reducef那一块 创建最终文件并命名好<br>step 7<br>写好master有worker请求任务那一块 用轮询那个任务没做就好了<br>step 8<br>把那一块master等待map任务做完的wait 用信号量来控制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">// TaskType 是一个自定义的整数类型，用于表示不同类型的任务。</span><br><span class="line">type TaskType int</span><br><span class="line"></span><br><span class="line">// 下面是任务类型的常量定义：</span><br><span class="line">// - Map 表示映射任务，用于MapReduce框架中的映射阶段。</span><br><span class="line">// - Reduce 表示归约任务，用于MapReduce框架中的归约阶段。</span><br><span class="line">// - Done 表示任务已完成，用于标识任务执行完毕。</span><br><span class="line">const (</span><br><span class="line">	Map    TaskType = 1</span><br><span class="line">	Reduce TaskType = 2</span><br><span class="line">	Done   TaskType = 3</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// GetTaskArgs 表示获取任务的请求参数结构。</span><br><span class="line">type GetTaskArgs struct&#123;&#125;</span><br><span class="line"></span><br><span class="line">// GetTaskReply 包含从服务器获取的任务的相关信息。</span><br><span class="line">type GetTaskReply struct &#123;</span><br><span class="line">	TaskType     TaskType  // 任务类型：Map、Reduce 或 Done</span><br><span class="line">	TaskNum      int       // 任务编号</span><br><span class="line">	NReduceTasks int       // Reduce任务的总数</span><br><span class="line">	MapFile      string    // 映射任务对应的输入文件名</span><br><span class="line">	NMapTasks    int       // 映射任务的总数</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// FinishedTaskArgs 表示完成任务的请求参数结构。</span><br><span class="line">type FinishedTaskArgs struct &#123;</span><br><span class="line">	TaskType TaskType // 完成的任务类型</span><br><span class="line">	TaskNum  int       // 完成的任务编号</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// FinishedTaskReply 表示完成任务的回复结构，通常为空，因为成功与否可以通过返回状态码判断。</span><br><span class="line">type FinishedTaskReply struct&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>step2 </p>
+<h3 id="Lab-2-replication-for-fault-tolerance-using-Raft"><a href="#Lab-2-replication-for-fault-tolerance-using-Raft" class="headerlink" title="Lab 2: replication for fault-tolerance using Raft"></a>Lab 2: replication for fault-tolerance using Raft</h3><h3 id="Lab-3-fault-tolerant-key-value-store"><a href="#Lab-3-fault-tolerant-key-value-store" class="headerlink" title="Lab 3: fault-tolerant key&#x2F;value store"></a>Lab 3: fault-tolerant key&#x2F;value store</h3><h3 id="Lab-4-sharded-key-value-store"><a href="#Lab-4-sharded-key-value-store" class="headerlink" title="Lab 4: sharded key&#x2F;value store"></a>Lab 4: sharded key&#x2F;value store</h3><h2 id="论文部分"><a href="#论文部分" class="headerlink" title="论文部分"></a>论文部分</h2><h3 id="MapReduce-Simplified-Data-Processing-on-Large-Clusters"><a href="#MapReduce-Simplified-Data-Processing-on-Large-Clusters" class="headerlink" title="MapReduce: Simplified Data Processing on Large Clusters"></a>MapReduce: Simplified Data Processing on Large Clusters</h3><p>MapReduce is a programming model and an associ- ated implementation for processing and generating large data sets.Users specify a map function that processes a key&#x2F;value pair to generate a set of intermediate key&#x2F;value pairs, and a reduce function that merges all intermediate values associated with the same intermediate key.<br>MapReduce是啥<br>MapReduce是一种用于处理和生成大型数据集的编程模型及其相关实现。用户需要指定一个map函数，该函数处理键&#x2F;值对以生成一组中间键&#x2F;值对，以及一个reduce函数，该函数合并与同一中间键关联的所有中间值。</p>
 <p>Programs written in this functional style are automati- cally parallelized and executed on a large cluster of com- modity machines. The run-time system takes care of the details of partitioning the input data, scheduling the pro- gram’s execution across a set of machines, handling ma- chine failures, and managing the required inter-machine communication. This allows programmers without any experience with parallel and distributed systems to eas- ily utilize the resources of a large distributed system.<br>MapReduce有啥用<br>使用这种函数式风格编写的程序会自动并行化并在大型通用计算机集群上执行。运行时系统负责处理输入数据的分区、调度程序在一组计算机上的执行、处理计算机故障以及管理所需的机器间通信的细节。这使得没有并行和分布式系统经验的程序员能够轻松地利用大型分布式系统的资源。</p>
 <p>Our implementation of MapReduce runs on a large cluster of commodity machines and is highly scalable: a typical MapReduce computation processes many ter- abytes of data on thousands of machines. Programmers find the system easy to use: hundreds of MapReduce pro- grams have been implemented and upwards of one thou- sand MapReduce jobs are executed on Google’s clusters every day.<br>MapReduce的应用<br>我们的MapReduce实现在一个大型通用计算机集群上运行，并且具有很高的可扩展性：一个典型的MapReduce计算可以在数千台机器上处理数TB的数据。程序员们发现这个系统易于使用：已经实现了数百个MapReduce程序，每天在Google的计算机集群上执行超过一千个MapReduce作业。</p>
 <p>introduction部分总结<br>这项工作的主要贡献是一个简单而强大的接口，实现了大规模计算的自动并行化和分布，并配以在大型通用个人计算机集群上实现高性能的接口实现。</p>
@@ -974,247 +1167,9 @@
 
 
   
-    <article id="post-368复机" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/16/368%E5%A4%8D%E6%9C%BA/" class="article-date">
-  	<time datetime="2023-12-16T09:31:52.000Z" itemprop="datePublished">2023-12-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/16/368%E5%A4%8D%E6%9C%BA/">
-        368复机
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>​	368复机</p>
-<p>​	“368复机，密码，爱你一万年”</p>
-<p>​	一<br>​	</p>
-<p>​	点了一份奶茶，却迟迟没有送来</p>
-<p>​	或许是这座城市太大</p>
-<p>​	形形色色的人，稀奇古怪的事</p>
-<p>​	总有一个理由，让他在半途停下</p>
-<p>​	电话打来，以为奶茶到了	</p>
-<p>​	外卖小哥告诉我，他被交警抓捕了</p>
-<p>​	我不说话，并不是在怪他</p>
-<p>​	又有谁能逃一辈子呢</p>
-<p>​	二<br>​	<br>​	不知道从什么时候开始，任何东西都会有一个期限，沐浴露会过期，凤梨罐头会过期，就连保鲜纸也会过期，</p>
-<p>​	我开始怀疑世界上到底有什么东西是不会过期的。</p>
-<p>   或许是太过勇敢的缘故，我再次向她发起邀约</p>
-<p>​	一个人在家继续看电影</p>
-<p>​	可能是因为电影的时间太短了</p>
-<p>​	还是没有回复我的消息</p>
-<p>​	我以为她在我的心里永远不会过期</p>
-<p>​	可过期的不是那罐凤梨，过期的是我</p>
-<p>   三<br>​	</p>
-<p>  早上八点起床</p>
-<p>​	晚上十二点睡觉</p>
-<p>​	你问我中间发生了什么</p>
-<p>​	被王家卫抽帧抽走了</p>
-<p>​	四<br>​	</p>
-<p>​	有人说，要想不被人拒绝，最好的方法就是先拒绝别人。可我总是慢半拍</p>
-<p>​	她点了一份烤肉饭</p>
-<p>​	刚认识她时，她说她只喜欢吃烤肉</p>
-<p>​	我一直不理解她为什么对同一个食品这么有执念</p>
-<p>​	很久以后才明白，有执念的不是她，而是我</p>
-<p>​	反复问相同的问题，却期待得到不同的答案</p>
-<p>​	五<br>​	</p>
-<p>​	我戴上我的AirPods</p>
-<p>​	却发现它已经发不出声音</p>
-<p>​	约好售后的维修</p>
-<p>​	但有些东西坏了</p>
-<p>​	就算修好了</p>
-<p>​	也不是原来的样子了</p>
-<p>​	六<br>​	</p>
-<p>​	其实没有什么文艺中二的话</p>
-<p>​	只是有些话</p>
-<p>​	是从他口中说出来的心里话</p>
-<p>​	七</p>
-<p>​	</p>
-<p>​	这座城市总是下雨</p>
-<p>​	在五月七日的早晨</p>
-<p>​	我看见一个女人拿着伞在雨中奔跑</p>
-<p>​	我想她和我一样</p>
-<p>​	不想让伞淋雨</p>
-<p>​	八<br>​	</p>
-<p>​	望着窗外的倾盆大雨</p>
-<p>​	人们都打着花花绿绿的伞</p>
-<p>​	伞很可怜</p>
-<p>​	不仅要被雨打</p>
-<p>​	还要被人打</p>
-<p>​	九<br>​	</p>
-<p>​	中学的时候喜欢看意林之类的杂志，</p>
-<p>​	里面的作者用乱七八糟的理由跑去旅游</p>
-<p>​	然后说“阻碍你脚步的永远只有逃离的勇气和对生活的热爱”，</p>
-<p>​	我觉得太对了，可惜 12306 付款方式里没有勇气和热爱，不知道是不是下了盗版。</p>
-<p>​	十<br>​	</p>
-<p>​	宿舍里的水龙头坏了</p>
-<p>​	一直在滴水</p>
-<p>​	如果水龙头也有感情的话</p>
-<p>​	他今天一定很难过</p>
-<p>​	十一</p>
-<p>​	</p>
-<p>​	我写的东西</p>
-<p>​	没有逻辑</p>
-<p>​	像现实一样</p>
-<p>​	十二</p>
-<p>​	</p>
-<p>​	我消息总是群发</p>
-<p>​    等一份回复会因为没有结果而无奈</p>
-<p>​	发的太多</p>
-<p>​	才会忘记自己在等什么</p>
-<p>​	十三</p>
-<p>​	</p>
-<p>​	老是喜欢给师弟师妹们指点这指点那</p>
-<p>​	列出一大堆东西</p>
-<p>​	想要好好告诉他们要好好学好</p>
-<p>​	其实是在列自己的后悔清单</p>
-<p>​	十四</p>
-<p>​	</p>
-<p>​	群里的老哥都在讨论拿了多少个offer</p>
-<p>​	能拿多大的包</p>
-<p>​	明年的时候</p>
-<p>​	我估计也能拿个美团的offer</p>
-<p>​	只不过是骑手岗的</p>
-<p>​	我电动车骑的还不错</p>
-<p>​	听说下雨天能加钱</p>
-<p>​	加油</p>
-<p>​	有一点为生活奔波的感觉了</p>
-<p>​	十五<br>​	</p>
-<p>​	小学的时候 </p>
-<p>​	老师总要求写周记</p>
-<p>​	我不喜欢</p>
-<p>​	每次只写几个字</p>
-<p>​	到了现在</p>
-<p>​	却开始写起了日记</p>
-<p>​	因为</p>
-<p>​	我不想让我的记忆罐头过期</p>
-<p>​	如果一定要加一个日期</p>
-<p>​	我希望是一万年</p>
-<p>​	十六</p>
-<p>​	</p>
-<p>​	电影的台词该如何分析，我不知道。</p>
-<p>​	就如同中学时代，语文考试里的阅读理解一样，</p>
-<p>​	说是一千个读者有一千个哈利波特</p>
-<p>​	可总因为和标准答案不同</p>
-<p>​	扣我很多分</p>
-<p>​	所以</p>
-<p>​	哪里有标准答案</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/emotion/" rel="tag">emotion</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/16/hello-world/" class="article-date">
-  	<time datetime="2023-12-16T03:18:05.581Z" itemprop="datePublished">2023-12-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/16/hello-world/">
-        Hexo的简单命令
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 </div>
