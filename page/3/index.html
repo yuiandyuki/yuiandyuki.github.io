@@ -700,6 +700,54 @@
 <h3 id="The-Google-File-System"><a href="#The-Google-File-System" class="headerlink" title="The Google File System"></a>The Google File System</h3><p>abstract<br>We have designed and implemented the Google File System, a scalable distributed file system for large distributed data-intensive applications. It provides fault tolerance while running on inexpensive commodity hardware, and it delivers high aggregate performance to a large number of clients.<br>GFS是一个可扩展的分布式文件系统，专为大规模分布式数据密集型应用而设计。它在廉价硬件上提供容错性，并为大量客户端提供高性能。</p>
 <p>introduction<br>First, component failures are the norm rather than the exception.Therefore, constant monitoring, error detection, fault tolerance, and automatic recovery must be integral to the system.<br>Second, files are huge by traditional standards. Multi-GB files are common.As a result, design assumptions and parameters such as I&#x2F;O operation and block sizes have to be revisited.<br>Third, most files are mutated by appending new data rather than overwriting existing data. Given this access pattern on huge files, appending becomes the fo- cus of performance optimization and atomicity guarantees, while caching data blocks in the client loses its appeal.<br>Fourth, co-designing the applications and the file system API benefits the overall system by increasing our flexibility.</p>
 <p>Design overview<br>The system is built from many inexpensive commodity components that often fail. It must constantly monitor itself and detect, tolerate, and recover promptly from component failures on a routine basis.<br>• The system stores a modest number of large files. We expect a few million files, each typically 100 MB or larger in size. Multi-GB files are the common case and should be managed efficiently. Small files must be supported, but we need not optimize for them.<br>• The workloads primarily consist of two kinds of reads: large streaming reads and small random reads. In large streaming reads, individual operations typically read hundreds of KBs, more commonly 1 MB or more. Successive operations from the same client often read through a contiguous region of a file. A small ran- dom read typically reads a few KBs at some arbitrary offset. Performance-conscious applications often batch and sort their small reads to advance steadily through the file rather than go back and forth.<br>• The workloads also have many large, sequential writes that append data to files. Typical operation sizes are similar to those for reads. Once written, files are sel- dom modified again. Small writes at arbitrary posi- tions in a file are supported but do not have to be efficient.<br>• The system must efficiently implement well-defined se- mantics for multiple clients that concurrently append to the same file. Our files are often used as producer- consumer queues or for many-way merging. Hundreds of producers, running one per machine, will concur- rently append to a file. Atomicity with minimal syn- chronization overhead is essential. The file may be read later, or a consumer may be reading through the file simultaneously.<br>• High sustained bandwidth is more important than low latency. Most of our target applications place a pre- mium on processing data in bulk at a high rate, while few have stringent response time requirements for an individual read or write.<br>系统由廉价组件构建，需要持续监测和快速从组件故障中恢复，文件数量适中，以百万计的大文件为主，工作负载主要由大规模流式读取和小规模随机读取组成，以及需要有效实现多客户端并发追加相同文件的语义。系统更注重高持续带宽而非低延迟，适用于大量数据的高速率批量处理。</p>
+<p>Architecture<br>![截屏2024-01-18 13.27.07](&#x2F;Users&#x2F;lsh&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;截屏2024-01-18 13.27.07.png)<br>chunk size<br>GFS（Google File System）选择了64 MB的较大块大小，远远超过典型文件系统块的大小。每个块副本都以普通的Linux文件形式存储在块服务器上，并且仅在需要时进行扩展，采用惰性空间分配以避免由于内部碎片而浪费空间。</p>
+<p>较大的块大小带来了几个重要的优势。首先，它降低了客户端与主节点进行交互的需求，因为对同一块的读取和写入只需要一次向主节点请求块位置信息的初始请求。这在我们的工作负载中尤为显著，因为应用程序主要是按顺序读取和写入大文件。即使对于小规模的随机读取，客户端也可以轻松地缓存多TB工作集的所有块位置信息。其次，由于在大块上，客户端更有可能对给定块执行多个操作，它可以通过在较长时间内保持到块服务器的持久TCP连接来减少网络开销。第三，它减少了存储在主节点上的元数据的大小，使得我们可以将元数据保留在内存中，从而带来其他优势。</p>
+<p>然而，较大的块大小，即使采用惰性空间分配，也存在缺点。小文件可能由少量块组成，如果许多客户端访问同一文件，存储这些块的块服务器可能会成为热点。在实践中，热点并没有成为主要问题，因为我们的应用程序主要是按顺序读取大型多块文件。然而，在GFS首次被批处理队列系统使用时，确实出现了热点问题，我们通过采用更高的复制因子存储这类可执行文件以及让批处理队列系统错开应用程序启动时间来解决了这个问题。潜在的长期解决方案是在这种情况下允许客户端从其他客户端读取数据。</p>
+<p>Meta Data<br>In-Memory Data Structures<br>Chunk Locations （初始化时轮询）<br>Operation Log （存checkpoint）</p>
+<p>Consistency Model 一致性模型<br>GFS（Google File System）采用了一种弛缓的一致性模型，以支持其高度分布式的应用程序，并保持相对简单和高效的实现。以下是GFS提供的保证以及对应用程序的影响的简要概述：</p>
+<p>GFS的保证:</p>
+<ul>
+<li>文件命名空间的变异（例如文件创建）是原子的，由主节点独占处理。命名空间锁定保证了原子性和正确性。</li>
+<li>主节点的操作日志定义了这些操作的全局总序列。</li>
+<li>对于数据变异后文件区域的状态取决于变异的类型、是否成功以及是否存在并发变异。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>结果</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>一致</td>
+<td>所有客户端将始终看到相同的数据，无论从哪个副本读取。</td>
+</tr>
+<tr>
+<td>已定义</td>
+<td>在文件数据变异后，如果它是一致的，客户端将完整地看到变异写入的内容。</td>
+</tr>
+<tr>
+<td>未定义但一致</td>
+<td>并发成功的变异使区域未定义，但一致：所有客户端看到相同的数据，但可能不反映任何一个变异写入的内容。</td>
+</tr>
+<tr>
+<td>不一致</td>
+<td>失败的变异使区域不一致（因此也是未定义的）：不同的客户端在不同的时间可能看到不同的数据。</td>
+</tr>
+</tbody></table>
+<ul>
+<li>数据变异可以是写入或记录追加。写入在应用程序指定的文件偏移处写入数据，而记录追加会在GFS选择的偏移处以原子方式追加数据（在并发变异存在的情况下，至少追加一次）。</li>
+<li>在一系列成功变异之后，变异的文件区域被保证为已定义，并包含由最后一个变异写入的数据。GFS通过在所有副本上以相同的顺序应用变异（第3.1节）并使用块版本号检测已变陈的副本（第4.5节）来实现这一点。</li>
+</ul>
+<p>对应用程序的影响:</p>
+<ul>
+<li>GFS应用程序可以通过一些简单的技术来适应弛缓的一致性模型：依赖于追加而不是覆盖、定期检查点以及编写自我验证、自我标识的记录。</li>
+<li>几乎所有的应用程序都通过追加而不是覆盖来变异文件，这对于文件生成者和多写入者的场景都很典型。</li>
+<li>通过追加而不是覆盖进行文件变异更加高效且对应用程序故障更具韧性。检查点允许写入者增量重启，防止读取者处理从应用程序视角仍然不完整的已成功写入的文件数据。</li>
+<li>许多写入者并发地追加到文件时，记录追加的“至少一次”语义保留了每个写入者的输出。读取者可以处理偶尔的填充和重复，通过记录中包含的附加信息（如校验和）进行验证和处理。</li>
+<li>这些记录I&#x2F;O的功能被实现为库代码，可供GFS应用程序共享，并适用于Google的其他文件接口实现。这样，相同的记录序列，加上偶尔的重复，总是被传递给记录读取者。</li>
+</ul>
+<p>只记录主要思想算了 不然太多了<br>Leases and Mutation Order 给予租约给一个副本 让副本来决定更改<br>Data Flow<br>We decouple the flow of data from the flow of control to use the network efficiently. While control flows from the client to the primary and then to all secondaries, data is pushed linearly along a carefully picked chain of chunkservers in a pipelined fashion. Our goals are to fully utilize each machine’s network bandwidth, avoid network bottlenecks and high-latency links, and minimize the latency to push through all the data.<br>数据流与控制流分离 就能够更好的设计数据流的通路<br>Atomic Record Appends<br>GFS provides an atomic append operation called record append. 不需要在客户端上进行复杂的并发控制<br>snapshot 快照<br>The snapshot operation makes a copy of a file or a direc- tory tree (the “source”) almost instantaneously, while min- imizing any interruptions of ongoing mutations.<br>MASTER OPERATION<br>Namespace Management and Locking<br>用锁来进行namespace的并发管理<br>Replica Placement<br>副本放在哪里 放在不同的机架上 在多个层次上分散数据<br>Creation, Re-replication, Rebalancing<br>在GFS中，块副本的创建涉及三种情况：块的创建、重新复制和重新平衡 大概就是做到均衡化<br>Garbage Collection<br>采用惰性的垃圾回收<br>首先，在组件故障普遍的大规模分布式系统中，它是简单且可靠的。其次，它将存储回收合并到主节点的常规后台活动中，运行成本均摊。第三，推迟回收存储提供了一个防止意外不可逆删除的安全网。<br>In our experience, the main disadvantage is that the delay sometimes hinders user effort to fine tune usage when stor- age is tight.We also allow users to apply different replication and reclamation policies to different parts of the namespace.<br>Stale Replica Detection用版本号来标识</p>
 
       
     </div>
