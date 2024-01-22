@@ -158,6 +158,60 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-csapp" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/12/24/csapp/" class="article-date">
+  	<time datetime="2023-12-24T12:50:12.000Z" itemprop="datePublished">2023-12-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/24/csapp/">
+        csapp
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-深入剖析kubernetes" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -318,11 +372,11 @@
 <h3 id="实验室"><a href="#实验室" class="headerlink" title="实验室"></a>实验室</h3><p>联系一下梁上松教授 看情况吧</p>
 <h3 id="准备项目"><a href="#准备项目" class="headerlink" title="准备项目"></a>准备项目</h3><p>暂时想着的是 1个跟培训班 做的项目 java<br>1个自己用rust在树莓派上写操作系统 rust<br>还有mit6.824 go</p>
 <h3 id="技术学习"><a href="#技术学习" class="headerlink" title="技术学习"></a>技术学习</h3><p>javaweb那一套东西 优先级最高吧<br>在苹果的testflight上整一个app<br>想学完mit6.824<br>rpc框架 那个接着看完吧<br>数据库 cs186 有空就搞<br>cmu 15445看着办吧 c++不太会<br>搞懂rust得异步和并发编程 把那个rust redis实现了 rust自己用的不太熟练 岗位太少了<br>基本的云原生一套，包括Docker容器技术，Spring Cloud，以及Jenkins自动化部署等。<br>用学生身份去腾讯云或阿里云租一个云服务器，每个月十块钱，把研发-测试-集成-部署这一套都摸清<br>自己的GitHub主页和博客主页，记录一下项目心得<br>视频项目一般都是电商类，里面的业务其实不是很重要，主要是拿来练手技术栈的<br>除了跟着视频做项目，自己给自己想需求、提需求，个人独立开发一个项目<br>租一个腾讯云服务器，然后自己开发一个工具类的小程序，有前端有后端，然后自己去试着做好小程序的备案、服务器域名备案、小程序上架。<br>小程序上架之后，写一个用户使用说明书，把源代码整理出来，个人去申请一个软件著作权<br>体验了一个比较完整的研发闭环，写在简历上，相对普通的项目经历来说更出彩一点<br>完成这样一件事，从开始小程序备案到软件著作权下发证书，用时大概2个月左右<br>一段日常实习经历，一个跟着视频做的项目经历，一个自己的小程序闭环项目经历，然后再放一个实验室项目经历，这样子简历整体就比较丰满了。<br>投一下<br>这个项目好像很有意思 在树莓派上写一个操作系统<br><a target="_blank" rel="noopener" href="https://github.com/rust-embedded/rust-raspberrypi-OS-tutorials">https://github.com/rust-embedded/rust-raspberrypi-OS-tutorials</a><br>用java 写游戏<br>CS193p – Developing Apps for iOS (Stanford University) 搞搞ios开发</p>
-<h3 id="已经投过的实习"><a href="#已经投过的实习" class="headerlink" title="已经投过的实习"></a>已经投过的实习</h3><p>中国移动</p>
 <h3 id="刷题"><a href="#刷题" class="headerlink" title="刷题"></a>刷题</h3><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/exam/oj?page=1&tab=%E7%AE%97%E6%B3%95%E7%AF%87&topicId=295&fromPut=pc_kol_qjzt">https://www.nowcoder.com/exam/oj?page=1&amp;tab=算法篇&amp;topicId=295&amp;fromPut=pc_kol_qjzt</a></p>
 <p>剑指offer</p>
 <p>编程珠玑</p>
 <p>编程之美</p>
+<h3 id="已学习"><a href="#已学习" class="headerlink" title="已学习"></a>已学习</h3><p>JavaSE 基础<br>在学习</p>
 
       
     </div>
@@ -747,8 +801,8 @@
 <li>许多写入者并发地追加到文件时，记录追加的“至少一次”语义保留了每个写入者的输出。读取者可以处理偶尔的填充和重复，通过记录中包含的附加信息（如校验和）进行验证和处理。</li>
 <li>这些记录I&#x2F;O的功能被实现为库代码，可供GFS应用程序共享，并适用于Google的其他文件接口实现。这样，相同的记录序列，加上偶尔的重复，总是被传递给记录读取者。</li>
 </ul>
-<p>只记录主要思想算了 不然太多了<br>Leases and Mutation Order 给予租约给一个副本 让副本来决定更改<br>Data Flow<br>We decouple the flow of data from the flow of control to use the network efficiently. While control flows from the client to the primary and then to all secondaries, data is pushed linearly along a carefully picked chain of chunkservers in a pipelined fashion. Our goals are to fully utilize each machine’s network bandwidth, avoid network bottlenecks and high-latency links, and minimize the latency to push through all the data.<br>数据流与控制流分离 就能够更好的设计数据流的通路<br>Atomic Record Appends<br>GFS provides an atomic append operation called record append. 不需要在客户端上进行复杂的并发控制<br>snapshot 快照<br>The snapshot operation makes a copy of a file or a direc- tory tree (the “source”) almost instantaneously, while min- imizing any interruptions of ongoing mutations.<br>MASTER OPERATION<br>Namespace Management and Locking<br>用锁来进行namespace的并发管理<br>Replica Placement<br>副本放在哪里 放在不同的机架上 在多个层次上分散数据<br>Creation, Re-replication, Rebalancing<br>在GFS中，块副本的创建涉及三种情况：块的创建、重新复制和重新平衡 大概就是做到均衡化<br>Garbage Collection<br>采用惰性的垃圾回收<br>首先，在组件故障普遍的大规模分布式系统中，它是简单且可靠的。其次，它将存储回收合并到主节点的常规后台活动中，运行成本均摊。第三，推迟回收存储提供了一个防止意外不可逆删除的安全网。<br>In our experience, the main disadvantage is that the delay sometimes hinders user effort to fine tune usage when stor- age is tight.We also allow users to apply different replication and reclamation policies to different parts of the namespace.<br>Stale Replica Detection用版本号来标识</p>
-
+<p>只记录主要思想算了 不然太多了<br>Leases and Mutation Order 给予租约给一个副本 让副本来决定更改<br>Data Flow<br>We decouple the flow of data from the flow of control to use the network efficiently. While control flows from the client to the primary and then to all secondaries, data is pushed linearly along a carefully picked chain of chunkservers in a pipelined fashion. Our goals are to fully utilize each machine’s network bandwidth, avoid network bottlenecks and high-latency links, and minimize the latency to push through all the data.<br>数据流与控制流分离 就能够更好的设计数据流的通路<br>Atomic Record Appends<br>GFS provides an atomic append operation called record append. 不需要在客户端上进行复杂的并发控制<br>snapshot 快照<br>The snapshot operation makes a copy of a file or a direc- tory tree (the “source”) almost instantaneously, while min- imizing any interruptions of ongoing mutations.<br>MASTER OPERATION<br>Namespace Management and Locking<br>用锁来进行namespace的并发管理<br>Replica Placement<br>副本放在哪里 放在不同的机架上 在多个层次上分散数据<br>Creation, Re-replication, Rebalancing<br>在GFS中，块副本的创建涉及三种情况：块的创建、重新复制和重新平衡 大概就是做到均衡化<br>Garbage Collection<br>采用惰性的垃圾回收<br>首先，在组件故障普遍的大规模分布式系统中，它是简单且可靠的。其次，它将存储回收合并到主节点的常规后台活动中，运行成本均摊。第三，推迟回收存储提供了一个防止意外不可逆删除的安全网。<br>In our experience, the main disadvantage is that the delay sometimes hinders user effort to fine tune usage when stor- age is tight.We also allow users to apply different replication and reclamation policies to different parts of the namespace.<br>Stale Replica Detection用版本号来标识<br>FAULT TOLERANCE AND DIAGNOSIS<br>High Availability 通过fast recovery and replication来完成<br>Data Integrity 使用校验和来实现数据完整性<br>Each chunkserver uses checksumming to detect corruption of stored data.<br>Diagnostic Tools 有大量的日志<br>Extensive and detailed diagnostic logging has helped im- measurably in problem isolation, debugging, and perfor- mance analysis, while incurring only a minimal cost.</p>
+<h3 id="The-Design-of-a-Practical-System-for-Practical-System-for-Fault-Tolerant-Virtual-Machines-Fault-Tolerant-Virtual-Machines"><a href="#The-Design-of-a-Practical-System-for-Practical-System-for-Fault-Tolerant-Virtual-Machines-Fault-Tolerant-Virtual-Machines" class="headerlink" title="The Design of a Practical System for Practical System for Fault-Tolerant Virtual Machines Fault-Tolerant Virtual Machines"></a>The Design of a Practical System for Practical System for Fault-Tolerant Virtual Machines Fault-Tolerant Virtual Machines</h3>
       
     </div>
     
@@ -1127,78 +1181,6 @@
     <div class="article-info article-info-index">
       
       
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-why-writing" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/12/16/why-writing/" class="article-date">
-  	<time datetime="2023-12-16T12:47:29.000Z" itemprop="datePublished">2023-12-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/16/why-writing/">
-        why write
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="why-writing"><a href="#why-writing" class="headerlink" title="why writing"></a>why writing</h1><p><a target="_blank" rel="noopener" href="https://fs.blog/why-write/">原文地址</a></p>
-<p>  Why write an essay when you can type a few words and have AI generate one for you? Why write an email when AI can auto-respond for you with all the typical pleasantries and talking-points?</p>
-<p>  While AI doing these things for you is likely to happen, it’s not necessarily a good thing. Even when these tools exist, they are not a replacement for writing.</p>
-<p>  Writing is the process by which you realize that you do not understand what you are talking about. Importantly, writing is also the process by which you figure it out.</p>
-<p>  Writing about something teaches you about what you know, what you don’t know, and how to think. Writing about something is one of the best ways to learn about it. Writing is not just a vehicle to share ideas with others but also a way to understand them better yourself.</p>
-<p>  Paul Graham put it this way: “A good writer doesn’t just think, and then write down what he thought, as a sort of transcript. A good writer will almost always discover new things in the process of writing.”</p>
-<p>  There is another important element to writing that often gets overlooked. Writing requires the compression of an idea. When done poorly, compression removes insights. When done well, compression keeps the insights and removes the rest. Compression requires both thinking and understanding, which is one reason writing is so important.</p>
-<p>  Great writing requires you to position your idea in a way that will resonate with the reader. Average writers start with what they want to say without considering how it will land with the reader. Great writers understand the journey starts with what the reader desires. Think of the difference as starting at the beginning or the end of a maze. When you start at the beginning, you have to convince people the path is the right one. When you start at the end, they already know you’re taking them where they want to go.</p>
-<p>  In a world of average writing available on demand, every organization will start communicating like a big one. The signal-to-noise ratio will change for the worse. If you’ve ever read a government communication, you understand how a lot of words can say nothing. Bandwidth will be filled with common ideas, verbose communication, and ambiguous jargon. In the future, information will become even more of a substitute for thought than it already is.</p>
-<p>  Many things can be done by tools that write for you, but they won’t help you learn to think or understand a problem with deep fluency. And you need deep fluency to solve hard problems.</p>
-<p>  A world of common thinking available on demand will tempt people to outsource their thinking and disproportionately reward people who don’t. In the future, clear thinking will become more valuable, not less.</p>
-<p>一言以蔽之 写作本身是一种清晰的思考的过程 </p>
-<p>写作是与自己的对话 </p>
-<p>写作的难点只有2个： 开始写  &amp; 不要停</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/think/" rel="tag">think</a></li></ul>
-	</div>
-
       
 
       
