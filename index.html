@@ -158,6 +158,78 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-cmu15445interview" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="2024/03/03/cmu15445interview/" class="article-date">
+  	<time datetime="2024-03-03T03:04:12.000Z" itemprop="datePublished">2024-03-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2024/03/03/cmu15445interview/">
+        cmu15445interview
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文目的在于记录复盘做15445这个项目的经验总结 以及应付面试<br>先直接说5个lab<br><img src="cmu15445interview/1.png" alt="截屏2024-03-03 11.05.30"><br><img src="1.png" alt="截屏2024-03-03 11.05.30"></p>
+<h3 id="lab0"><a href="#lab0" class="headerlink" title="lab0"></a>lab0</h3><h3 id="lab1"><a href="#lab1" class="headerlink" title="lab1"></a>lab1</h3><h3 id="lab2"><a href="#lab2" class="headerlink" title="lab2"></a>lab2</h3><h3 id="lab3"><a href="#lab3" class="headerlink" title="lab3"></a>lab3</h3><p>最主要要把框架看懂<br>value，tuple，table，column，schema</p>
+<p>AbstractExecutor<br>SQL拆分成一棵执行树之后，其中的节点的功能承担者，也是这次实验主要要完成的部分。</p>
+<p>构造执行树时不会构造Executor，而是用后面的AbstractPlanNode来构造树，只有在执行这棵树的时候会初始化对应的Executor来执行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 每个执行器需要初始化的东西都不一样，一般是初始化指向表头的迭代器指针，或者自己定义的一些辅助循环的值</span><br><span class="line">// 拿seq_scan来说，就需要在这里将迭代器指针指向表头。</span><br><span class="line">void Init()</span><br><span class="line">    </span><br><span class="line">// 需要做到调用一次next就输出且只输出一组tuple的功能，输出是通过赋值*tuple参数，并return true</span><br><span class="line">// 如果没有能输出的了，return false</span><br><span class="line">void Next(Tuple *tuple, RID *rid)</span><br><span class="line">    </span><br><span class="line">// Schema相当于存储了表的表头名字，OutputSchema用来指出此节点需要输出哪些列（哪些表头需要考虑在内）</span><br><span class="line">virtual const Schema *GetOutputSchema() = 0;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>ExecutorContext<br>（AbstractExecutor构造函数的参数之一）</p>
+<p>上下文信息，也就是说这次执行所用到的一些关键信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 这个Catalog至关重要，存储了一个数据库的全部表格信息的索引，提供了对表格的操作。</span><br><span class="line">// 只有这个Catalog是我们可能会用到的，比如在seq_scan中需要利用它获取目标表</span><br><span class="line">Catalog *catalog_;</span><br></pre></td></tr></table></figure>
+
+<p>AbstractPlanNode<br>（AbstractExecutor构造函数参数之二）</p>
+<p>用于存储节点有关的信息，AbstractExecutor利用用里面的信息来完成任务。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// Schema是表每列的表头名字，OutputSchema用来指出此节点需要输出哪些列</span><br><span class="line">Schema *OutputSchema()</span><br><span class="line"></span><br><span class="line">// 获取孩子节点（我们实现executor的时候用不上，在执行树的时候才用得上）</span><br><span class="line">// 在一些需要从子节点获取tuple的操作用得上，比如 join</span><br><span class="line">AbstractPlanNode *GetChildAt(uint32_t child_idx)</span><br><span class="line">std::vector&lt;AbstractPlanNode *&gt; &amp;GetChildren()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>例子：SeqScanPlanNode成员函数，AbstractExecutor可以在这里获取TableOid和Predicate</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 这个在ExecutionEngine里面用于判断当前节点的类型</span><br><span class="line">PlanType GetType()</span><br><span class="line"></span><br><span class="line">// Predicate：谓词，返回值全是真值的表达式，AbstractExpression就是一颗表达式树。</span><br><span class="line">AbstractExpression *GetPredicate() </span><br><span class="line">    </span><br><span class="line">// 结合Catlog可以得到当前Executor需要的表格内容</span><br><span class="line">table_oid_t GetTableOid() </span><br></pre></td></tr></table></figure>
+
+
+<h3 id="lab4"><a href="#lab4" class="headerlink" title="lab4"></a>lab4</h3>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-cmu15445面试准备" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -660,61 +732,6 @@
 <p>遇到的一些问题</p>
 <p>开发的项目是jdk1.8版本 maven的设置jdk版本是17 在idea里改没用 要改maven的settings.xml文件<br>找不到的包 没用到的 直接删掉就好了</p>
 <p>不是所有的配置都写在了yaml文件里 有一些在config类里面</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-java-web" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="2024/01/25/java-web/" class="article-date">
-  	<time datetime="2024-01-25T01:40:37.000Z" itemprop="datePublished">2024-01-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2024/01/25/java-web/">
-        java-web
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文记录一下学习java ssm框架中所遇到的问题 那些常见的能找到方案的就不说了 讲讲自己摸索到的<br>maven<br>maven插件安装失败 原因是把本地仓库位置放到了一个需要提供权限才能更改的盘里 换一个地方就好了 </p>
 
       
     </div>
