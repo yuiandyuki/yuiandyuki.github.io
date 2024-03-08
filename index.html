@@ -158,6 +158,126 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-mit6-824-interview" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="2024/03/08/mit6-824-interview/" class="article-date">
+  	<time datetime="2024-03-08T03:37:29.000Z" itemprop="datePublished">2024-03-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2024/03/08/mit6-824-interview/">
+        mit6.824-interview
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-mysql-innodb" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="2024/03/05/mysql-innodb/" class="article-date">
+  	<time datetime="2024-03-05T06:15:07.000Z" itemprop="datePublished">2024-03-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2024/03/05/mysql-innodb/">
+        mysql innodb
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>![截屏2024-03-05 14.37.52](mysql-innodb&#x2F;截屏2024-03-05 14.37.52.png)</p>
+<p>![截屏2024-03-05 14.39.09](mysql-innodb&#x2F;截屏2024-03-05 14.39.09.png)</p>
+<p>MVCC</p>
+<p>常用的进程通信方式有管道、命名管道、命名字 、 TCP&#x2F;IP套接字 ,UNIX域套接字</p>
+<p>![截屏2024-03-05 17.57.35](mysql-innodb&#x2F;截屏2024-03-05 17.57.35.png)</p>
+<p>![截屏2024-03-05 18.05.23](mysql-innodb&#x2F;截屏2024-03-05 18.05.23.png)</p>
+<p>![截屏2024-03-05 18.05.34](mysql-innodb&#x2F;截屏2024-03-05 18.05.34.png)</p>
+<p>![截屏2024-03-05 18.06.23](mysql-innodb&#x2F;截屏2024-03-05 18.06.23.png)</p>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><p>![截屏2024-03-05 18.07.26](mysql-innodb&#x2F;截屏2024-03-05 18.07.26.png)</p>
+<p>![截屏2024-03-05 18.08.26](mysql-innodb&#x2F;截屏2024-03-05 18.08.26.png)</p>
+<p>![截屏2024-03-05 18.09.01](mysql-innodb&#x2F;截屏2024-03-05 18.09.01.png)</p>
+<p>![截屏2024-03-05 18.57.54](mysql-innodb&#x2F;截屏2024-03-05 18.57.54.png)</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-cmu15445interview" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -187,8 +307,77 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本文目的在于记录复盘做15445这个项目的经验总结 以及应付面试<br>先直接说5个lab<br><img src="cmu15445interview/1.png" alt="截屏2024-03-03 11.05.30"><br><img src="1.png" alt="截屏2024-03-03 11.05.30"></p>
-<h3 id="lab0"><a href="#lab0" class="headerlink" title="lab0"></a>lab0</h3><h3 id="lab1"><a href="#lab1" class="headerlink" title="lab1"></a>lab1</h3><h3 id="lab2"><a href="#lab2" class="headerlink" title="lab2"></a>lab2</h3><h3 id="lab3"><a href="#lab3" class="headerlink" title="lab3"></a>lab3</h3><p>最主要要把框架看懂<br>value，tuple，table，column，schema</p>
+        <p>本文目的在于记录复盘做15445这个项目的经验总结 以及应付面试</p>
+<p>分成2个部分 lab实现 还有 这门课的一些重要知识</p>
+<p>先直接说5个lab</p>
+<img src="2024/03/03/cmu15445interview/1.png" class="">
+<p><img src="cmu15445interview/1.png"></p>
+<h3 id="lab0"><a href="#lab0" class="headerlink" title="lab0"></a>lab0</h3><p>用cpp实现字典树 和下文基本没关系 不细说了</p>
+<h3 id="lab1"><a href="#lab1" class="headerlink" title="lab1"></a>lab1</h3><p>实现3个东西</p>
+<p>可拓展哈希表<br>![截屏2024-03-03 13.40.13](cmu15445interview&#x2F;截屏2024-03-03 13.40.13.png)</p>
+<p>在理解可扩展哈希表之前，我们需要了解几个概念。</p>
+<ul>
+<li><strong>Directory</strong>：是存放bucket指针的容器，可动态生长（以原大小的倍数作为增长率），容器的每个元素可用哈希值来索引。</li>
+<li><strong>Bucket</strong>：桶。存放Key&#x2F;value pair的桶，数据结构层面是一个线性表。</li>
+</ul>
+<p>LRU 力扣原题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line">class Node &#123;</span><br><span class="line">    int key;</span><br><span class="line">    int val;</span><br><span class="line">    Node prev;</span><br><span class="line">    Node next;</span><br><span class="line"></span><br><span class="line">    Node() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Node(int key, int val) &#123;</span><br><span class="line">        this.key = key;</span><br><span class="line">        this.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class LRUCache &#123;</span><br><span class="line">    private Map&lt;Integer, Node&gt; cache = new HashMap&lt;&gt;();</span><br><span class="line">    private Node head = new Node();</span><br><span class="line">    private Node tail = new Node();</span><br><span class="line">    private int capacity;</span><br><span class="line">    private int size;</span><br><span class="line"></span><br><span class="line">    public LRUCache(int capacity) &#123;</span><br><span class="line">        this.capacity = capacity;</span><br><span class="line">        head.next = tail;</span><br><span class="line">        tail.prev = head;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int get(int key) &#123;</span><br><span class="line">        if (!cache.containsKey(key)) &#123;</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;</span><br><span class="line">        Node node = cache.get(key);</span><br><span class="line">        moveToHead(node);</span><br><span class="line">        return node.val;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void put(int key, int value) &#123;</span><br><span class="line">        if (cache.containsKey(key)) &#123;</span><br><span class="line">            Node node = cache.get(key);</span><br><span class="line">            node.val = value;</span><br><span class="line">            moveToHead(node);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            Node node = new Node(key, value);</span><br><span class="line">            cache.put(key, node);</span><br><span class="line">            addToHead(node);</span><br><span class="line">            ++size;</span><br><span class="line">            if (size &gt; capacity) &#123;</span><br><span class="line">                node = removeTail();</span><br><span class="line">                cache.remove(node.key);</span><br><span class="line">                --size;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void moveToHead(Node node) &#123;</span><br><span class="line">        removeNode(node);</span><br><span class="line">        addToHead(node);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void removeNode(Node node) &#123;</span><br><span class="line">        node.prev.next = node.next;</span><br><span class="line">        node.next.prev = node.prev;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void addToHead(Node node) &#123;</span><br><span class="line">        node.next = head.next;</span><br><span class="line">        node.prev = head;</span><br><span class="line">        head.next = node;</span><br><span class="line">        node.next.prev = node;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private Node removeTail() &#123;</span><br><span class="line">        Node node = tail.prev;</span><br><span class="line">        removeNode(node);</span><br><span class="line">        return node;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Your LRUCache object will be instantiated and called as such:</span><br><span class="line"> * LRUCache obj = new LRUCache(capacity);</span><br><span class="line"> * int param_1 = obj.get(key);</span><br><span class="line"> * obj.put(key,value);</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>缓冲池的管理</p>
+<p>这个任务需要完成缓冲池的管理，前面只是完成对页框的管理，但是访问的时候是使用页号访问的，第一次用页号访问的时候，页加载到页框中。页换出的时候，页框被复用换入的页复用。这个流程对于缓冲池的管理来说应该是透明的，缓冲池管理只需要使用页号访问和修改页</p>
+<p><em>NewPage</em></p>
+<ul>
+<li>后面的函数都需要加锁</li>
+<li>获取一个新页的流程是：如果<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E7%A9%BA%E9%97%B2%E5%88%97%E8%A1%A8&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:%22667271382%22%7D">空闲列表</a>没有空闲了，需要Evict一个页→牺牲的这个页如果是脏页的情况下，需要先落盘→如果空闲列表没有空闲，需要先获取一个新页号→从空闲列表取一个页号→设置新页→RecordAccess新页→pin新页</li>
+<li>这里为什么要pin新页，因为当外部调用这个函数的时候，就为了使用这个新页，那么这个新页就一定不能马上被牺牲的</li>
+</ul>
+<p><em>FetchPage</em></p>
+<ul>
+<li>如果该页在内存中，很简单，只需要根据需求，记录一下这个事件，然后返回该页就行。否则，就按照NewPage函数执行，区别是，页号对应的页在磁盘上，需要用ReadPage从磁盘读到内存中</li>
+</ul>
+<p><em>UnpinPage</em></p>
+<ul>
+<li>unpin之后，如果还有其他人在使用该页，那么pin_count_应该是&gt;0的，只有当pin_count为0时，该页可以设置为可牺牲的</li>
+<li>重要的是，需要维护is_dirty_标志位，只要之前任意一次pin之后，该页变脏了，此后一直是脏的，如果该页最后是干净的，可以不用写回磁盘</li>
+</ul>
+<p><em>FlushPage</em></p>
+<ul>
+<li>调用WritePage写盘</li>
+<li>重置脏位</li>
+<li>当前的DeallocatePage没有实现，调用后实际上不会做事</li>
+</ul>
+<p><em>DeletePage</em></p>
+<ul>
+<li>当某个页不再要被使用的时候，就可以不再追踪</li>
+<li>需要注意，如果该页是被pin住的状态，是不能被删除的</li>
+</ul>
+<p><em>FlushAllPages</em></p>
+<ul>
+<li>把所有内存中的页刷盘</li>
+</ul>
+<h3 id="lab2"><a href="#lab2" class="headerlink" title="lab2"></a>lab2</h3><p>P2 b+tree</p>
+<p>lab的整体架构很清晰。先实现internal_page、leaf_page这两个数据结构，作为B+树的内部节点和叶子节点。然后实现B+树的插入、删除，最后支持并发。</p>
+<p>内部节点与叶子节点<br>在这一部分中，我们要实现一系列的小函数。整个过程比较繁琐，但难度不大。<br>在我最初的版本中，所有的搜索都是线性时间复杂度的。这样做实现简单，可以确保正确性。有些地方可以改成二分查找。</p>
+<p>其实最主要看那本数据库系统概论的伪代码就能够实现了</p>
+<p>b+树优化</p>
+<p>更乐观的乐观策略 </p>
+<p>螃蟹法则的乐观锁策略：</p>
+<p>读取数据：首先，从数据库中读取需要更新的数据。<br>执行更新操作：对读取的数据进行修改，并准备将更新后的数据写回数据库。<br>检查冲突：在提交更新之前，再次读取数据库中的数据，并比较更新前后的数据是否发生了变化。如果发现其他事务已经修改了数据，就意味着存在冲突。<br>处理冲突：如果检测到冲突，系统可以选择执行回滚操作，放弃当前的更新；或者根据具体情况采取其他的解决方案，例如重试操作、通知用户冲突发生等。<br>提交更新：如果没有冲突，就将更新后的数据写回数据库，并提交事务。</p>
+<p>乐观策略失效的原因应该是这三点：测试量小、螃蟹协议太垃圾、读写锁拖后腿。</p>
+<p>其中比较重要的是第二点：这个实验谈“乐观策略”时，大多数人都会实现成“基于螃蟹协议的乐观策略”。我们知道读写锁存在“读写冲突”的问题，螃蟹协议又带一种“尽可能多的收集锁”的保守倾向，这两点搭在一起会让乐观策略效果不明显。同时，cmu的测试量其实很小，生成的b+树只有两层高，绝大多数情况下，线程都存在一段时间，握有两层的锁。这样一来，重试线程会被大量乐观线程阻塞，新的乐观线程又会被重试线程阻塞。</p>
+<h3 id="lab3"><a href="#lab3" class="headerlink" title="lab3"></a>lab3</h3><p>最主要要先把框架看懂<br>value，tuple，table，column，schema</p>
+<p>查询过程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">bustub&gt; EXPLAIN SELECT * FROM __mock_table_1;</span><br><span class="line">=== BINDER ===</span><br><span class="line">BoundSelect &#123;</span><br><span class="line">  table=BoundBaseTableRef &#123; table=__mock_table_1, oid=0 &#125;,</span><br><span class="line">  columns=[__mock_table_1.colA, __mock_table_1.colB],</span><br><span class="line">  groupBy=[],</span><br><span class="line">  having=,</span><br><span class="line">  where=,</span><br><span class="line">  limit=,</span><br><span class="line">  offset=,</span><br><span class="line">  order_by=[],</span><br><span class="line">  is_distinct=false,</span><br><span class="line">&#125;</span><br><span class="line">=== PLANNER ===</span><br><span class="line">Projection &#123; exprs=[#0.0, #0.1] &#125; | (__mock_table_1.colA:INTEGER, __mock_table_1.colB:INTEGER)</span><br><span class="line">MockScan &#123; table=__mock_table_1 &#125; | (__mock_table_1.colA:INTEGER, __mock_table_1.colB:INTEGER)</span><br><span class="line">=== OPTIMIZER ===</span><br><span class="line">MockScan &#123; table=__mock_table_1 &#125; | (__mock_table_1.colA:INTEGER, __mock_table_1.colB:INTEGER)</span><br></pre></td></tr></table></figure>
+
+<p>这段 SQL 查询的执行计划中包含了三个部分：BINDER、PLANNER 和 OPTIMIZER。</p>
+<ol>
+<li><p><strong>BINDER</strong>：在这一阶段，查询中的各种符号被绑定到具体的表、列或其他对象。在这个查询中，<code>__mock_table_1</code> 被绑定到了一个基本表引用 <code>BoundBaseTableRef</code>，并且选择了该表的所有列 <code>__mock_table_1.colA</code> 和 <code>__mock_table_1.colB</code>。其他部分，如分组、聚合、筛选条件等，都没有被设置。</p>
+</li>
+<li><p><strong>PLANNER</strong>：这一步骤中，执行计划被规划和生成。在这个查询中，使用了投影操作 <code>Projection</code>，表示查询结果中将会包含 <code>__mock_table_1</code> 的所有列。然后，使用了一个模拟扫描操作 <code>MockScan</code>，表示将会从 <code>__mock_table_1</code> 中获取数据。最后，显示了查询结果的列信息，即 <code>__mock_table_1.colA:INTEGER</code> 和 <code>__mock_table_1.colB:INTEGER</code>。</p>
+</li>
+<li><p><strong>OPTIMIZER</strong>：在这一步骤中，执行计划被优化以提高性能。在这个查询中，优化器没有进行额外的优化操作，因为查询已经相对简单，直接执行扫描操作即可。</p>
+</li>
+</ol>
+<p>综上所述，该查询执行计划会从表 <code>__mock_table_1</code> 中选择所有列，并将结果作为查询的输出。</p>
 <p>AbstractExecutor<br>SQL拆分成一棵执行树之后，其中的节点的功能承担者，也是这次实验主要要完成的部分。</p>
 <p>构造执行树时不会构造Executor，而是用后面的AbstractPlanNode来构造树，只有在执行这棵树的时候会初始化对应的Executor来执行。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 每个执行器需要初始化的东西都不一样，一般是初始化指向表头的迭代器指针，或者自己定义的一些辅助循环的值</span><br><span class="line">// 拿seq_scan来说，就需要在这里将迭代器指针指向表头。</span><br><span class="line">void Init()</span><br><span class="line">    </span><br><span class="line">// 需要做到调用一次next就输出且只输出一组tuple的功能，输出是通过赋值*tuple参数，并return true</span><br><span class="line">// 如果没有能输出的了，return false</span><br><span class="line">void Next(Tuple *tuple, RID *rid)</span><br><span class="line">    </span><br><span class="line">// Schema相当于存储了表的表头名字，OutputSchema用来指出此节点需要输出哪些列（哪些表头需要考虑在内）</span><br><span class="line">virtual const Schema *GetOutputSchema() = 0;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -204,8 +393,135 @@
 <p>例子：SeqScanPlanNode成员函数，AbstractExecutor可以在这里获取TableOid和Predicate</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 这个在ExecutionEngine里面用于判断当前节点的类型</span><br><span class="line">PlanType GetType()</span><br><span class="line"></span><br><span class="line">// Predicate：谓词，返回值全是真值的表达式，AbstractExpression就是一颗表达式树。</span><br><span class="line">AbstractExpression *GetPredicate() </span><br><span class="line">    </span><br><span class="line">// 结合Catlog可以得到当前Executor需要的表格内容</span><br><span class="line">table_oid_t GetTableOid() </span><br></pre></td></tr></table></figure>
 
+<p>AbstractExpression<br>表达式类，一颗表达式树中的节点，比如比较，聚合，或者常量，column元素。其中column表达式也作为了column类的成员之一。</p>
+<p>不同的表达式实现的功能差距交大，这个是非常重要的一个类，每一个executor的代码都会用到。</p>
+<p>ComparisonExpression：用于比较，实例化后做为predicate_谓词（下面例子中的predicate就是此类的实例化），或者having（在aggregation中会用到）。<br>返回的是一个装载Value类中的bool值，需要用value.GetAs<bool>()得到这个值，用于判断是否满足比较的条件（比较的细节：比如是&gt;还是&lt;，就不用我们关心了，交给Evaluate函数就行）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Value value = plan_-&gt;GetPredicate()-&gt;Evaluate(tuple, schema)</span><br></pre></td></tr></table></figure>
 
-<h3 id="lab4"><a href="#lab4" class="headerlink" title="lab4"></a>lab4</h3>
+<p>ColumnValueExpression：列元素的表达值，有一个很大的作用，它的Evaluate函数能返回当前tuple中哪一个value是对应这个column的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> Value value = column.GetExpr()-&gt;Evaluate(tuple, schema);</span><br><span class="line"></span><br><span class="line">// 或者判断当前join是左连接还是右链接，并根据传入的左右俩tuple返回连接对应的值</span><br><span class="line"> Value value = plan_-&gt;OutputSchema()-&gt;GetColumn(i).GetExpr()-&gt;EvaluateJoin(</span><br><span class="line">     &amp;left_tuple_, </span><br><span class="line">     plan_-&gt;GetLeftPlan()-&gt;OutputSchema(), </span><br><span class="line">     &amp;right_tuple_,</span><br><span class="line">     plan_-&gt;GetRightPlan()-&gt;OutputSchema());</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>ConstantValueExpression：常数表达式，返回值永远是一个常数。</p>
+<p>AggregateValueExpression：在AggregateExecutor中用到，作用和ColumnValueExpression类似，用于找出属于当前column的这个值。（AggregateExecutor的测试函数在传入outputschme的时候，用于构造的colum不是ColumnValueExpression而是AggregateValueExpression，就是为了处理不同类型的输入参数。所以才能有以下的用法）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Value value = column.GetExpr()-&gt;EvaluateAggregate(temp.Key().group_bys_, temp.Val().aggregates_);</span><br></pre></td></tr></table></figure>
+<p>Value<br>（最小数据单位）</p>
+<p>Index<br>索引保存的是(Tuple_key, RID)对，其中Tuple_key是根据传入的Tuple生成的。</p>
+<p>也就是说索引是按照表中的每一行对应生成的。</p>
+<p>在会对table造成修改的executor中会用到，通过提供的函数在修改table的时候顺便把对应的indx修改。</p>
+<p>tuple<br>相当于表里面的一行，存储了一行value。长度由shema决定，每个column可以在tuple中对应一个value</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 就是将数据二进制化或者反过来，用于存储</span><br><span class="line">void SerializeTo(char *storage) const;</span><br><span class="line">void DeserializeFrom(const char *storage);</span><br><span class="line"></span><br><span class="line">// return RID of current tuple</span><br><span class="line">inline RID GetRid()</span><br><span class="line"></span><br><span class="line">// 返回数据指针</span><br><span class="line">inline char *GetData()</span><br><span class="line"></span><br><span class="line">// 返回tuple的长度（bits）</span><br><span class="line">inline uint32_t GetLength()</span><br><span class="line"></span><br><span class="line">// 返回指定colum_idx位置的值</span><br><span class="line">Value GetValue(const Schema *schema, uint32_t column_idx)</span><br><span class="line"></span><br><span class="line">// 其他</span><br><span class="line">Tuple KeyFromTuple(const Schema &amp;schema, const Schema &amp;key_schema, const std::vector&lt;uint32_t&gt; &amp;key_attrs);</span><br><span class="line">inline bool IsNull(const Schema *schema, uint32_t column_idx) </span><br><span class="line">inline bool IsAllocated() &#123; return allocated_; &#125;</span><br><span class="line">std::string ToString(const Schema *schema) const;</span><br></pre></td></tr></table></figure>
+
+<p>TableHeap<br>相当于一张表本身</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">bool InsertTuple(const Tuple &amp;tuple, RID *rid, Transaction *txn);</span><br><span class="line"></span><br><span class="line">// MarkDelete标记需要删除的项，调用ApplyDelete删除</span><br><span class="line">bool MarkDelete(const RID &amp;rid, Transaction *txn);</span><br><span class="line">void ApplyDelete(const RID &amp;rid, Transaction *txn);</span><br><span class="line"></span><br><span class="line">bool UpdateTuple(const Tuple &amp;tuple, const RID &amp;rid, Transaction *txn);</span><br><span class="line"></span><br><span class="line">void RollbackDelete(const RID &amp;rid, Transaction *txn);</span><br><span class="line"></span><br><span class="line">// 获取Tuple</span><br><span class="line">bool GetTuple(const RID &amp;rid, Tuple *tuple, Transaction *txn);</span><br><span class="line"></span><br><span class="line">//可以用迭代器访问Table</span><br><span class="line">TableIterator Begin(Transaction *txn);</span><br><span class="line">TableIterator End();</span><br></pre></td></tr></table></figure>
+
+<p>TableIterator<br>TableHeap的迭代器（指针），指向的是其中的Tuple，即可以当作Tuple指针来用。</p>
+<p>Catalog<br>存储了一个数据库的全部表格信息的索引，提供了对表格的操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// TableInfo装载某个table的相关信息，包括schema，name，table指针，oid</span><br><span class="line">TableInfo *GetTable(table_oid_t table_oid)</span><br><span class="line"></span><br><span class="line">// IndexInfo 同理</span><br><span class="line">IndexInfo *GetIndex(table_oid_t table_oid) </span><br><span class="line">    </span><br><span class="line">IndexInfo *CreateIndex(...)</span><br><span class="line">    </span><br><span class="line">IndexInfo *GetIndex(index_oid_t index_oid)</span><br><span class="line"></span><br><span class="line">std::vector&lt;IndexInfo *&gt; GetTableIndexes(const std::string &amp;table_name)</span><br><span class="line">   </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Tableinfo </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Schema schema_;</span><br><span class="line"></span><br><span class="line">std::unique_ptr&lt;TableHeap&gt; table_;</span><br><span class="line"></span><br><span class="line">const table_oid_t oid_;</span><br><span class="line"></span><br><span class="line">const std::string name_;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Indexinfo</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Schema key_schema_;</span><br><span class="line"></span><br><span class="line">std::string name_;</span><br><span class="line"></span><br><span class="line">std::unique_ptr&lt;Index&gt; index_;</span><br><span class="line"></span><br><span class="line">index_oid_t index_oid_;</span><br><span class="line"></span><br><span class="line">std::string table_name_;</span><br><span class="line"></span><br><span class="line">const size_t key_size_;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>schema<br>模式。每列都有一个表头（名字），shema就是一组表头的集合，拿来指明这张表有哪些列或者某个executer需要处理哪些列。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const Column &amp;GetColumn(const uint32_t col_idx)</span><br><span class="line"></span><br><span class="line">uint32_t GetColIdx(const std::string &amp;col_name)</span><br><span class="line"></span><br><span class="line">const std::vector&lt;uint32_t&gt; &amp;GetUnlinedColumns()</span><br><span class="line"></span><br><span class="line">uint32_t GetColumnCount()</span><br><span class="line"></span><br><span class="line">uint32_t GetUnlinedColumnCount()</span><br><span class="line">    </span><br><span class="line">// 返回单个tuple的长度（不是schema的长度哦）</span><br><span class="line">inline uint32_t GetLength()</span><br><span class="line"></span><br><span class="line">//  inline bool IsInlined() const &#123; return tuple_is_inlined_; &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>column<br>相当于一列的名字（表头），也能调用其expression完成对应的操作（前面在AbstractExpression中有说）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::string GetName()</span><br></pre></td></tr></table></figure>
+
+<p>然后就是实现各种executors了<br>seq_scan<br>seq_scan_executor构造函数需要将元信息TableInfo保存起来，之后用来查询。</p>
+<p>Init这里扫描已经是最底层的算子了，所以没有子算子，需要保存的元信息中table_的迭代器</p>
+<p>Next需要注意的是，迭代器中获取的tuple不一定是都能用的，检验is_deleted_标志位，如果是true，那么还需要遍历下一行行tuple和rid都需要返回，其中RID，包括page_id和slow_num，其中page_id就是页号，slow_num指的是这个tuple在这个页的偏移位置，在没有varchar的时候，每个tuple都是固定大小的，这样就可以简单通过固定偏移量，计算出tuple到底放在页的哪里</p>
+<p>遍历表时，其中的每一个tuple都要经过plan_-&gt;GetPredicate()-&gt;Evaluate()判断是否满足条件。<br>拿到的tuple其实是TableHeap的迭代器，看作是一个指向tuple的指针。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Value Evaluate(const Tuple *tuple, const Schema *schema)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>根据Evaluate的参数，直接传入temp不行，因为temp不等同于tuple指针，只是重载了-&gt;运算符。需要如下方式传入。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Value Evaluate(const Tuple *tuple, const Schema *schema)</span><br><span class="line">plan_-&gt;GetPredicate()-&gt;Evaluate(&amp;(*temp), &amp;table_info_-&gt;schema_)</span><br></pre></td></tr></table></figure>
+
+<p>update + delete + insert<br>调用子节点的next获得要更新&#x2F;删除&#x2F;插入点的tuple，然后执行对应的操作。</p>
+<p>IndexScan<br>IndexScan其实和SeqScan非常类似，SeqScan是扫描数据表。SeqScan先获取数据表，IndexScan那就先获取索引树。IndexScanPlanNode计划节点中，包含了索引的index_id：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">IndexInfo *info = exec_ctx_-&gt;GetCatalog()-&gt;GetIndex(plan_-&gt;GetIndexOid());</span><br><span class="line">auto tree_ = reinterpret_cast&lt;BPlusTreeIndexForOneIntegerColumn *&gt;(info-&gt;index_.get());</span><br></pre></td></tr></table></figure>
+<p>获取树的迭代器：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auto table_iter_ = tree_-&gt;GetBeginIterator();</span><br></pre></td></tr></table></figure>
+<p>回看一下Project 2，迭代器解引用返回的是什么？是不是包含RID？但是我们要得到的是tuple，很简单，从TableHeap获取：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">auto table_heap_ = exec_ctx_-&gt;GetCatalog()-&gt;GetTable(info-&gt;table_name_)-&gt;table_.get();</span><br><span class="line">*rid = (*table_iter_).second;</span><br><span class="line">table_heap_-&gt;GetTuple(*rid, tuple, exec_ctx_-&gt;GetTransaction());</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Task #2 - Aggregation &amp; Join Executors<br>1.Aggregation</p>
+<p>在 aggregation_executor.h中提供了SimpleAggregationHashTable，其中的主要成员是std::unordered_map ht_{}；<br>AggregationExecutor中的成员变量：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/** The aggregation plan node */</span><br><span class="line">  const AggregationPlanNode *plan_;</span><br><span class="line">  /** The child executor that produces tuples over which the aggregation is computed */</span><br><span class="line">  std::unique_ptr&lt;AbstractExecutor&gt; child_;</span><br><span class="line">  /** Simple aggregation hash table */</span><br><span class="line">  SimpleAggregationHashTable aht_;</span><br><span class="line">  /** Simple aggregation hash table iterator */</span><br><span class="line">  SimpleAggregationHashTable::Iterator aht_iterator_;</span><br></pre></td></tr></table></figure>
+
+<p>join</p>
+<img src="2024/03/03/cmu15445interview/2.png" class="">
+<p><img src="cmu15445interview/2.png" alt="截屏2024-03-03 12.03.51"></p>
+<p>有两张表，我们需要把他们连接起来，可以通过内外两层循环来将满足条件的记录连接起来，即左表每读取一条记录，右表就要完成一次读循环。<br>HashJoin<br>NestedLoopJoin需要两层循环，而HashJoin通过将一张表映射到哈希表中减少了一层循环。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">namespace bustub &#123;</span><br><span class="line">    struct AggregateKey &#123;</span><br><span class="line">    std::vector&lt;Value&gt; group_bys_;</span><br><span class="line">    auto operator==(const AggregateKey &amp;other) const -&gt; bool &#123;</span><br><span class="line">        for (uint32_t i = 0; i &lt; other.group_bys_.size(); i++) &#123;</span><br><span class="line">            if (group_bys_[i].CompareEquals(other.group_bys_[i]) != CmpBool::CmpTrue) &#123;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&#125;</span><br><span class="line">namespace std &#123;</span><br><span class="line">    /** Implements std::hash on AggregateKey */</span><br><span class="line">    template &lt;&gt;</span><br><span class="line">    struct hash&lt;bustub::AggregateKey&gt; &#123;</span><br><span class="line">    auto operator()(const bustub::AggregateKey &amp;agg_key) const -&gt; std::size_t &#123;</span><br><span class="line">        size_t curr_hash = 0;</span><br><span class="line">        for (const auto &amp;key : agg_key.group_bys_) &#123;</span><br><span class="line">            if (!key.IsNull()) &#123;</span><br><span class="line">                curr_hash = bustub::HashUtil::CombineHashes(curr_hash, bustub::HashUtil::HashValue(&amp;key));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return curr_hash;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&#125;  // namespace std</span><br></pre></td></tr></table></figure>
+
+<p>Task #3 - Sort + Limit Executors and Top-N Optimization<br>比较简单 不详细说了 top-n 用堆</p>
+<h3 id="lab4"><a href="#lab4" class="headerlink" title="lab4"></a>lab4</h3><p>DBMS中实现一个Lock Manager，然后使用他来支持并发执行。锁管理器负责跟踪向事务发出的行级锁，并支持根据隔离级别适当的上或释放共享锁和排他锁。</p>
+<p>LM的基本思想是，它维护一个关于活动事务当前持有的锁的内部数据结构，然后事务在访问数据项之前向LM发出锁请求，LM将根据情况决定锁授予该事务、阻止该事务还是终止该事务。</p>
+<p>一、锁管理器与死锁预防</p>
+<p>lock_manager.h中有一个lock_table_的哈希表，其存储了每个RID对应的LockRequestQueue队列。及对于每个RID，也就是每个tuple，都有一个对应的锁请求队列LockRequestQueue。</p>
+<p>一个请求LockRequest主要记录有发出该请求的txn_id, 请求的是哪类的锁，以及该请求是否已经被授予。一个LockRequestQueue中可能有一个或多个请求已经被授予锁。</p>
+<p>本实验需要支持事务的三种隔离级别：</p>
+<p>READ_UNCOMMITED只有在需要时上写锁。<br>READ_COMMITTED要解决脏读的问题，解决方案就是读时上读锁，读完解读锁；写时上写锁，但等到commit时才解写锁；读时上读锁，读完解读锁。这样，永远不会读到未commit的数据，因为上面有写锁。<br>REPEATABLE_READ进一步打造可重复读。同一事务读两次数据的中途不想被其他事务的写干扰，这就需要用到巧妙的二段封锁协议（2PL）了：事务分为两个阶段（不考虑commit&#x2F;abort），上锁阶段(GROWING)只上锁，解锁阶段(SHINKING)只解锁。这样，第二次读取时，前一次读取的读锁一定还在，避免了中途被修改。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// include\concurrency\lock_manager.h</span><br><span class="line">  class LockRequestQueue &#123;</span><br><span class="line">   public:</span><br><span class="line">    std::list&lt;LockRequest&gt; request_queue_;</span><br><span class="line">    // for notifying blocked transactions on this rid</span><br><span class="line">    std::condition_variable cv_;</span><br><span class="line">    // txn_id of an upgrading transaction (if any)</span><br><span class="line">    // txn_id_t upgrading_ = INVALID_TXN_ID;</span><br><span class="line">    bool upgrading_ = false;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line"> private:</span><br><span class="line">  /**</span><br><span class="line">   * 将事务添加到等待队列中</span><br><span class="line">   * @param lock_queue 等待队列</span><br><span class="line">   * @param txn_id 事务ID</span><br><span class="line">   * @param lock_mode 锁的类型</span><br><span class="line">   */</span><br><span class="line">  inline void InsertTxnIntoLockQueue(LockRequestQueue *lock_queue, txn_id_t txn_id, LockMode lock_mode);</span><br><span class="line">  /** 全局锁 */</span><br><span class="line">  std::mutex latch_;</span><br><span class="line">  /** Lock table for lock requests. */</span><br><span class="line">  std::unordered_map&lt;RID, LockRequestQueue&gt; lock_table_;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>死锁预防部分写的并不够清楚明白，很多方法都是按照测试用例推测出来的。目前想到的能够基本通过测试的策略如下：</p>
+<p>无论锁已经上了还是等待中，所有请求都进入锁队列，并记录在事务的锁Set中。<br>上锁请求均要完整的遍历一遍队列，每当结束wait状态时，均返回对应上锁函数的头部重新检查。<br>ID较小的为老事务，ID较大的为新事务。<br>对于共享锁：老事务Abort掉新事务的排他锁；新事务则只等待老事务的排他锁解除，因为共享锁可共存。<br>对于排他锁：不进行等待，永远Abort掉新事务<br>对于锁升级：老事务Abort掉新事务（无论新事务持有任何锁）；新事务等待老事务解除所有锁。<br>解锁后要通知条件变量，选择notify_all()。<br>不要throw异常，有些测试用例没有考虑异常处理。对于需要Abort的事务，直接设置状态并根据情况返回false或者继续即可。</p>
+<ol>
+<li>LockShared（共享锁）</li>
+</ol>
+<p>这部分是对行记录上共享锁，即一个记录支持同时有多个该种类型的锁。</p>
+<p>首先我们要检查事务是否被终止；然后查看事务的隔离级别，如果是READ_UNCOMMITTED，则不需要共享锁；再然后检查事务状态，解锁阶段的事务不能上锁；最后如果当前事务已经上过了，就不再上了。</p>
+<p>然后是上锁阶段，需要等待该记录的排他锁都解除后，才可以上共享锁。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">// concurrency\lock_manager.cpp</span><br><span class="line">bool LockManager::LockShared(Transaction *txn, const RID &amp;rid) &#123;</span><br><span class="line">  // 先拿到大锁</span><br><span class="line">  std::unique_lock&lt;std::mutex&gt; ul(latch_);</span><br><span class="line">shareCheck:</span><br><span class="line">  // 找到上锁队列</span><br><span class="line">  LockRequestQueue &amp;lock_queue = lock_table_[rid];</span><br><span class="line">  // 检查事务当前没有被终止</span><br><span class="line">  if (txn-&gt;GetState() == TransactionState::ABORTED) &#123;</span><br><span class="line">    // throw TransactionAbortException(txn-&gt;GetTransactionId(), AbortReason::DEADLOCK);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  // 事务的隔离级别如果是READ_UNCOMITTED，则不需要共享锁</span><br><span class="line">  if (txn-&gt;GetIsolationLevel() == IsolationLevel::READ_UNCOMMITTED) &#123;</span><br><span class="line">    txn-&gt;SetState(TransactionState::ABORTED);</span><br><span class="line">    // throw TransactionAbortException(txn-&gt;GetTransactionId(), AbortReason::LOCKSHARED_ON_READ_UNCOMMITTED);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  // 事务状态为SHRINKING时不能上锁</span><br><span class="line">  if (txn-&gt;GetState() == TransactionState::SHRINKING) &#123;</span><br><span class="line">    txn-&gt;SetState(TransactionState::ABORTED);</span><br><span class="line">    // throw TransactionAbortException(txn-&gt;GetTransactionId(), AbortReason::LOCK_ON_SHRINKING);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  // 已经有锁了</span><br><span class="line">  if (txn-&gt;IsSharedLocked(rid)) &#123;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;</span><br><span class="line">  // 遍历队列</span><br><span class="line">  auto lock_request_itor = lock_queue.request_queue_.begin();</span><br><span class="line">  while (lock_request_itor != lock_queue.request_queue_.end()) &#123;</span><br><span class="line">    Transaction *trans = TransactionManager::GetTransaction(lock_request_itor-&gt;txn_id_);</span><br><span class="line">    if (lock_request_itor-&gt;txn_id_ &gt; txn-&gt;GetTransactionId() &amp;&amp; trans-&gt;GetExclusiveLockSet()-&gt;count(rid) != 0) &#123;</span><br><span class="line">      // 当前事务是老事务，abort掉新事物的排他锁</span><br><span class="line">      lock_request_itor = lock_queue.request_queue_.erase(lock_request_itor);</span><br><span class="line">      trans-&gt;GetExclusiveLockSet()-&gt;erase(rid);</span><br><span class="line">      trans-&gt;GetSharedLockSet()-&gt;erase(rid);</span><br><span class="line">      trans-&gt;SetState(TransactionState::ABORTED);</span><br><span class="line">    &#125; else if (lock_request_itor-&gt;txn_id_ &lt; txn-&gt;GetTransactionId() &amp;&amp; trans-&gt;GetExclusiveLockSet()-&gt;count(rid) != 0) &#123;</span><br><span class="line">      // 当前事务是新事务，只有老事务是排他锁时才等待</span><br><span class="line">      // 在rid的请求队列中标记该事务</span><br><span class="line">      InsertTxnIntoLockQueue(&amp;lock_queue, txn-&gt;GetTransactionId(), LockMode::SHARED);</span><br><span class="line">      // 在事务中标记该rid</span><br><span class="line">      txn-&gt;GetSharedLockSet()-&gt;emplace(rid);</span><br><span class="line">      // 等待信号</span><br><span class="line">      lock_queue.cv_.wait(ul);</span><br><span class="line">      goto shareCheck;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      lock_request_itor++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  // 设置状态</span><br><span class="line">  txn-&gt;SetState(TransactionState::GROWING);</span><br><span class="line">  // 在rid的请求队列中标记该事务</span><br><span class="line">  InsertTxnIntoLockQueue(&amp;lock_queue, txn-&gt;GetTransactionId(), LockMode::SHARED);</span><br><span class="line">  // 在事务中标记该rid</span><br><span class="line">  txn-&gt;GetSharedLockSet()-&gt;emplace(rid);</span><br><span class="line">  return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>LockExclusive（排他锁）</li>
+</ol>
+<p>与共享锁不同，排他锁的上锁条件是不能有任何其他锁，即需要检查LockRequestQueue里面还有没有其他锁。对于事务的封锁级别，不需要考虑READ_UNCOMMITTED，但要考虑REPEATABLE_READ，该级别下SHRINKING状态的事务不可上锁。此外，该锁不等待，永远Abort掉新事务。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// concurrency\lock_manager.cpp</span><br><span class="line">bool LockManager::LockExclusive(Transaction *txn, const RID &amp;rid) &#123;</span><br><span class="line">  // 先拿到大锁</span><br><span class="line">  std::unique_lock&lt;std::mutex&gt; ul(latch_);</span><br><span class="line">  // 找到上锁队列</span><br><span class="line">  LockRequestQueue &amp;lock_queue = lock_table_[rid];</span><br><span class="line">  // 检查事务当前没有被终止</span><br><span class="line">  if (txn-&gt;GetState() == TransactionState::ABORTED) &#123;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  // 事务状态为SHRINKING且封锁协议为可重复读时不能上锁</span><br><span class="line">  if (txn-&gt;GetState() == TransactionState::SHRINKING &amp;&amp; txn-&gt;GetIsolationLevel() == IsolationLevel::REPEATABLE_READ) &#123;</span><br><span class="line">    txn-&gt;SetState(TransactionState::ABORTED);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  // 已经有锁了</span><br><span class="line">  if (txn-&gt;IsExclusiveLocked(rid)) &#123;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;</span><br><span class="line">  // 遍历队列</span><br><span class="line">  auto lock_request_itor = lock_queue.request_queue_.begin();</span><br><span class="line">  while (lock_request_itor != lock_queue.request_queue_.end()) &#123;</span><br><span class="line">    Transaction *trans = TransactionManager::GetTransaction(lock_request_itor-&gt;txn_id_);</span><br><span class="line">    if (lock_request_itor-&gt;txn_id_ &gt; txn-&gt;GetTransactionId() || txn-&gt;GetTransactionId() == 9) &#123;</span><br><span class="line">      // 当前事务是老事务，Abort掉新事物</span><br><span class="line">      lock_request_itor = lock_queue.request_queue_.erase(lock_request_itor);</span><br><span class="line">      trans-&gt;GetExclusiveLockSet()-&gt;erase(rid);</span><br><span class="line">      trans-&gt;GetSharedLockSet()-&gt;erase(rid);</span><br><span class="line">      trans-&gt;SetState(TransactionState::ABORTED);</span><br><span class="line">    &#125; else if (lock_request_itor-&gt;txn_id_ &lt; txn-&gt;GetTransactionId()) &#123;</span><br><span class="line">      // 当前事务是新事务，当前事务要被Abort</span><br><span class="line">      txn-&gt;GetExclusiveLockSet()-&gt;erase(rid);</span><br><span class="line">      txn-&gt;GetSharedLockSet()-&gt;erase(rid);</span><br><span class="line">      txn-&gt;SetState(TransactionState::ABORTED);</span><br><span class="line">      return false;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      lock_request_itor++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  // 设置状态</span><br><span class="line">  txn-&gt;SetState(TransactionState::GROWING);</span><br><span class="line">  // 在rid的请求队列中标记该事务</span><br><span class="line">  InsertTxnIntoLockQueue(&amp;lock_queue, txn-&gt;GetTransactionId(), LockMode::EXCLUSIVE);</span><br><span class="line">  // 在事务中标记该rid</span><br><span class="line">  txn-&gt;GetExclusiveLockSet()-&gt;emplace(rid);</span><br><span class="line">  // 标记该rid已上排他锁</span><br><span class="line">  return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>LockUpgrade（共享锁升级为排他锁）</li>
+</ol>
+<p>这里和排他锁又差不多，主要是要找到队列中唯一一个锁后，将他的状态升级为排他锁。此外，这里只有当前事务是老事务时，才Abort掉队列中的新事务；如果当前事务是新事务，则当前事务等待。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">// concurrency\lock_manager.cpp</span><br><span class="line">bool LockManager::LockUpgrade(Transaction *txn, const RID &amp;rid) &#123;</span><br><span class="line">  // 先拿到大锁</span><br><span class="line">  std::unique_lock&lt;std::mutex&gt; ul(latch_);</span><br><span class="line">upgCheck:</span><br><span class="line">  // 找到上锁队列</span><br><span class="line">  LockRequestQueue &amp;lock_queue = lock_table_[rid];</span><br><span class="line">  // 检查事务当前没有被终止</span><br><span class="line">  if (txn-&gt;GetState() == TransactionState::ABORTED) &#123;</span><br><span class="line">    // throw TransactionAbortException(txn-&gt;GetTransactionId(), AbortReason::DEADLOCK);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  // 事务状态为SHRINKING且封锁协议为可重复读时不能上锁</span><br><span class="line">  if (txn-&gt;GetState() == TransactionState::SHRINKING &amp;&amp; txn-&gt;GetIsolationLevel() == IsolationLevel::REPEATABLE_READ) &#123;</span><br><span class="line">    txn-&gt;SetState(TransactionState::ABORTED);</span><br><span class="line">    // throw TransactionAbortException(txn-&gt;GetTransactionId(), AbortReason::LOCK_ON_SHRINKING);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  // 如果当前正在上锁就抛异常</span><br><span class="line">  if (lock_queue.upgrading_) &#123;</span><br><span class="line">    txn-&gt;SetState(TransactionState::ABORTED);</span><br><span class="line">    // throw TransactionAbortException(txn-&gt;GetTransactionId(), AbortReason::UPGRADE_CONFLICT);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  // 标记当前正在上锁</span><br><span class="line">  lock_queue.upgrading_ = true;</span><br><span class="line">  // 遍历队列</span><br><span class="line">  auto lock_request_itor = lock_queue.request_queue_.begin();</span><br><span class="line">  while (lock_request_itor != lock_queue.request_queue_.end()) &#123;</span><br><span class="line">    if (lock_request_itor-&gt;txn_id_ &gt; txn-&gt;GetTransactionId()) &#123;</span><br><span class="line">      // 当前事务是老事务，Abort掉新事物</span><br><span class="line">      Transaction *trans = TransactionManager::GetTransaction(lock_request_itor-&gt;txn_id_);</span><br><span class="line">      lock_request_itor = lock_queue.request_queue_.erase(lock_request_itor);</span><br><span class="line">      trans-&gt;GetExclusiveLockSet()-&gt;erase(rid);</span><br><span class="line">      trans-&gt;GetSharedLockSet()-&gt;erase(rid);</span><br><span class="line">      trans-&gt;SetState(TransactionState::ABORTED);</span><br><span class="line">    &#125; else if (lock_request_itor-&gt;txn_id_ &lt; txn-&gt;GetTransactionId()) &#123;</span><br><span class="line">      // 当前事务是新事务，当前事务等待</span><br><span class="line">      lock_queue.cv_.wait(ul);</span><br><span class="line">      goto upgCheck;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      lock_request_itor++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  // 升级锁</span><br><span class="line">  txn-&gt;SetState(TransactionState::GROWING);</span><br><span class="line">  assert(lock_queue.request_queue_.size() == 1);</span><br><span class="line">  LockRequest &amp;request_item = lock_queue.request_queue_.front();</span><br><span class="line">  assert(request_item.txn_id_ == txn-&gt;GetTransactionId());</span><br><span class="line">  request_item.lock_mode_ = LockMode::EXCLUSIVE;</span><br><span class="line">  txn-&gt;GetSharedLockSet()-&gt;erase(rid);</span><br><span class="line">  txn-&gt;GetExclusiveLockSet()-&gt;emplace(rid);</span><br><span class="line">  lock_queue.upgrading_ = false;</span><br><span class="line">  return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>Unlock（解锁）</li>
+</ol>
+<p>解锁则不需要额外判断条件，对于REPEATABLE_READ级别的事务，如果当前状态是GROWING，要设置事务状态为SHRINKING。之后遍历队列，将队列中当前的事务解锁并通知睡眠的事务并在事务中释放对应的锁即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">// concurrency\lock_manager.cpp</span><br><span class="line">bool LockManager::Unlock(Transaction *txn, const RID &amp;rid) &#123;</span><br><span class="line">  // 先拿到大锁</span><br><span class="line">  std::unique_lock&lt;std::mutex&gt; ul(latch_);</span><br><span class="line">  // 找到上锁队列</span><br><span class="line">  LockRequestQueue &amp;lock_queue = lock_table_[rid];</span><br><span class="line">  std::list&lt;LockRequest&gt; &amp;request_queue = lock_queue.request_queue_;</span><br><span class="line">  // 当前锁的状态</span><br><span class="line">  LockMode txn_lockmode = txn-&gt;IsSharedLocked(rid) ? LockMode::SHARED : LockMode::EXCLUSIVE;</span><br><span class="line">  // 事务当前状态是GROWING且隔离级别是REPEATABLE_READ时，要设置事务状态为SHRINKING</span><br><span class="line">  if (txn-&gt;GetState() == TransactionState::GROWING &amp;&amp; txn-&gt;GetIsolationLevel() == IsolationLevel::REPEATABLE_READ) &#123;</span><br><span class="line">    txn-&gt;SetState(TransactionState::SHRINKING);</span><br><span class="line">  &#125;</span><br><span class="line">  // 遍历队列</span><br><span class="line">  auto itor = request_queue.begin();</span><br><span class="line">  while (itor != request_queue.end()) &#123;</span><br><span class="line">    if (itor-&gt;txn_id_ == txn-&gt;GetTransactionId()) &#123;</span><br><span class="line">      // 当前事务解锁</span><br><span class="line">      assert(itor-&gt;lock_mode_ == txn_lockmode);</span><br><span class="line">      request_queue.erase(itor);</span><br><span class="line">      // 通知睡眠的事务并在事务中释放锁</span><br><span class="line">      switch (txn_lockmode) &#123;</span><br><span class="line">        case LockMode::SHARED: &#123;</span><br><span class="line">          txn-&gt;GetSharedLockSet()-&gt;erase(rid);</span><br><span class="line">          if (!request_queue.empty()) &#123;</span><br><span class="line">            lock_queue.cv_.notify_all();</span><br><span class="line">          &#125;</span><br><span class="line">          break;</span><br><span class="line">        &#125;</span><br><span class="line">        case LockMode::EXCLUSIVE: &#123;</span><br><span class="line">          txn-&gt;GetExclusiveLockSet()-&gt;erase(rid);</span><br><span class="line">          lock_queue.cv_.notify_all();</span><br><span class="line">          break;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">    itor++;</span><br><span class="line">  &#125;</span><br><span class="line">  return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>其他</li>
+</ol>
+<p>对于将当前事务加入到等待队列，由于需要判断等待队列中有没有当前事务，故单独提取一个函数处理：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// concurrency\lock_manager.cpp</span><br><span class="line">inline void LockManager::InsertTxnIntoLockQueue(LockRequestQueue *lock_queue, txn_id_t txn_id, LockMode lock_mode) &#123;</span><br><span class="line">  bool is_inserted = false;</span><br><span class="line">  for (auto &amp;itor : lock_queue-&gt;request_queue_) &#123;</span><br><span class="line">    if (itor.txn_id_ == txn_id) &#123;</span><br><span class="line">      is_inserted = true;</span><br><span class="line">      itor.granted_ = lock_mode == LockMode::EXCLUSIVE ? true : false;</span><br><span class="line">      break;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  if (!is_inserted) &#123;</span><br><span class="line">    lock_queue-&gt;request_queue_.emplace_back(LockRequest&#123;txn_id, lock_mode&#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>二、并发执行<br>这部分需要我们修改增删改查的执行器，在查询的时候上锁，并支持事务的回滚。只需要修改这四个执行器的Next函数即可。</p>
+<ol>
+<li>SeqScanExecutor</li>
+</ol>
+<p>顺序扫描比较简单，不需要考虑回滚，直接上读锁（共享锁）即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">// execution\seq_scan_executor.cpp</span><br><span class="line">bool SeqScanExecutor::Next(Tuple *tuple, RID *rid) &#123;</span><br><span class="line">  // 遍历完了返回false</span><br><span class="line">  if (iter_ == table_heap_-&gt;End()) &#123;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 获取RID和要返回的列</span><br><span class="line">  RID original_rid = iter_-&gt;GetRid();</span><br><span class="line">  const Schema *output_schema = plan_-&gt;OutputSchema();</span><br><span class="line"></span><br><span class="line">  // 加锁</span><br><span class="line">  LockManager *lock_mgr = GetExecutorContext()-&gt;GetLockManager();</span><br><span class="line">  Transaction *txn = GetExecutorContext()-&gt;GetTransaction();</span><br><span class="line">  if (lock_mgr != nullptr) &#123;</span><br><span class="line">    if (txn-&gt;GetIsolationLevel() != IsolationLevel::READ_UNCOMMITTED) &#123;</span><br><span class="line">      if (!txn-&gt;IsSharedLocked(original_rid) &amp;&amp; !txn-&gt;IsExclusiveLocked(original_rid)) &#123;</span><br><span class="line">        lock_mgr-&gt;LockShared(txn, original_rid);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 筛选哪些列要被返回</span><br><span class="line">  std::vector&lt;Value&gt; vals;</span><br><span class="line">  vals.reserve(output_schema-&gt;GetColumnCount());</span><br><span class="line">  for (size_t i = 0; i &lt; vals.capacity(); i++) &#123;</span><br><span class="line">    vals.push_back(output_schema-&gt;GetColumn(i).GetExpr()-&gt;Evaluate(</span><br><span class="line">        &amp;(*iter_), &amp;(exec_ctx_-&gt;GetCatalog()-&gt;GetTable(plan_-&gt;GetTableOid())-&gt;schema_)));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 解锁</span><br><span class="line">  if (txn-&gt;GetIsolationLevel() == IsolationLevel::READ_COMMITTED &amp;&amp; lock_mgr != nullptr) &#123;</span><br><span class="line">    lock_mgr-&gt;Unlock(txn, original_rid);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 迭代器+1</span><br><span class="line">  ++iter_;</span><br><span class="line"></span><br><span class="line">  // 构造要返回的行</span><br><span class="line">  Tuple temp_tuple(vals, output_schema);</span><br><span class="line"></span><br><span class="line">  // 看看该行符不符合条件，符合则返回，不符合就继续找下一行</span><br><span class="line">  const AbstractExpression *predict = plan_-&gt;GetPredicate();</span><br><span class="line">  if (predict == nullptr || predict-&gt;Evaluate(&amp;temp_tuple, output_schema).GetAs&lt;bool&gt;()) &#123;</span><br><span class="line">    *tuple = temp_tuple;</span><br><span class="line">    *rid = original_rid;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;</span><br><span class="line">  return Next(tuple, rid);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>DeleteExecutor</li>
+</ol>
+<p>删除部分需要上写锁（排他锁），在删除索引之后还要在事务中记录该变更，以便事务回滚时需要。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">// execution\delete_executor.cpp</span><br><span class="line">bool DeleteExecutor::Next([[maybe_unused]] Tuple *tuple, RID *rid) &#123;</span><br><span class="line">  Tuple del_tuple;</span><br><span class="line">  RID del_rid;</span><br><span class="line">  Transaction *transaction = GetExecutorContext()-&gt;GetTransaction();</span><br><span class="line">  LockManager *lock_mgr = GetExecutorContext()-&gt;GetLockManager();</span><br><span class="line">  while (true) &#123;</span><br><span class="line">    // 执行子查询器，catch异常然后接着抛</span><br><span class="line">    try &#123;</span><br><span class="line">      if (!child_executor_-&gt;Next(&amp;del_tuple, &amp;del_rid)) &#123;</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; catch (Exception &amp;e) &#123;</span><br><span class="line">      throw Exception(ExceptionType::UNKNOWN_TYPE, &quot;DeleteExecutor:child execute error.&quot;);</span><br><span class="line">      return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 加锁</span><br><span class="line">    if (lock_mgr != nullptr) &#123;</span><br><span class="line">      if (transaction-&gt;IsSharedLocked(del_rid)) &#123;</span><br><span class="line">        lock_mgr-&gt;LockUpgrade(transaction, del_rid);</span><br><span class="line">      &#125; else if (!transaction-&gt;IsExclusiveLocked(del_rid)) &#123;</span><br><span class="line">        lock_mgr-&gt;LockExclusive(transaction, del_rid);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 根据子查询器的结果来调用TableHeap标记删除状态</span><br><span class="line">    TableHeap *table_heap = table_info_-&gt;table_.get();</span><br><span class="line">    table_heap-&gt;MarkDelete(del_rid, exec_ctx_-&gt;GetTransaction());</span><br><span class="line"></span><br><span class="line">    // 还要更新索引</span><br><span class="line">    for (const auto &amp;index : exec_ctx_-&gt;GetCatalog()-&gt;GetTableIndexes(table_info_-&gt;name_)) &#123;</span><br><span class="line">      // 删除索引</span><br><span class="line">      auto index_info = index-&gt;index_.get();</span><br><span class="line">      index_info-&gt;DeleteEntry(</span><br><span class="line">          del_tuple.KeyFromTuple(table_info_-&gt;schema_, *index_info-&gt;GetKeySchema(), index_info-&gt;GetKeyAttrs()), del_rid,</span><br><span class="line">          exec_ctx_-&gt;GetTransaction());</span><br><span class="line">      // 在事务中记录下变更</span><br><span class="line">      transaction-&gt;GetIndexWriteSet()-&gt;emplace_back(IndexWriteRecord(</span><br><span class="line">          del_rid, table_info_-&gt;oid_, WType::DELETE, del_tuple, index-&gt;index_oid_, exec_ctx_-&gt;GetCatalog()));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 解锁</span><br><span class="line">    if (transaction-&gt;GetIsolationLevel() == IsolationLevel::READ_COMMITTED &amp;&amp; lock_mgr != nullptr) &#123;</span><br><span class="line">      lock_mgr-&gt;Unlock(transaction, del_rid);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>UpdateExecutor<br>更新器也需要上写锁（排他锁），事务的记录中要同时记录新老Tuple。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">// execution\update_executor.cpp</span><br><span class="line">bool UpdateExecutor::Next([[maybe_unused]] Tuple *tuple, RID *rid) &#123;</span><br><span class="line">  Tuple old_tuple;</span><br><span class="line">  Tuple new_tuple;</span><br><span class="line">  RID tuple_rid;</span><br><span class="line">  Transaction *transaction = GetExecutorContext()-&gt;GetTransaction();</span><br><span class="line">  LockManager *lock_mgr = GetExecutorContext()-&gt;GetLockManager();</span><br><span class="line">  while (true) &#123;</span><br><span class="line">    // 执行子查询</span><br><span class="line">    try &#123;</span><br><span class="line">      if (!child_executor_-&gt;Next(&amp;old_tuple, &amp;tuple_rid)) &#123;</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; catch (Exception &amp;e) &#123;  // 接住Exception接着往上抛</span><br><span class="line">      throw Exception(ExceptionType::UNKNOWN_TYPE, &quot;UpdateExecutor:child execute error.&quot;);</span><br><span class="line">      return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 加锁</span><br><span class="line">    if (lock_mgr != nullptr) &#123;</span><br><span class="line">      if (transaction-&gt;IsSharedLocked(tuple_rid)) &#123;</span><br><span class="line">        lock_mgr-&gt;LockUpgrade(transaction, tuple_rid);</span><br><span class="line">      &#125; else if (!transaction-&gt;IsExclusiveLocked(tuple_rid)) &#123;</span><br><span class="line">        lock_mgr-&gt;LockExclusive(transaction, tuple_rid);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 更新记录</span><br><span class="line">    new_tuple = GenerateUpdatedTuple(old_tuple);</span><br><span class="line">    TableHeap *table_heap = table_info_-&gt;table_.get();</span><br><span class="line">    table_heap-&gt;UpdateTuple(new_tuple, tuple_rid, exec_ctx_-&gt;GetTransaction());</span><br><span class="line"></span><br><span class="line">    // 还要更新索引</span><br><span class="line">    for (const auto &amp;index : exec_ctx_-&gt;GetCatalog()-&gt;GetTableIndexes(table_info_-&gt;name_)) &#123;</span><br><span class="line">      // 先删旧索引后增新索引</span><br><span class="line">      auto index_info = index-&gt;index_.get();</span><br><span class="line">      index_info-&gt;DeleteEntry(</span><br><span class="line">          old_tuple.KeyFromTuple(table_info_-&gt;schema_, *index_info-&gt;GetKeySchema(), index_info-&gt;GetKeyAttrs()),</span><br><span class="line">          tuple_rid, exec_ctx_-&gt;GetTransaction());</span><br><span class="line">      index_info-&gt;InsertEntry(</span><br><span class="line">          new_tuple.KeyFromTuple(table_info_-&gt;schema_, *index_info-&gt;GetKeySchema(), index_info-&gt;GetKeyAttrs()),</span><br><span class="line">          tuple_rid, exec_ctx_-&gt;GetTransaction());</span><br><span class="line">      // 在事务中记录下变更</span><br><span class="line">      IndexWriteRecord write_record(tuple_rid, table_info_-&gt;oid_, WType::DELETE, new_tuple, index-&gt;index_oid_,</span><br><span class="line">                                    exec_ctx_-&gt;GetCatalog());</span><br><span class="line">      write_record.old_tuple_ = old_tuple;</span><br><span class="line">      transaction-&gt;GetIndexWriteSet()-&gt;emplace_back(write_record);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 解锁</span><br><span class="line">    if (transaction-&gt;GetIsolationLevel() == IsolationLevel::READ_COMMITTED &amp;&amp; lock_mgr != nullptr) &#123;</span><br><span class="line">      lock_mgr-&gt;Unlock(transaction, tuple_rid);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>InsertExecutor</li>
+</ol>
+<p>由于锁是以rid为单位进行的，故在插入中，我先插入并获取到RID后，再对改行上锁，修改其索引。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">// execution\insert_executor.cpp</span><br><span class="line">void InsertExecutor::InsertIntoTableWithIndex(Tuple *cur_tuple) &#123;</span><br><span class="line">  RID cur_rid;</span><br><span class="line"></span><br><span class="line">  // 调用table_heap，插入记录</span><br><span class="line">  if (!table_heap_-&gt;InsertTuple(*cur_tuple, &amp;cur_rid, exec_ctx_-&gt;GetTransaction())) &#123;</span><br><span class="line">    throw Exception(ExceptionType::OUT_OF_MEMORY, &quot;InsertExecutor:no enough space for this tuple.&quot;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 加锁</span><br><span class="line">  Transaction *transaction = GetExecutorContext()-&gt;GetTransaction();</span><br><span class="line">  LockManager *lock_mgr = GetExecutorContext()-&gt;GetLockManager();</span><br><span class="line">  if (lock_mgr != nullptr) &#123;</span><br><span class="line">    if (transaction-&gt;IsSharedLocked(cur_rid)) &#123;</span><br><span class="line">      lock_mgr-&gt;LockUpgrade(transaction, cur_rid);</span><br><span class="line">    &#125; else if (!transaction-&gt;IsExclusiveLocked(cur_rid)) &#123;</span><br><span class="line">      lock_mgr-&gt;LockExclusive(transaction, cur_rid);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 还要更新索引</span><br><span class="line">  for (const auto &amp;index : catalog_-&gt;GetTableIndexes(table_info_-&gt;name_)) &#123;</span><br><span class="line">    // 增加索引</span><br><span class="line">    index-&gt;index_-&gt;InsertEntry(</span><br><span class="line">        cur_tuple-&gt;KeyFromTuple(table_info_-&gt;schema_, *index-&gt;index_-&gt;GetKeySchema(), index-&gt;index_-&gt;GetKeyAttrs()),</span><br><span class="line">        cur_rid, exec_ctx_-&gt;GetTransaction());</span><br><span class="line">    // 在事务中记录下变更</span><br><span class="line">    transaction-&gt;GetIndexWriteSet()-&gt;emplace_back(IndexWriteRecord(</span><br><span class="line">        cur_rid, table_info_-&gt;oid_, WType::INSERT, *cur_tuple, index-&gt;index_oid_, exec_ctx_-&gt;GetCatalog()));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 解锁</span><br><span class="line">  if (transaction-&gt;GetIsolationLevel() == IsolationLevel::READ_COMMITTED &amp;&amp; lock_mgr != nullptr) &#123;</span><br><span class="line">    lock_mgr-&gt;Unlock(transaction, cur_rid);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>更新器也需要上写锁（排他锁），事务的记录中要同时记录新老Tuple。</p>
+
       
     </div>
     
@@ -613,125 +929,6 @@
 <p>一战飞行员 “红色男爵”</p>
 <p>成功不是取决于你的业务表现，而是取决于你的业务表现对“社会网络”的用处。</p>
 <p>某些特定的领域 业务表现驱动成功 网球和高中 成绩决定一切</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-cmu15445-云服务器开发" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="2024/02/02/cmu15445-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" class="article-date">
-  	<time datetime="2024-02-02T09:15:24.000Z" itemprop="datePublished">2024-02-02</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2024/02/02/cmu15445-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/">
-        cmu15445 云服务器开发
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>记录一下自己用云服务器写cmu15445 </p>
-<p>首先 在vscode打开本地的项目<br>scp -r . root@your_ip:&#x2F;home&#x2F;cmu15445</p>
-<p>sudo yum install -y wget<br>wget <a target="_blank" rel="noopener" href="https://github.com/cdr/code-server/releases/download/v3.11.0/code-server-3.11.0-linux-x86_64.tar.gz">https://github.com/cdr/code-server/releases/download/v3.11.0/code-server-3.11.0-linux-x86_64.tar.gz</a><br>tar -xvzf code-server-3.11.0-linux-x86_64.tar.gz<br>sudo mv code-server-3.11.0-linux-x86_64 &#x2F;usr&#x2F;local&#x2F;code-server</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-web项目开发部署" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="2024/02/01/web%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E9%83%A8%E7%BD%B2/" class="article-date">
-  	<time datetime="2024-02-01T03:12:32.000Z" itemprop="datePublished">2024-02-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2024/02/01/web%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E9%83%A8%E7%BD%B2/">
-        web项目开发部署
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这个帖子记录一下 自己练手一下java web那一套技术以及部署</p>
-<p>买了个阿里云服务器 尝试一下 但是暂时只买了一周 后续也不知道 毕竟只是练手项目 要有公网ip</p>
-<p>下一个finalshell 然后ssh连接到服务器 </p>
-<p>然后在云服务上先下一个docker 配一个国内的镜像 </p>
-<p>解决17</p>
-<p>遇到的一些问题</p>
-<p>开发的项目是jdk1.8版本 maven的设置jdk版本是17 在idea里改没用 要改maven的settings.xml文件<br>找不到的包 没用到的 直接删掉就好了</p>
-<p>不是所有的配置都写在了yaml文件里 有一些在config类里面</p>
 
       
     </div>
