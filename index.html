@@ -161,8 +161,8 @@
     <article id="post-mit6-824-interview" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="2024/03/08/mit6-824-interview/" class="article-date">
-  	<time datetime="2024-03-08T03:37:29.000Z" itemprop="datePublished">2024-03-08</time>
+      <a href="2024/03/07/mit6-824-interview/" class="article-date">
+  	<time datetime="2024-03-07T03:37:29.000Z" itemprop="datePublished">2024-03-07</time>
 </a>
     </div>
   
@@ -175,7 +175,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="2024/03/08/mit6-824-interview/">
+      <a class="article-title" href="2024/03/07/mit6-824-interview/">
         mit6.824-interview
         
       </a>
@@ -187,7 +187,112 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>本文主要记录一些分布式系统的相关知识，以及mit6.824这个lab的一些内容<br>lab的话 网上资料太多了 主要是把课程网站给的材料都看一下 基本都能做<br>lab1 mapreduce 熟悉一下go语法 把rpc的消息struct定义一下就能做了 比较简单<br>lab2 raft 看那篇经典论文 照着论文的每一步来实现 当时也是看网上很多资料来实现的<br>lab3， lab4 主要是写kv存储系统了 调用raft来实现主从复制 还有shard controler 负载均衡</p>
+<p>最悲伤的是 感觉做了之后 也全都忘记了所有细节😭</p>
+<h2 id="1-认识分布式系统"><a href="#1-认识分布式系统" class="headerlink" title="1.认识分布式系统"></a>1.认识分布式系统</h2><ul>
+<li>什么是分布式系统</li>
+<li>为什么要分布式系统</li>
+<li>示例 搜索引擎（多数据中心，gfs，spanner，chubby，mapreduce，bigtable）， 区块链</li>
+<li>挑战 （网络延迟， 部分失效，时钟问题）</li>
+</ul>
+<p>顺序读写速度远高于随机读写</p>
+<h2 id="2-分布式系统模型"><a href="#2-分布式系统模型" class="headerlink" title="2.分布式系统模型"></a>2.分布式系统模型</h2><ul>
+<li>两将军问题 （无解） 工程解就是tcp</li>
+<li>拜占庭将军问题</li>
+</ul>
+<p>要设计一个分布式系统 要首先考虑实际的情况 </p>
+<h3 id="2-1-系统模型"><a href="#2-1-系统模型" class="headerlink" title="2.1 系统模型"></a>2.1 系统模型</h3><p>网络链路模型</p>
+<ul>
+<li>reliable link 可靠链路</li>
+<li>fair-loss link</li>
+<li>任意链路<br>通过加密技术让任意链路变成公平损失链路</li>
+</ul>
+<p>节点故障模型</p>
+<ul>
+<li>fail-stop</li>
+<li>fial-recover</li>
+<li>拜占庭故障</li>
+</ul>
+<p>时间模型</p>
+<ul>
+<li>同步 有限时间内一定返回</li>
+<li>异步 不一定 （接近现实）</li>
+</ul>
+<p>消息传递语义<br>如何避免多次进行同一操作</p>
+<ul>
+<li>幂等操作 （代价较高）<br>用唯一标识符 来解决信息重复</li>
+</ul>
+<h2 id="3-分布式数据基础"><a href="#3-分布式数据基础" class="headerlink" title="3. 分布式数据基础"></a>3. 分布式数据基础</h2><p>主从数据库 一个负责读 一个负责写<br>有些nosql 天生就是分布式的</p>
+<h3 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h3><p>可拓展性</p>
+<p>数据分区 （劣势是多表查询可能</p>
+<ul>
+<li>垂直分区 （联机分析处理）</li>
+<li>水平分区 （联机事务处理）（6.824做的就是水平分区）（范围分区 哈希分区 一致性哈希（用于解决哈希分区 增添节点 需要更改哈希函数的问题） 还能用虚拟节点 来对不同的机器划分）</li>
+</ul>
+<h3 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h3><p>好处 可用和安全 减少往返时间 吞吐量</p>
+<ul>
+<li><p>单主复制（同步复制 异步复制 半同步复制）（简单 仅在主节点进行写操作 保证操作顺序 可拓展）（大量写操作 难拓展 宕机时 难以立马恢复）（自动切换可能产生脑裂 手动切换比较慢）</p>
+</li>
+<li><p>多主复制 （避免冲突 通过一个哈希函数将所有的请求路由到相同的主节点）（客户端解决冲突 像极了git merge🤣 最后写入胜利 因果关系追踪）</p>
+</li>
+<li><p>无主复制（客户端向多个节点发写请求  向多个节点读）（读修复 反熵修复） （基于quorum机制<br>w+r &gt; n 且 w &gt; n &#x2F; 2)</p>
+</li>
+</ul>
+<h3 id="cap定理"><a href="#cap定理" class="headerlink" title="cap定理"></a>cap定理</h3><p>consistency  availability  partition tolerance<br>线性一致性读 读操作返回最近一次写操作的结果<br>一个简单的证明是 v1和v2根本连不上 写在v1 读在v2 不可能满足一致性</p>
+<ul>
+<li>pacelc  if p ac else lc</li>
+<li>base 舍弃强一致性 追求最终一致性</li>
+</ul>
+<h3 id="线性一致性"><a href="#线性一致性" class="headerlink" title="线性一致性"></a>线性一致性</h3><p>给定一个执行历史，将并发操作拓展为多个顺序操作，有一个合法就行</p>
+<p>实现线性一致性 加锁<br>cas操作<br>大多数情况可能没必要 因为cpu访问内存都没有做到</p>
+<p>顺序一致性<br>同一客户端的操作顺序不变<br>cpu访问内存同样没有做到</p>
+<p>因果一致性<br>最终一致性<br>以客户端为中心的一致性</p>
+<h3 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h3><p>串行化<br>可重复读<br>快照隔离<br>读已提交<br>读未提交</p>
+<p>脏写<br>脏读<br>。。。</p>
+<h2 id="4-分布式共识"><a href="#4-分布式共识" class="headerlink" title="4.分布式共识"></a>4.分布式共识</h2><p>状态机复制 多日志副本</p>
+<h3 id="flp不可能定理"><a href="#flp不可能定理" class="headerlink" title="flp不可能定理"></a>flp不可能定理</h3><p>完全异步的系统中，即使只有一个节点故障，也不存在一个算法让系统达成共识</p>
+<p>所以要么牺牲共识算法的一个属性，要么放宽异步网络假设</p>
+<p>绕过flp</p>
+<ul>
+<li>故障屏蔽  假设坏了的能修好</li>
+<li>故障检测器（每一个故障都能被一些故障检测器 检测出来 正确的不会被怀疑）</li>
+<li>随机性算法（类似于区块链 具体不懂 ）</li>
+</ul>
+<p>同步系统<br>f &lt; N  f +1轮信息总能达成共识</p>
+<h3 id="paxos"><a href="#paxos" class="headerlink" title="paxos"></a>paxos</h3><p>只有一种共识协议，就是paxos<br>只说basic paxos<br>multi-paxos 的变种就是raft</p>
+<p>客户端 提议者 接受者 学习者<br>两阶段协议<br>phase 1a<br>广播提案编号 超过半数<br>phase 1b<br>大于就回复 小于就拒绝 回复附上已经接受的提案值和编号<br>phase 2a<br>把提案值和编号广播出去<br>phase 2b<br>如果有一半接受者接受 就接受</p>
+<p>活锁<br>用随机值 避免冲突</p>
+<h3 id="raft"><a href="#raft" class="headerlink" title="raft"></a>raft</h3><h4 id="选举"><a href="#选举" class="headerlink" title="选举"></a>选举</h4><p>3个状态<br>heartbeat<br>安全性和活性 有且只有一个领导 只投一次票 随机化开始<br>选举过程比较简单 不说了<br>根据任期号来投票</p>
+<h4 id="日志复制"><a href="#日志复制" class="headerlink" title="日志复制"></a>日志复制</h4><p>索引<br>任期号<br>命令<br>用index和term来唯一确定一个日志<br>反复发送<br>判断leadercommit<br>用prelogindex 和 prevlogterm 来填补缺失 一致性检查</p>
+<h4 id="rpc"><a href="#rpc" class="headerlink" title="rpc"></a>rpc</h4><p>AppendEntries RPC<br>RequestVote RPC</p>
+<h4 id="领导者更替"><a href="#领导者更替" class="headerlink" title="领导者更替"></a>领导者更替</h4><p>不会在一开始就执行清理操作 在正常情况下执行清理操作 （因为有些节点没恢复）<br>发送no-op来保证自己的权威 让其他节点应用已经commit了的日志</p>
+<h4 id="清理不一致日志"><a href="#清理不一致日志" class="headerlink" title="清理不一致日志"></a>清理不一致日志</h4><p>用nextIndex[]来为follow 补全日志</p>
+<h4 id="客户端协议"><a href="#客户端协议" class="headerlink" title="客户端协议"></a>客户端协议</h4><p>命令加唯一标识符</p>
+<h4 id="实现线性一致性"><a href="#实现线性一致性" class="headerlink" title="实现线性一致性"></a>实现线性一致性</h4><p>读操作当写操作  （开销大）<br>所以用租约 start + electionTimeout 之前一定是leader</p>
+<h4 id="配置变更"><a href="#配置变更" class="headerlink" title="配置变更"></a>配置变更</h4><p>这个部分mit6.824没要求<br>大致是两阶段协议 避免脑裂<br>还有进行pre-vote 只有在自己有可能赢的时候 发起选举<br>建议一次进行一个节点的变更 </p>
+<h4 id="日志压缩"><a href="#日志压缩" class="headerlink" title="日志压缩"></a>日志压缩</h4><p>基于内存的状态机的压缩<br>基于磁盘的状态机的压缩</p>
+<h4 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h4><p>批处理<br>quorum大小优化 不一定要满足半数</p>
+<h3 id="拜占庭容错和PBFT算法"><a href="#拜占庭容错和PBFT算法" class="headerlink" title="拜占庭容错和PBFT算法"></a>拜占庭容错和PBFT算法</h3><p>太复杂了<br>暂时没有需要写的场景 </p>
+<h2 id="分布式事务"><a href="#分布式事务" class="headerlink" title="分布式事务"></a>分布式事务</h2><p>ACID 一致 原子 隔离 持久</p>
+<h3 id="原子提交"><a href="#原子提交" class="headerlink" title="原子提交"></a>原子提交</h3><p>wal和日志 机械硬盘能保证512B的原子写 </p>
+<h3 id="两阶段提交"><a href="#两阶段提交" class="headerlink" title="两阶段提交"></a>两阶段提交</h3><ul>
+<li>好了吗 </li>
+<li>好</li>
+<li>干活</li>
+<li>干完了<br>协调者故障就会有问题</li>
+</ul>
+<h3 id="三阶段提交"><a href="#三阶段提交" class="headerlink" title="三阶段提交"></a>三阶段提交</h3><p>在加一轮<br>如果协调者故障 就在参与者里面再选一个<br>延迟较长 基本不用</p>
+<h3 id="基于paxos的提交协议-和-基于quorum的提交协议"><a href="#基于paxos的提交协议-和-基于quorum的提交协议" class="headerlink" title="基于paxos的提交协议 和 基于quorum的提交协议"></a>基于paxos的提交协议 和 基于quorum的提交协议</h3><p>用paxos让协调者更能容错</p>
+<p>还有基于quorum</p>
+<h3 id="saga事务"><a href="#saga事务" class="headerlink" title="saga事务"></a>saga事务</h3><p>有趣的思想<br>例如 保险公司理赔<br>把大事务拆成一系列小事务 小事务要么一起完成 要么都不完成</p>
+<h2 id="并发控制"><a href="#并发控制" class="headerlink" title="并发控制"></a>并发控制</h2><h3 id="悲观并发控制"><a href="#悲观并发控制" class="headerlink" title="悲观并发控制"></a>悲观并发控制</h3><p>简单来说 就是都上锁<br>两阶段锁<br>死锁避免 银行家算法 或者使用行锁 对资源排序 一定次序上锁<br>死锁预防 通俗的话来讲就是 已经被上锁的资源 1个进程要访问 就退出一个 把以前的资源都释放掉<br>死锁检测 出现有向无环图 回退</p>
+<h3 id="乐观并发控制"><a href="#乐观并发控制" class="headerlink" title="乐观并发控制"></a>乐观并发控制</h3><p>基于检查</p>
+<p>基于时间戳<br>别读到未来的<br>别修改未来的<br>难以保证精准的时间源 </p>
+<h3 id="多版本并发控制"><a href="#多版本并发控制" class="headerlink" title="多版本并发控制"></a>多版本并发控制</h3><p>就是多加个版本 就能读到以前的了</p>
+<p>仅追加</p>
+<p>垃圾回收<br>如果不用了的版本 就回收掉 不同级别</p>
+<h3 id="GFS"><a href="#GFS" class="headerlink" title="GFS"></a>GFS</h3><p>单个master来处理</p>
+<h3 id="mapreduce"><a href="#mapreduce" class="headerlink" title="mapreduce"></a>mapreduce</h3>
       
     </div>
     
@@ -310,11 +415,9 @@
         <p>本文目的在于记录复盘做15445这个项目的经验总结 以及应付面试</p>
 <p>分成2个部分 lab实现 还有 这门课的一些重要知识</p>
 <p>先直接说5个lab</p>
-<img src="2024/03/03/cmu15445interview/1.png" class="">
-<p><img src="cmu15445interview/1.png"></p>
 <h3 id="lab0"><a href="#lab0" class="headerlink" title="lab0"></a>lab0</h3><p>用cpp实现字典树 和下文基本没关系 不细说了</p>
 <h3 id="lab1"><a href="#lab1" class="headerlink" title="lab1"></a>lab1</h3><p>实现3个东西</p>
-<p>可拓展哈希表<br>![截屏2024-03-03 13.40.13](cmu15445interview&#x2F;截屏2024-03-03 13.40.13.png)</p>
+<p>可拓展哈希表</p>
 <p>在理解可扩展哈希表之前，我们需要了解几个概念。</p>
 <ul>
 <li><strong>Directory</strong>：是存放bucket指针的容器，可动态生长（以原大小的倍数作为增长率），容器的每个元素可用哈希值来索引。</li>
@@ -448,8 +551,6 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/** The aggregation plan node */</span><br><span class="line">  const AggregationPlanNode *plan_;</span><br><span class="line">  /** The child executor that produces tuples over which the aggregation is computed */</span><br><span class="line">  std::unique_ptr&lt;AbstractExecutor&gt; child_;</span><br><span class="line">  /** Simple aggregation hash table */</span><br><span class="line">  SimpleAggregationHashTable aht_;</span><br><span class="line">  /** Simple aggregation hash table iterator */</span><br><span class="line">  SimpleAggregationHashTable::Iterator aht_iterator_;</span><br></pre></td></tr></table></figure>
 
 <p>join</p>
-<img src="2024/03/03/cmu15445interview/2.png" class="">
-<p><img src="cmu15445interview/2.png" alt="截屏2024-03-03 12.03.51"></p>
 <p>有两张表，我们需要把他们连接起来，可以通过内外两层循环来将满足条件的记录连接起来，即左表每读取一条记录，右表就要完成一次读循环。<br>HashJoin<br>NestedLoopJoin需要两层循环，而HashJoin通过将一张表映射到哈希表中减少了一层循环。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">namespace bustub &#123;</span><br><span class="line">    struct AggregateKey &#123;</span><br><span class="line">    std::vector&lt;Value&gt; group_bys_;</span><br><span class="line">    auto operator==(const AggregateKey &amp;other) const -&gt; bool &#123;</span><br><span class="line">        for (uint32_t i = 0; i &lt; other.group_bys_.size(); i++) &#123;</span><br><span class="line">            if (group_bys_[i].CompareEquals(other.group_bys_[i]) != CmpBool::CmpTrue) &#123;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&#125;</span><br><span class="line">namespace std &#123;</span><br><span class="line">    /** Implements std::hash on AggregateKey */</span><br><span class="line">    template &lt;&gt;</span><br><span class="line">    struct hash&lt;bustub::AggregateKey&gt; &#123;</span><br><span class="line">    auto operator()(const bustub::AggregateKey &amp;agg_key) const -&gt; std::size_t &#123;</span><br><span class="line">        size_t curr_hash = 0;</span><br><span class="line">        for (const auto &amp;key : agg_key.group_bys_) &#123;</span><br><span class="line">            if (!key.IsNull()) &#123;</span><br><span class="line">                curr_hash = bustub::HashUtil::CombineHashes(curr_hash, bustub::HashUtil::HashValue(&amp;key));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return curr_hash;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&#125;  // namespace std</span><br></pre></td></tr></table></figure>
 

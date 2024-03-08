@@ -9,22 +9,17 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文目的在于记录复盘做15445这个项目的经验总结 以及应付面试 分成2个部分 lab实现 还有 这门课的一些重要知识 先直接说5个lab   lab0用cpp实现字典树 和下文基本没关系 不细说了 lab1实现3个东西 可拓展哈希表![截屏2024-03-03 13.40.13](cmu15445interview&#x2F;截屏2024-03-03 13.40.13.png) 在理解可扩展哈希">
+  <meta name="description" content="本文目的在于记录复盘做15445这个项目的经验总结 以及应付面试 分成2个部分 lab实现 还有 这门课的一些重要知识 先直接说5个lab lab0用cpp实现字典树 和下文基本没关系 不细说了 lab1实现3个东西 可拓展哈希表 在理解可扩展哈希表之前，我们需要了解几个概念。  Directory：是存放bucket指针的容器，可动态生长（以原大小的倍数作为增长率），容器的每个元素可用哈希值来索">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cmu15445interview">
 <meta property="og:url" content="http://example.com/2024/03/03/cmu15445interview/index.html">
 <meta property="og:site_name" content="luvstar">
-<meta property="og:description" content="本文目的在于记录复盘做15445这个项目的经验总结 以及应付面试 分成2个部分 lab实现 还有 这门课的一些重要知识 先直接说5个lab   lab0用cpp实现字典树 和下文基本没关系 不细说了 lab1实现3个东西 可拓展哈希表![截屏2024-03-03 13.40.13](cmu15445interview&#x2F;截屏2024-03-03 13.40.13.png) 在理解可扩展哈希">
+<meta property="og:description" content="本文目的在于记录复盘做15445这个项目的经验总结 以及应付面试 分成2个部分 lab实现 还有 这门课的一些重要知识 先直接说5个lab lab0用cpp实现字典树 和下文基本没关系 不细说了 lab1实现3个东西 可拓展哈希表 在理解可扩展哈希表之前，我们需要了解几个概念。  Directory：是存放bucket指针的容器，可动态生长（以原大小的倍数作为增长率），容器的每个元素可用哈希值来索">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2024/03/03/cmu15445interview/2024/03/03/cmu15445interview/1.png">
-<meta property="og:image" content="http://example.com/2024/03/03/cmu15445interview/cmu15445interview/1.png">
-<meta property="og:image" content="http://example.com/2024/03/03/cmu15445interview/2024/03/03/cmu15445interview/2.png">
-<meta property="og:image" content="http://example.com/2024/03/03/cmu15445interview/cmu15445interview/2.png">
 <meta property="article:published_time" content="2024-03-03T03:04:12.000Z">
-<meta property="article:modified_time" content="2024-03-03T06:13:11.534Z">
+<meta property="article:modified_time" content="2024-03-08T03:45:02.073Z">
 <meta property="article:author" content="拉康的a">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2024/03/03/cmu15445interview/2024/03/03/cmu15445interview/1.png">
   
     <link rel="alternative" href="/atom.xml" title="luvstar" type="application/atom+xml">
   
@@ -203,11 +198,9 @@
         <p>本文目的在于记录复盘做15445这个项目的经验总结 以及应付面试</p>
 <p>分成2个部分 lab实现 还有 这门课的一些重要知识</p>
 <p>先直接说5个lab</p>
-<img src="2024/03/03/cmu15445interview/1.png" class="">
-<p><img src="cmu15445interview/1.png"></p>
 <h3 id="lab0"><a href="#lab0" class="headerlink" title="lab0"></a>lab0</h3><p>用cpp实现字典树 和下文基本没关系 不细说了</p>
 <h3 id="lab1"><a href="#lab1" class="headerlink" title="lab1"></a>lab1</h3><p>实现3个东西</p>
-<p>可拓展哈希表<br>![截屏2024-03-03 13.40.13](cmu15445interview&#x2F;截屏2024-03-03 13.40.13.png)</p>
+<p>可拓展哈希表</p>
 <p>在理解可扩展哈希表之前，我们需要了解几个概念。</p>
 <ul>
 <li><strong>Directory</strong>：是存放bucket指针的容器，可动态生长（以原大小的倍数作为增长率），容器的每个元素可用哈希值来索引。</li>
@@ -341,8 +334,6 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/** The aggregation plan node */</span><br><span class="line">  const AggregationPlanNode *plan_;</span><br><span class="line">  /** The child executor that produces tuples over which the aggregation is computed */</span><br><span class="line">  std::unique_ptr&lt;AbstractExecutor&gt; child_;</span><br><span class="line">  /** Simple aggregation hash table */</span><br><span class="line">  SimpleAggregationHashTable aht_;</span><br><span class="line">  /** Simple aggregation hash table iterator */</span><br><span class="line">  SimpleAggregationHashTable::Iterator aht_iterator_;</span><br></pre></td></tr></table></figure>
 
 <p>join</p>
-<img src="2024/03/03/cmu15445interview/2.png" class="">
-<p><img src="cmu15445interview/2.png" alt="截屏2024-03-03 12.03.51"></p>
 <p>有两张表，我们需要把他们连接起来，可以通过内外两层循环来将满足条件的记录连接起来，即左表每读取一条记录，右表就要完成一次读循环。<br>HashJoin<br>NestedLoopJoin需要两层循环，而HashJoin通过将一张表映射到哈希表中减少了一层循环。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">namespace bustub &#123;</span><br><span class="line">    struct AggregateKey &#123;</span><br><span class="line">    std::vector&lt;Value&gt; group_bys_;</span><br><span class="line">    auto operator==(const AggregateKey &amp;other) const -&gt; bool &#123;</span><br><span class="line">        for (uint32_t i = 0; i &lt; other.group_bys_.size(); i++) &#123;</span><br><span class="line">            if (group_bys_[i].CompareEquals(other.group_bys_[i]) != CmpBool::CmpTrue) &#123;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&#125;</span><br><span class="line">namespace std &#123;</span><br><span class="line">    /** Implements std::hash on AggregateKey */</span><br><span class="line">    template &lt;&gt;</span><br><span class="line">    struct hash&lt;bustub::AggregateKey&gt; &#123;</span><br><span class="line">    auto operator()(const bustub::AggregateKey &amp;agg_key) const -&gt; std::size_t &#123;</span><br><span class="line">        size_t curr_hash = 0;</span><br><span class="line">        for (const auto &amp;key : agg_key.group_bys_) &#123;</span><br><span class="line">            if (!key.IsNull()) &#123;</span><br><span class="line">                curr_hash = bustub::HashUtil::CombineHashes(curr_hash, bustub::HashUtil::HashValue(&amp;key));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return curr_hash;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&#125;  // namespace std</span><br></pre></td></tr></table></figure>
 
