@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>time_error | luvstar</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="突然觉得 代码不是打打杀杀，而是人情世故 有些人觉得卷一个很好的成绩，高考或者读研就是出路，所以对取得一个很好的成绩有很大的执念 因为绝大多数人得不到，所以痴狂 但越发感觉，其实不是什么出路，也没有什么光明的未来，永远会被那些自己鄙夷的社交，关系，网络所支配，哪里都没有真正的自由，也难逃人情世故 生活是一直在继续的，不是说等我考完研、保完研或者找到工作，我再去做自己喜欢的事，我之前也是这种状态，想">
+<meta property="og:type" content="article">
+<meta property="og:title" content="time_error">
+<meta property="og:url" content="http://example.com/2024/04/23/time-error/index.html">
+<meta property="og:site_name" content="luvstar">
+<meta property="og:description" content="突然觉得 代码不是打打杀杀，而是人情世故 有些人觉得卷一个很好的成绩，高考或者读研就是出路，所以对取得一个很好的成绩有很大的执念 因为绝大多数人得不到，所以痴狂 但越发感觉，其实不是什么出路，也没有什么光明的未来，永远会被那些自己鄙夷的社交，关系，网络所支配，哪里都没有真正的自由，也难逃人情世故 生活是一直在继续的，不是说等我考完研、保完研或者找到工作，我再去做自己喜欢的事，我之前也是这种状态，想">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-23T09:14:59.000Z">
+<meta property="article:modified_time" content="2024-04-23T13:36:19.404Z">
+<meta property="article:author" content="拉康的a">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="luvstar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="../../../../css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">拉康的a</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="../../../../index.html">Home</a></li>
+				        
+							<li><a href="../../../../archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/yuiandyuki" title="github">github</a>
+					        
+								<a class="douban" target="_blank" href="https://www.douban.com/people/240372324/?_i=27179238o8EuIj" title="douban">douban</a>
+					        
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="../../../../tags/emotion/" style="font-size: 10px;">emotion</a> <a href="../../../../tags/think/" style="font-size: 10px;">think</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://google.com/">google</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">喜欢可爱的东西</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/avatar.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="../../../../index.html">Home</a></li>
+		        
+					<li><a href="../../../../archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/yuiandyuki" title="github">github</a>
+			        
+						<a class="douban" target="_blank" href="https://www.douban.com/people/240372324/?_i=27179238o8EuIj" title="douban">douban</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-time-error" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="" class="article-date">
+  	<time datetime="2024-04-23T09:14:59.000Z" itemprop="datePublished">2024-04-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      time_error
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>突然觉得</p>
+<p>代码不是打打杀杀，而是人情世故</p>
+<p>有些人觉得卷一个很好的成绩，高考或者读研就是出路，所以对取得一个很好的成绩有很大的执念</p>
+<p>因为绝大多数人得不到，所以痴狂</p>
+<p>但越发感觉，其实不是什么出路，也没有什么光明的未来，永远会被那些自己鄙夷的社交，关系，网络所支配，哪里都没有真正的自由，也难逃人情世故</p>
+<p>生活是一直在继续的，不是说等我考完研、保完研或者找到工作，我再去做自己喜欢的事，我之前也是这种状态，想着高考完，我再写小说，想着保研结束，我再去旅游，到现在，我什么也没做成，因为我做完一件事，另一件事又会顶替上来，我们生活的价值和快乐在于整个过程，不是到某一个节点我才应该高兴，我才能去做别的事，每一秒都是新的开始，这是我们的生活，短暂且珍贵，与其心情低落，我更愿意出去晒晒太阳</p>
+<p>一次偶然，初中同学聊天</p>
+<p>她说我变了，其实好多人也说过，到初中之后就开始了</p>
+<p>不过他们总会对外貌成绩一类的感兴趣，或者感到惊讶。其实人真正改变的是内心，内心的改变是几乎不会表露在外的</p>
+<p>所以我一般都把他们的话当放屁</p>
+<p>却从没有人问过我经历过什么</p>
+<p>我有时很想到一个高中时很好的朋友身前，一个和我在大大小小的考试中对于名次争来争去的人</p>
+<p>我曾经很想问问他</p>
+<p>你看我有几分像从前</p>
+<p>但是已经觉得有些兴致阑珊</p>
+<p>等通知</p>
+<p>我在想，如果问了上面那个，世界什么时候才会变好</p>
+<p>会不会也是一句，等通知呢</p>
+<p>至于根本的原因，我也说不清楚</p>
+<p>就像曾经热烈追逐的梦想，也终有一天会觉得索然无味</p>
+<p>人间归离复归离</p>
+<p>借一浮生逃浮生</p>
+<p>剛剛gmail密碼忘了</p>
+<p>我去申訴</p>
+<p>第一個安全問題就問我</p>
+<p>我的夢想是什麽</p>
+<p>我一個一個試</p>
+<p>都不對</p>
+<p>那一刻我發現我弄丟的不是我的gmail密碼</p>
+<p>而是我的夢想</p>
+<p>朋友说，考虑的太多过不好当下，太少过不好未来，但有时候我觉得，无论考虑的多不多，我都过不好当下</p>
+<p>我们当然是只能靠自己了</p>
+<p>技术上是前后端分离的没错</p>
+<p>但是人没分离开</p>
+<p>因此我发现比emo更难受的事情是，不能emo太久</p>
+<p>比如晚上很伤心，但是明天要很早起来</p>
+<p>就不能想太多</p>
+<p>就要早睡</p>
+<p>学姐说，当一个人过的不好时，才会怀念过去</p>
+<p>我说倒也不是，我一直挺怀念过去的，过去对我来说，是某种意义上的永恒，我总觉得，只要反复的回想起某个事情，那么就不会忘记</p>
+<p>岁月的磨损果然是一件很可怕的事情，无论承认与否</p>
+<p>这样也还不错</p>
+<p>我是早已知晓，年少的愿望和热爱终究会湮灭在现实中，害怕这些憧憬从未闪耀过就灰飞烟灭</p>
+<p>你永远也不知道一个超时的外卖背后有什么故事，一个人也是</p>
+<p>朋友这个点天天出去旅游，我觉得，这么能开心一时也不错，有种生死看淡的勇气</p>
+<p>在这片土地，没有精神分裂和健忘症是很痛苦的</p>
+<p>后来</p>
+<p>再好的梦想也会在这片土地上陨落吧</p>
+<p>此去，也是为以后有违初心的时候，有一个慰藉</p>
+<p>我的梦想，曾经也闪耀过</p>
+<p>可是我忘不了东海水，忘不了花果山，忘不了西天路，忘不了路上的人</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../../../05/16/%E6%9C%B1%E7%82%AB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          朱炫
+        
+      </div>
+    </a>
+  
+  
+    <a href="../../19/%E6%84%8F%E8%AF%86%E7%BA%A2%E8%89%B2%E8%83%B6%E5%9B%8A/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">意识红色胶囊</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2024 拉康的a
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="../../../../fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+
+<script src="../../../../js/main.js"></script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
