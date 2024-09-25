@@ -187,162 +187,542 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本文记载《Introduction to Mathematical Statistics and Its Applications》这本书的各种定义定理</p>
-<h2 id="Ch7-Inferences-based-on-the-normal-distribution"><a href="#Ch7-Inferences-based-on-the-normal-distribution" class="headerlink" title="Ch7 : Inferences based on the normal distribution"></a>Ch7 : Inferences based on the normal distribution</h2><h3 id="Theorem-7-3-1"><a href="#Theorem-7-3-1" class="headerlink" title="Theorem 7.3.1"></a>Theorem 7.3.1</h3><p>设 $U &#x3D; \sum_{j&#x3D;1}^{m} Z_j^2$，其中 $Z_1, Z_2, …, Z_m$ 是独立的标准正态随机变量。则 $U$ 服从参数 $r &#x3D; \frac{m}{2}$ 和 $\lambda &#x3D; \frac{1}{2}$ 的伽马分布，即：</p>
-<p>$$f_U(u) &#x3D; \frac{1}{2^{m&#x2F;2} \Gamma \left( \frac{m}{2} \right)} u^{(m&#x2F;2)-1} e^{-u&#x2F;2}, \quad u \geq 0$$</p>
+        <p>本文记载《Introduction to Mathematical Statistics and Its
+Applications》这本书的各种定义定理</p>
+<h2 id="ch7-inferences-based-on-the-normal-distribution">Ch7 :
+Inferences based on the normal distribution</h2>
+<h3 id="theorem-7.3.1">Theorem 7.3.1</h3>
+<p>设 <span class="math inline">\(U = \sum_{j=1}^{m}
+Z_j^2\)</span>，其中 <span class="math inline">\(Z_1, Z_2, ...,
+Z_m\)</span> 是独立的标准正态随机变量。则 <span
+class="math inline">\(U\)</span> 服从参数 <span class="math inline">\(r
+= \frac{m}{2}\)</span> 和 <span class="math inline">\(\lambda =
+\frac{1}{2}\)</span> 的伽马分布，即：</p>
+<p><span class="math display">\[f_U(u) = \frac{1}{2^{m/2} \Gamma \left(
+\frac{m}{2} \right)} u^{(m/2)-1} e^{-u/2}, \quad u \geq 0\]</span></p>
 <p>推导过程如下：</p>
-<p>首先，取 $m &#x3D; 1$。对任意 $u \geq 0$，我们计算：</p>
-<p>$$F_{Z^2}(u) &#x3D; P(Z^2 \leq u) &#x3D; P(-\sqrt{u} \leq Z \leq \sqrt{u}) &#x3D; 2P(0 \leq Z \leq \sqrt{u})$$</p>
-<p>通过计算积分可以得到 $F_{Z^2}(u)$ 的值。然后，对其求导，得到 $f_{Z^2}(u)$：</p>
-<p>$$f_{Z^2}(u) &#x3D; \frac{1}{\sqrt{2\pi}} \frac{1}{2\sqrt{u}} e^{-u&#x2F;2} &#x3D; \frac{1}{2^{1&#x2F;2} \Gamma(1&#x2F;2)} u^{(1&#x2F;2)-1} e^{-u&#x2F;2}$$</p>
-<p>可以看到，这与伽马分布的形式一致，参数 $r &#x3D; \frac{1}{2}$ 和 $\lambda &#x3D; \frac{1}{2}$。</p>
-<p>通过定理4.6.4，总结 $m$ 个此类平方的和具有上述伽马分布形式，参数为 $r &#x3D; \frac{m}{2}$ 和 $\lambda &#x3D; \frac{1}{2}$。</p>
-<h3 id="Definition-7-3-1"><a href="#Definition-7-3-1" class="headerlink" title="Definition 7.3.1"></a>Definition 7.3.1</h3><p>设 $U &#x3D; \sum_{j&#x3D;1}^{m} Z_j^2$，其中 $Z_1, Z_2, \dots, Z_m$ 是独立的标准正态随机变量，那么 $U$ 的概率密度函数称为具有 $m$ 个自由度的<strong>卡方分布</strong>。</p>
-<h3 id="Theorem-7-3-2"><a href="#Theorem-7-3-2" class="headerlink" title="Theorem 7.3.2"></a>Theorem 7.3.2</h3><p>设 $Y_1, Y_2, \dots, Y_n$ 是从均值为 $\mu$ 且方差为 $\sigma^2$ 的正态分布中抽取的随机样本。则：</p>
-<p>a. $S^2$ 和 $\overline{Y}$ 是相互独立的。</p>
-<p>b. $\frac{(n-1)S^2}{\sigma^2} &#x3D; \frac{1}{\sigma^2} \sum_{i&#x3D;1}^{n}(Y_i - \overline{Y})^2$ 服从具有 $n - 1$ 个自由度的卡方分布。</p>
+<p>首先，取 <span class="math inline">\(m = 1\)</span>。对任意 <span
+class="math inline">\(u \geq 0\)</span>，我们计算：</p>
+<p><span class="math display">\[F_{Z^2}(u) = P(Z^2 \leq u) = P(-\sqrt{u}
+\leq Z \leq \sqrt{u}) = 2P(0 \leq Z \leq \sqrt{u})\]</span></p>
+<p>通过计算积分可以得到 <span class="math inline">\(F_{Z^2}(u)\)</span>
+的值。然后，对其求导，得到 <span
+class="math inline">\(f_{Z^2}(u)\)</span>：</p>
+<p><span class="math display">\[f_{Z^2}(u) = \frac{1}{\sqrt{2\pi}}
+\frac{1}{2\sqrt{u}} e^{-u/2} = \frac{1}{2^{1/2} \Gamma(1/2)} u^{(1/2)-1}
+e^{-u/2}\]</span></p>
+<p>可以看到，这与伽马分布的形式一致，参数 <span class="math inline">\(r
+= \frac{1}{2}\)</span> 和 <span class="math inline">\(\lambda =
+\frac{1}{2}\)</span>。</p>
+<p>通过定理4.6.4，总结 <span class="math inline">\(m\)</span>
+个此类平方的和具有上述伽马分布形式，参数为 <span class="math inline">\(r
+= \frac{m}{2}\)</span> 和 <span class="math inline">\(\lambda =
+\frac{1}{2}\)</span>。</p>
+<h3 id="definition-7.3.1">Definition 7.3.1</h3>
+<p>设 <span class="math inline">\(U = \sum_{j=1}^{m}
+Z_j^2\)</span>，其中 <span class="math inline">\(Z_1, Z_2, \dots,
+Z_m\)</span> 是独立的标准正态随机变量，那么 <span
+class="math inline">\(U\)</span> 的概率密度函数称为具有 <span
+class="math inline">\(m\)</span>
+个自由度的<strong>卡方分布</strong>。</p>
+<h3 id="theorem-7.3.2">Theorem 7.3.2</h3>
+<p>设 <span class="math inline">\(Y_1, Y_2, \dots, Y_n\)</span>
+是从均值为 <span class="math inline">\(\mu\)</span> 且方差为 <span
+class="math inline">\(\sigma^2\)</span>
+的正态分布中抽取的随机样本。则：</p>
+<ol type="a">
+<li><p><span class="math inline">\(S^2\)</span> 和 <span
+class="math inline">\(\overline{Y}\)</span> 是相互独立的。</p></li>
+<li><p><span class="math inline">\(\frac{(n-1)S^2}{\sigma^2} =
+\frac{1}{\sigma^2} \sum_{i=1}^{n}(Y_i - \overline{Y})^2\)</span>
+服从具有 <span class="math inline">\(n - 1\)</span>
+个自由度的卡方分布。</p></li>
+</ol>
 <p>证明在附录</p>
-<h3 id="Definition-7-3-2"><a href="#Definition-7-3-2" class="headerlink" title="Definition 7.3.2"></a>Definition 7.3.2</h3><p>假设 $U$ 和 $V$ 是具有 $n$ 和 $m$ 个自由度的独立卡方随机变量。形式为 $\frac{V&#x2F;m}{U&#x2F;n}$ 的随机变量称为具有 $m$ 和 $n$ 个自由度的 <strong>F 分布</strong>。</p>
-<h3 id="Theorem-7-3-3"><a href="#Theorem-7-3-3" class="headerlink" title="Theorem 7.3.3"></a>Theorem 7.3.3</h3><p>假设 $F_{m,n} &#x3D; \frac{V&#x2F;m}{U&#x2F;n}$ 表示具有 $m$ 和 $n$ 个自由度的 F 分布随机变量。则 $F_{m,n}$ 的概率密度函数为：</p>
-<p>$$f_{F_{m,n}}(w) &#x3D; \frac{\Gamma \left( \frac{m+n}{2} \right) m^{m&#x2F;2} n^{n&#x2F;2} w^{(m&#x2F;2)-1}}{\Gamma \left( \frac{m}{2} \right) \Gamma \left( \frac{n}{2} \right) (n+mw)^{(m+n)&#x2F;2}}, \quad w \geq 0$$</p>
-<p>我们从 $V&#x2F;U$ 的概率密度函数开始推导。根据定理 7.3.1，我们知道：</p>
-<p>$$f_V(v) &#x3D; \frac{1}{2^{m&#x2F;2} \Gamma(m&#x2F;2)} v^{(m&#x2F;2)-1} e^{-v&#x2F;2}, \quad f_U(u) &#x3D; \frac{1}{2^{n&#x2F;2} \Gamma(n&#x2F;2)} u^{(n&#x2F;2)-1} e^{-u&#x2F;2}$$</p>
-<p>通过使用定理 3.8.4，我们可以计算 $W &#x3D; \frac{V}{U}$ 的概率密度函数 $f_{V&#x2F;U}(w)$：</p>
-<p>$$f_{V&#x2F;U}(w) &#x3D; \int_0^\infty |u| f_U(u) f_V(uw) du$$</p>
-<p>将 $f_U(u)$ 和 $f_V(uw)$ 代入上述积分中，得出：</p>
-<p>$$f_{V&#x2F;U}(w) &#x3D; \frac{1}{2^{(n+m)&#x2F;2} \Gamma(n&#x2F;2) \Gamma(m&#x2F;2)} w^{(m&#x2F;2)-1} \int_0^\infty u^{n&#x2F;2 + m&#x2F;2 - 1} e^{-(1+w)u&#x2F;2} du$$</p>
+<h3 id="definition-7.3.2">Definition 7.3.2</h3>
+<p>假设 <span class="math inline">\(U\)</span> 和 <span
+class="math inline">\(V\)</span> 是具有 <span
+class="math inline">\(n\)</span> 和 <span
+class="math inline">\(m\)</span> 个自由度的独立卡方随机变量。形式为
+<span class="math inline">\(\frac{V/m}{U/n}\)</span> 的随机变量称为具有
+<span class="math inline">\(m\)</span> 和 <span
+class="math inline">\(n\)</span> 个自由度的 <strong>F
+分布</strong>。</p>
+<h3 id="theorem-7.3.3">Theorem 7.3.3</h3>
+<p>假设 <span class="math inline">\(F_{m,n} = \frac{V/m}{U/n}\)</span>
+表示具有 <span class="math inline">\(m\)</span> 和 <span
+class="math inline">\(n\)</span> 个自由度的 F 分布随机变量。则 <span
+class="math inline">\(F_{m,n}\)</span> 的概率密度函数为：</p>
+<p><span class="math display">\[f_{F_{m,n}}(w) = \frac{\Gamma \left(
+\frac{m+n}{2} \right) m^{m/2} n^{n/2} w^{(m/2)-1}}{\Gamma \left(
+\frac{m}{2} \right) \Gamma \left( \frac{n}{2} \right) (n+mw)^{(m+n)/2}},
+\quad w \geq 0\]</span></p>
+<p>我们从 <span class="math inline">\(V/U\)</span>
+的概率密度函数开始推导。根据定理 7.3.1，我们知道：</p>
+<p><span class="math display">\[f_V(v) = \frac{1}{2^{m/2} \Gamma(m/2)}
+v^{(m/2)-1} e^{-v/2}, \quad f_U(u) = \frac{1}{2^{n/2} \Gamma(n/2)}
+u^{(n/2)-1} e^{-u/2}\]</span></p>
+<p>通过使用定理 3.8.4，我们可以计算 <span class="math inline">\(W =
+\frac{V}{U}\)</span> 的概率密度函数 <span
+class="math inline">\(f_{V/U}(w)\)</span>：</p>
+<p><span class="math display">\[f_{V/U}(w) = \int_0^\infty |u| f_U(u)
+f_V(uw) du\]</span></p>
+<p>将 <span class="math inline">\(f_U(u)\)</span> 和 <span
+class="math inline">\(f_V(uw)\)</span> 代入上述积分中，得出：</p>
+<p><span class="math display">\[f_{V/U}(w) = \frac{1}{2^{(n+m)/2}
+\Gamma(n/2) \Gamma(m/2)} w^{(m/2)-1} \int_0^\infty u^{n/2 + m/2 - 1}
+e^{-(1+w)u/2} du\]</span></p>
 <p>这个积分是伽马分布的积分部分，最终我们得到：</p>
-<p>$$f_{V&#x2F;U}(w) &#x3D; \frac{1}{2^{(n+m)&#x2F;2} \Gamma(n&#x2F;2) \Gamma(m&#x2F;2)} w^{(m&#x2F;2)-1} \frac{\Gamma \left( \frac{n+m}{2} \right)}{(1+w)^{(n+m)&#x2F;2}}$$</p>
-<p>最终，F 分布的概率密度函数 $f_{F_{m,n}}(w)$ 为：</p>
-<p>$$f_{F_{m,n}}(w) &#x3D; \frac{\Gamma \left( \frac{m+n}{2} \right) m^{m&#x2F;2} n^{n&#x2F;2} w^{(m&#x2F;2)-1}}{\Gamma \left( \frac{m}{2} \right) \Gamma \left( \frac{n}{2} \right) (n+mw)^{(m+n)&#x2F;2}}$$</p>
-<h3 id="Definition-7-3-3"><a href="#Definition-7-3-3" class="headerlink" title="Definition 7.3.3"></a>Definition 7.3.3</h3><p>设 $Z$ 为标准正态随机变量，$U$ 为与 $Z$ 独立的卡方随机变量，自由度为 $n$。具有 $n$ 个自由度的 <strong>Student t 比值</strong> 记作 $T_n$，其定义为：</p>
-<p>$$T_n &#x3D; \frac{Z}{\sqrt{U&#x2F;n}}$$</p>
-<h3 id="lemma"><a href="#lemma" class="headerlink" title="lemma"></a>lemma</h3><p>$T_n$ 的概率密度函数是对称的，即 $f_{T_n}(t) &#x3D; f_{T_n}(-t)$，对所有 $t$ 都成立。</p>
+<p><span class="math display">\[f_{V/U}(w) = \frac{1}{2^{(n+m)/2}
+\Gamma(n/2) \Gamma(m/2)} w^{(m/2)-1} \frac{\Gamma \left( \frac{n+m}{2}
+\right)}{(1+w)^{(n+m)/2}}\]</span></p>
+<p>最终，F 分布的概率密度函数 <span
+class="math inline">\(f_{F_{m,n}}(w)\)</span> 为：</p>
+<p><span class="math display">\[f_{F_{m,n}}(w) = \frac{\Gamma \left(
+\frac{m+n}{2} \right) m^{m/2} n^{n/2} w^{(m/2)-1}}{\Gamma \left(
+\frac{m}{2} \right) \Gamma \left( \frac{n}{2} \right)
+(n+mw)^{(m+n)/2}}\]</span></p>
+<h3 id="definition-7.3.3">Definition 7.3.3</h3>
+<p>设 <span class="math inline">\(Z\)</span> 为标准正态随机变量，<span
+class="math inline">\(U\)</span> 为与 <span
+class="math inline">\(Z\)</span> 独立的卡方随机变量，自由度为 <span
+class="math inline">\(n\)</span>。具有 <span
+class="math inline">\(n\)</span> 个自由度的 <strong>Student t
+比值</strong> 记作 <span
+class="math inline">\(T_n\)</span>，其定义为：</p>
+<p><span class="math display">\[T_n = \frac{Z}{\sqrt{U/n}}\]</span></p>
+<h3 id="lemma">lemma</h3>
+<p><span class="math inline">\(T_n\)</span> 的概率密度函数是对称的，即
+<span class="math inline">\(f_{T_n}(t) = f_{T_n}(-t)\)</span>，对所有
+<span class="math inline">\(t\)</span> 都成立。</p>
 <p><strong>证明</strong>：</p>
-<p>为方便记号，设 $V &#x3D; \sqrt{\frac{U}{n}}$。根据定理 3.8.4 和 $Z$ 的概率密度函数的对称性，有：</p>
-<p>$$f_{T_n}(t) &#x3D; \int_0^\infty v f_V(v) f_Z(tv) dv &#x3D; \int_0^\infty v f_V(v) f_Z(-tv) dv &#x3D; f_{T_n}(-t)$$</p>
-<p>因此，$T_n$ 的概率密度函数 $f_{T_n}(t)$ 是对称的。</p>
-<h3 id="Theorem-7-3-4"><a href="#Theorem-7-3-4" class="headerlink" title="Theorem 7.3.4"></a>Theorem 7.3.4</h3><p>具有 $n$ 个自由度的 <strong>Student t</strong> 随机变量的概率密度函数为：</p>
-<p>$$f_{T_n}(t) &#x3D; \frac{\Gamma \left( \frac{n+1}{2} \right)}{\sqrt{n\pi} \Gamma \left( \frac{n}{2} \right)} \left( 1 + \frac{t^2}{n} \right)^{-\frac{n+1}{2}}, \quad -\infty &lt; t &lt; \infty$$</p>
+<p>为方便记号，设 <span class="math inline">\(V =
+\sqrt{\frac{U}{n}}\)</span>。根据定理 3.8.4 和 <span
+class="math inline">\(Z\)</span> 的概率密度函数的对称性，有：</p>
+<p><span class="math display">\[f_{T_n}(t) = \int_0^\infty v f_V(v)
+f_Z(tv) dv = \int_0^\infty v f_V(v) f_Z(-tv) dv =
+f_{T_n}(-t)\]</span></p>
+<p>因此，<span class="math inline">\(T_n\)</span> 的概率密度函数 <span
+class="math inline">\(f_{T_n}(t)\)</span> 是对称的。</p>
+<h3 id="theorem-7.3.4">Theorem 7.3.4</h3>
+<p>具有 <span class="math inline">\(n\)</span> 个自由度的
+<strong>Student t</strong> 随机变量的概率密度函数为：</p>
+<p><span class="math display">\[f_{T_n}(t) = \frac{\Gamma \left(
+\frac{n+1}{2} \right)}{\sqrt{n\pi} \Gamma \left( \frac{n}{2} \right)}
+\left( 1 + \frac{t^2}{n} \right)^{-\frac{n+1}{2}}, \quad -\infty &lt; t
+&lt; \infty\]</span></p>
 <p><strong>证明</strong>：</p>
-<p>首先，注意到 $T_n^2 &#x3D; \frac{Z^2}{U&#x2F;n}$ 具有 $1$ 和 $n$ 个自由度的 F 分布。因此，$f_{T_n^2}(t^2)$ 可以表示为：</p>
-<p>$$f_{T_n^2}(t^2) &#x3D; \frac{n^{n&#x2F;2} \Gamma \left( \frac{n+1}{2} \right)}{\Gamma \left( \frac{1}{2} \right) \Gamma \left( \frac{n}{2} \right)} t^{-1&#x2F;2} \frac{1}{(n+t)^{(n+1)&#x2F;2}}, \quad t &gt; 0$$</p>
-<p>设 $t &gt; 0$。根据 $f_{T_n}(t)$ 的对称性，我们有：</p>
-<p>$$F_{T_n}(t) &#x3D; P(T_n \leq t) &#x3D; \frac{1}{2} + P(0 \leq T_n \leq t)$$</p>
+<p>首先，注意到 <span class="math inline">\(T_n^2 =
+\frac{Z^2}{U/n}\)</span> 具有 <span class="math inline">\(1\)</span> 和
+<span class="math inline">\(n\)</span> 个自由度的 F 分布。因此，<span
+class="math inline">\(f_{T_n^2}(t^2)\)</span> 可以表示为：</p>
+<p><span class="math display">\[f_{T_n^2}(t^2) = \frac{n^{n/2} \Gamma
+\left( \frac{n+1}{2} \right)}{\Gamma \left( \frac{1}{2} \right) \Gamma
+\left( \frac{n}{2} \right)} t^{-1/2} \frac{1}{(n+t)^{(n+1)/2}}, \quad t
+&gt; 0\]</span></p>
+<p>设 <span class="math inline">\(t &gt; 0\)</span>。根据 <span
+class="math inline">\(f_{T_n}(t)\)</span> 的对称性，我们有：</p>
+<p><span class="math display">\[F_{T_n}(t) = P(T_n \leq t) = \frac{1}{2}
++ P(0 \leq T_n \leq t)\]</span></p>
 <p>接着，我们通过对称性展开如下：</p>
-<p>$$F_{T_n}(t) &#x3D; \frac{1}{2} + \frac{1}{2} P(-t \leq T_n \leq t) &#x3D; \frac{1}{2} + \frac{1}{2} P(0 \leq T_n \leq t)$$</p>
+<p><span class="math display">\[F_{T_n}(t) = \frac{1}{2} + \frac{1}{2}
+P(-t \leq T_n \leq t) = \frac{1}{2} + \frac{1}{2} P(0 \leq T_n \leq
+t)\]</span></p>
 <p>再将其写为：</p>
-<p>$$F_{T_n}(t) &#x3D; \frac{1}{2} + \frac{1}{2} P(0 \leq T_n^2 \leq t^2)$$</p>
+<p><span class="math display">\[F_{T_n}(t) = \frac{1}{2} + \frac{1}{2}
+P(0 \leq T_n^2 \leq t^2)\]</span></p>
 <p>于是可以得到：</p>
-<p>$$F_{T_n}(t) &#x3D; \frac{1}{2} + \frac{1}{2} F_{T_n^2}(t^2)$$</p>
-<p>对 $F_{T_n}(t)$ 求导，我们得到：</p>
-<p>$$f_{T_n}(t) &#x3D; \frac{d}{dt} F_{T_n}(t) &#x3D; t \cdot f_{T_n^2}(t^2)$$</p>
-<p>$f_{T_n}(t)$ 的表达式进一步展开为：</p>
-<p>$$f_{T_n}(t) &#x3D; t \cdot \frac{n^{n&#x2F;2} \Gamma \left( \frac{n+1}{2} \right)}{\Gamma \left( \frac{1}{2} \right) \Gamma \left( \frac{n}{2} \right)} (t^2)^{-1&#x2F;2} \frac{1}{(n+t^2)^{(n+1)&#x2F;2}}$$</p>
+<p><span class="math display">\[F_{T_n}(t) = \frac{1}{2} + \frac{1}{2}
+F_{T_n^2}(t^2)\]</span></p>
+<p>对 <span class="math inline">\(F_{T_n}(t)\)</span>
+求导，我们得到：</p>
+<p><span class="math display">\[f_{T_n}(t) = \frac{d}{dt} F_{T_n}(t) = t
+\cdot f_{T_n^2}(t^2)\]</span></p>
+<p><span class="math inline">\(f_{T_n}(t)\)</span>
+的表达式进一步展开为：</p>
+<p><span class="math display">\[f_{T_n}(t) = t \cdot \frac{n^{n/2}
+\Gamma \left( \frac{n+1}{2} \right)}{\Gamma \left( \frac{1}{2} \right)
+\Gamma \left( \frac{n}{2} \right)} (t^2)^{-1/2}
+\frac{1}{(n+t^2)^{(n+1)/2}}\]</span></p>
 <p>化简上式：</p>
-<p>$$f_{T_n}(t) &#x3D; \frac{n^{n&#x2F;2} \Gamma \left( \frac{n+1}{2} \right)}{\sqrt{\pi} \Gamma \left( \frac{n}{2} \right)} \frac{1}{(n+t^2)^{(n+1)&#x2F;2}}$$</p>
-<p>最后得到 $T_n$ 的概率密度函数为：</p>
-<p>$$f_{T_n}(t) &#x3D; \frac{\Gamma \left( \frac{n+1}{2} \right)}{\sqrt{n\pi} \Gamma \left( \frac{n}{2} \right)} \left( 1 + \frac{t^2}{n} \right)^{-\frac{n+1}{2}}$$</p>
-<h3 id="Theorem-7-3-5"><a href="#Theorem-7-3-5" class="headerlink" title="Theorem 7.3.5"></a>Theorem 7.3.5</h3><p>设 $Y_1, Y_2, \dots, Y_n$ 是从均值为 $\mu$ 且标准差为 $\sigma$ 的正态分布中抽取的随机样本。那么</p>
-<p>$$T_{n-1} &#x3D; \frac{\overline{Y} - \mu}{S &#x2F; \sqrt{n}}$$</p>
-<p>服从自由度为 $n - 1$ 的 <strong>Student t</strong> 分布。</p>
+<p><span class="math display">\[f_{T_n}(t) = \frac{n^{n/2} \Gamma \left(
+\frac{n+1}{2} \right)}{\sqrt{\pi} \Gamma \left( \frac{n}{2} \right)}
+\frac{1}{(n+t^2)^{(n+1)/2}}\]</span></p>
+<p>最后得到 <span class="math inline">\(T_n\)</span>
+的概率密度函数为：</p>
+<p><span class="math display">\[f_{T_n}(t) = \frac{\Gamma \left(
+\frac{n+1}{2} \right)}{\sqrt{n\pi} \Gamma \left( \frac{n}{2} \right)}
+\left( 1 + \frac{t^2}{n} \right)^{-\frac{n+1}{2}}\]</span></p>
+<h3 id="theorem-7.3.5">Theorem 7.3.5</h3>
+<p>设 <span class="math inline">\(Y_1, Y_2, \dots, Y_n\)</span>
+是从均值为 <span class="math inline">\(\mu\)</span> 且标准差为 <span
+class="math inline">\(\sigma\)</span>
+的正态分布中抽取的随机样本。那么</p>
+<p><span class="math display">\[T_{n-1} = \frac{\overline{Y} - \mu}{S /
+\sqrt{n}}\]</span></p>
+<p>服从自由度为 <span class="math inline">\(n - 1\)</span> 的
+<strong>Student t</strong> 分布。</p>
 <p><strong>证明</strong>：</p>
-<p>我们可以将 $\frac{\overline{Y} - \mu}{S &#x2F; \sqrt{n}}$ 写成以下形式：</p>
-<p>$$\frac{\overline{Y} - \mu}{S &#x2F; \sqrt{n}} &#x3D; \frac{\overline{Y} - \mu}{\sigma &#x2F; \sqrt{n}} \cdot \frac{1}{\sqrt{\frac{(n-1)S^2}{\sigma^2 (n-1)}}}$$</p>
-<p>其中 $\frac{\overline{Y} - \mu}{\sigma &#x2F; \sqrt{n}}$ 是标准正态随机变量，且 $\frac{(n-1)S^2}{\sigma^2}$ 服从自由度为 $n - 1$ 的卡方分布。</p>
-<p>此外，定理 7.3.2 表明 $\frac{\overline{Y} - \mu}{\sigma &#x2F; \sqrt{n}}$ 和 $\frac{(n-1)S^2}{\sigma^2}$ 彼此独立。</p>
-<p>因此，根据定义 7.3.3，$\frac{\overline{Y} - \mu}{S &#x2F; \sqrt{n}}$ 服从自由度为 $n - 1$ 的 <strong>Student t</strong> 分布。</p>
-<h3 id="Theorem-7-4-1"><a href="#Theorem-7-4-1" class="headerlink" title="Theorem 7.4.1"></a>Theorem 7.4.1</h3><p>设 $y_1, y_2, \dots, y_n$ 是来自均值 $\mu$ 未知的正态分布的一个样本，样本量为 $n$。则 $\mu$ 的一个 $100(1 - \alpha)%$ 的置信区间为以下数值的集合：</p>
-<p>$$\left( \overline{y} - t_{\alpha&#x2F;2, n-1} \cdot \frac{s}{\sqrt{n}}, , \overline{y} + t_{\alpha&#x2F;2, n-1} \cdot \frac{s}{\sqrt{n}} \right)$$</p>
-<p>其中，$\overline{y}$ 是样本均值，$s$ 是样本标准差，$t_{\alpha&#x2F;2, n-1}$ 是自由度为 $n-1$ 的 <strong>Student t</strong> 分布的百分位数。</p>
-<h3 id="Theorem-7-4-2"><a href="#Theorem-7-4-2" class="headerlink" title="Theorem 7.4.2"></a>Theorem 7.4.2</h3><p>设 $y_1, y_2, \dots, y_n$ 是来自标准差 $\sigma$ 未知的正态分布的一个样本，定义 $t &#x3D; \frac{\overline{y} - \mu_0}{s &#x2F; \sqrt{n}}$。</p>
-<p>a. 若要检验 $H_0: \mu &#x3D; \mu_0$ 对比 $H_1: \mu &gt; \mu_0$，在显著性水平 $\alpha$ 下，当 $t \geq t_{\alpha, n-1}$ 时拒绝 $H_0$。</p>
-<p>b. 若要检验 $H_0: \mu &#x3D; \mu_0$ 对比 $H_1: \mu &lt; \mu_0$，在显著性水平 $\alpha$ 下，当 $t \leq -t_{\alpha, n-1}$ 时拒绝 $H_0$。</p>
-<p>c. 若要检验 $H_0: \mu &#x3D; \mu_0$ 对比 $H_1: \mu \neq \mu_0$，在显著性水平 $\alpha$ 下，当 $t \leq -t_{\alpha&#x2F;2, n-1}$ 或 $t \geq t_{\alpha&#x2F;2, n-1}$ 时拒绝 $H_0$。</p>
-<h3 id="Theorem-7-5-1"><a href="#Theorem-7-5-1" class="headerlink" title="Theorem 7.5.1"></a>Theorem 7.5.1</h3><p>设 $s^2$ 表示从均值为 $\mu$，方差为 $\sigma^2$ 的正态分布中抽取的一个样本的样本方差，则：</p>
-<p>a. $\sigma^2$ 的一个 $100(1 - \alpha)%$ 的置信区间为以下数值的集合：</p>
-<p>$$\left[ \frac{(n-1)s^2}{\chi^2_{1-\alpha&#x2F;2, n-1}}, \frac{(n-1)s^2}{\chi^2_{\alpha&#x2F;2, n-1}} \right]$$</p>
-<p>b. $\sigma$ 的一个 $100(1 - \alpha)%$ 的置信区间为以下数值的集合：</p>
-<p>$$\left[ \sqrt{\frac{(n-1)s^2}{\chi^2_{1-\alpha&#x2F;2, n-1}}}, \sqrt{\frac{(n-1)s^2}{\chi^2_{\alpha&#x2F;2, n-1}}} \right]$$</p>
-<p>其中 $\chi^2_{\alpha&#x2F;2, n-1}$ 是自由度为 $n-1$ 的卡方分布的临界值。</p>
-<h3 id="Theorem-7-5-2"><a href="#Theorem-7-5-2" class="headerlink" title="Theorem 7.5.2"></a>Theorem 7.5.2</h3><p>设 $s^2$ 表示从均值为 $\mu$，方差为 $\sigma^2$ 的正态分布中抽取的一个样本的样本方差。定义 $\chi^2 &#x3D; \frac{(n-1)s^2}{\sigma_0^2}$，其中 $\sigma_0^2$ 是假设的方差值。</p>
-<p>a. 若要检验 $H_0: \sigma^2 &#x3D; \sigma_0^2$ 对比 $H_1: \sigma^2 &gt; \sigma_0^2$，在显著性水平 $\alpha$ 下，当 $\chi^2 \geq \chi^2_{1-\alpha, n-1}$ 时拒绝 $H_0$。</p>
-<p>b. 若要检验 $H_0: \sigma^2 &#x3D; \sigma_0^2$ 对比 $H_1: \sigma^2 &lt; \sigma_0^2$，在显著性水平 $\alpha$ 下，当 $\chi^2 \leq \chi^2_{\alpha, n-1}$ 时拒绝 $H_0$。</p>
-<p>c. 若要检验 $H_0: \sigma^2 &#x3D; \sigma_0^2$ 对比 $H_1: \sigma^2 \neq \sigma_0^2$，在显著性水平 $\alpha$ 下，当 $\chi^2 \leq \chi^2_{\alpha&#x2F;2, n-1}$ 或 $\chi^2 \geq \chi^2_{1-\alpha&#x2F;2, n-1}$ 时拒绝 $H_0$。</p>
-<h2 id="CH8-Types-of-Data-A-brief-overview"><a href="#CH8-Types-of-Data-A-brief-overview" class="headerlink" title="CH8: Types of Data: A brief overview"></a>CH8: Types of Data: A brief overview</h2><p>none</p>
-<h2 id="CH9-Two-Sample-inferences"><a href="#CH9-Two-Sample-inferences" class="headerlink" title="CH9: Two-Sample inferences"></a>CH9: Two-Sample inferences</h2><h3 id="Theorem-9-2-1"><a href="#Theorem-9-2-1" class="headerlink" title="Theorem 9.2.1"></a>Theorem 9.2.1</h3><p>设 $X_1, X_2, \dots, X_n$ 是从均值为 $\mu_X$ 和标准差为 $\sigma$ 的正态分布中抽取的大小为 $n$ 的随机样本，$Y_1, Y_2, \dots, Y_m$ 是从均值为 $\mu_Y$ 和标准差为 $\sigma$ 的正态分布中抽取的独立大小为 $m$ 的随机样本。</p>
-<p>设 $S_X^2$ 和 $S_Y^2$ 分别是两个样本的样本方差，$S_p^2$ 是合并后的方差，定义为：</p>
-<p>$$S_p^2 &#x3D; \frac{(n-1)S_X^2 + (m-1)S_Y^2}{n+m-2} &#x3D; \frac{\sum_{i&#x3D;1}^{n}(X_i - \bar{X})^2 + \sum_{i&#x3D;1}^{m}(Y_i - \bar{Y})^2}{n+m-2}$$</p>
+<p>我们可以将 <span class="math inline">\(\frac{\overline{Y} - \mu}{S /
+\sqrt{n}}\)</span> 写成以下形式：</p>
+<p><span class="math display">\[\frac{\overline{Y} - \mu}{S / \sqrt{n}}
+= \frac{\overline{Y} - \mu}{\sigma / \sqrt{n}} \cdot
+\frac{1}{\sqrt{\frac{(n-1)S^2}{\sigma^2 (n-1)}}}\]</span></p>
+<p>其中 <span class="math inline">\(\frac{\overline{Y} - \mu}{\sigma /
+\sqrt{n}}\)</span> 是标准正态随机变量，且 <span
+class="math inline">\(\frac{(n-1)S^2}{\sigma^2}\)</span> 服从自由度为
+<span class="math inline">\(n - 1\)</span> 的卡方分布。</p>
+<p>此外，定理 7.3.2 表明 <span class="math inline">\(\frac{\overline{Y}
+- \mu}{\sigma / \sqrt{n}}\)</span> 和 <span
+class="math inline">\(\frac{(n-1)S^2}{\sigma^2}\)</span> 彼此独立。</p>
+<p>因此，根据定义 7.3.3，<span class="math inline">\(\frac{\overline{Y}
+- \mu}{S / \sqrt{n}}\)</span> 服从自由度为 <span class="math inline">\(n
+- 1\)</span> 的 <strong>Student t</strong> 分布。</p>
+<h3 id="theorem-7.4.1">Theorem 7.4.1</h3>
+<p>设 <span class="math inline">\(y_1, y_2, \dots, y_n\)</span>
+是来自均值 <span class="math inline">\(\mu\)</span>
+未知的正态分布的一个样本，样本量为 <span
+class="math inline">\(n\)</span>。则 <span
+class="math inline">\(\mu\)</span> 的一个 <span
+class="math inline">\(100(1 - \alpha)\%\)</span>
+的置信区间为以下数值的集合：</p>
+<p><span class="math display">\[\left( \overline{y} - t_{\alpha/2, n-1}
+\cdot \frac{s}{\sqrt{n}}, \, \overline{y} + t_{\alpha/2, n-1} \cdot
+\frac{s}{\sqrt{n}} \right)\]</span></p>
+<p>其中，<span class="math inline">\(\overline{y}\)</span>
+是样本均值，<span class="math inline">\(s\)</span> 是样本标准差，<span
+class="math inline">\(t_{\alpha/2, n-1}\)</span> 是自由度为 <span
+class="math inline">\(n-1\)</span> 的 <strong>Student t</strong>
+分布的百分位数。</p>
+<h3 id="theorem-7.4.2">Theorem 7.4.2</h3>
+<p>设 <span class="math inline">\(y_1, y_2, \dots, y_n\)</span>
+是来自标准差 <span class="math inline">\(\sigma\)</span>
+未知的正态分布的一个样本，定义 <span class="math inline">\(t =
+\frac{\overline{y} - \mu_0}{s / \sqrt{n}}\)</span>。</p>
+<ol type="a">
+<li><p>若要检验 <span class="math inline">\(H_0: \mu = \mu_0\)</span>
+对比 <span class="math inline">\(H_1: \mu &gt;
+\mu_0\)</span>，在显著性水平 <span class="math inline">\(\alpha\)</span>
+下，当 <span class="math inline">\(t \geq t_{\alpha, n-1}\)</span>
+时拒绝 <span class="math inline">\(H_0\)</span>。</p></li>
+<li><p>若要检验 <span class="math inline">\(H_0: \mu = \mu_0\)</span>
+对比 <span class="math inline">\(H_1: \mu &lt;
+\mu_0\)</span>，在显著性水平 <span class="math inline">\(\alpha\)</span>
+下，当 <span class="math inline">\(t \leq -t_{\alpha, n-1}\)</span>
+时拒绝 <span class="math inline">\(H_0\)</span>。</p></li>
+<li><p>若要检验 <span class="math inline">\(H_0: \mu = \mu_0\)</span>
+对比 <span class="math inline">\(H_1: \mu \neq
+\mu_0\)</span>，在显著性水平 <span class="math inline">\(\alpha\)</span>
+下，当 <span class="math inline">\(t \leq -t_{\alpha/2, n-1}\)</span> 或
+<span class="math inline">\(t \geq t_{\alpha/2, n-1}\)</span> 时拒绝
+<span class="math inline">\(H_0\)</span>。</p></li>
+</ol>
+<h3 id="theorem-7.5.1">Theorem 7.5.1</h3>
+<p>设 <span class="math inline">\(s^2\)</span> 表示从均值为 <span
+class="math inline">\(\mu\)</span>，方差为 <span
+class="math inline">\(\sigma^2\)</span>
+的正态分布中抽取的一个样本的样本方差，则：</p>
+<ol type="a">
+<li><span class="math inline">\(\sigma^2\)</span> 的一个 <span
+class="math inline">\(100(1 - \alpha)\%\)</span>
+的置信区间为以下数值的集合：</li>
+</ol>
+<p><span class="math display">\[\left[
+\frac{(n-1)s^2}{\chi^2_{1-\alpha/2, n-1}},
+\frac{(n-1)s^2}{\chi^2_{\alpha/2, n-1}} \right]\]</span></p>
+<ol start="2" type="a">
+<li><span class="math inline">\(\sigma\)</span> 的一个 <span
+class="math inline">\(100(1 - \alpha)\%\)</span>
+的置信区间为以下数值的集合：</li>
+</ol>
+<p><span class="math display">\[\left[
+\sqrt{\frac{(n-1)s^2}{\chi^2_{1-\alpha/2, n-1}}},
+\sqrt{\frac{(n-1)s^2}{\chi^2_{\alpha/2, n-1}}} \right]\]</span></p>
+<p>其中 <span class="math inline">\(\chi^2_{\alpha/2, n-1}\)</span>
+是自由度为 <span class="math inline">\(n-1\)</span>
+的卡方分布的临界值。</p>
+<h3 id="theorem-7.5.2">Theorem 7.5.2</h3>
+<p>设 <span class="math inline">\(s^2\)</span> 表示从均值为 <span
+class="math inline">\(\mu\)</span>，方差为 <span
+class="math inline">\(\sigma^2\)</span>
+的正态分布中抽取的一个样本的样本方差。定义 <span
+class="math inline">\(\chi^2 =
+\frac{(n-1)s^2}{\sigma_0^2}\)</span>，其中 <span
+class="math inline">\(\sigma_0^2\)</span> 是假设的方差值。</p>
+<ol type="a">
+<li><p>若要检验 <span class="math inline">\(H_0: \sigma^2 =
+\sigma_0^2\)</span> 对比 <span class="math inline">\(H_1: \sigma^2 &gt;
+\sigma_0^2\)</span>，在显著性水平 <span
+class="math inline">\(\alpha\)</span> 下，当 <span
+class="math inline">\(\chi^2 \geq \chi^2_{1-\alpha, n-1}\)</span> 时拒绝
+<span class="math inline">\(H_0\)</span>。</p></li>
+<li><p>若要检验 <span class="math inline">\(H_0: \sigma^2 =
+\sigma_0^2\)</span> 对比 <span class="math inline">\(H_1: \sigma^2 &lt;
+\sigma_0^2\)</span>，在显著性水平 <span
+class="math inline">\(\alpha\)</span> 下，当 <span
+class="math inline">\(\chi^2 \leq \chi^2_{\alpha, n-1}\)</span> 时拒绝
+<span class="math inline">\(H_0\)</span>。</p></li>
+<li><p>若要检验 <span class="math inline">\(H_0: \sigma^2 =
+\sigma_0^2\)</span> 对比 <span class="math inline">\(H_1: \sigma^2 \neq
+\sigma_0^2\)</span>，在显著性水平 <span
+class="math inline">\(\alpha\)</span> 下，当 <span
+class="math inline">\(\chi^2 \leq \chi^2_{\alpha/2, n-1}\)</span> 或
+<span class="math inline">\(\chi^2 \geq \chi^2_{1-\alpha/2,
+n-1}\)</span> 时拒绝 <span class="math inline">\(H_0\)</span>。</p></li>
+</ol>
+<h2 id="ch8-types-of-data-a-brief-overview">CH8: Types of Data: A brief
+overview</h2>
+<p>none</p>
+<h2 id="ch9-two-sample-inferences">CH9: Two-Sample inferences</h2>
+<h3 id="theorem-9.2.1">Theorem 9.2.1</h3>
+<p>设 <span class="math inline">\(X_1, X_2, \dots, X_n\)</span>
+是从均值为 <span class="math inline">\(\mu_X\)</span> 和标准差为 <span
+class="math inline">\(\sigma\)</span> 的正态分布中抽取的大小为 <span
+class="math inline">\(n\)</span> 的随机样本，<span
+class="math inline">\(Y_1, Y_2, \dots, Y_m\)</span> 是从均值为 <span
+class="math inline">\(\mu_Y\)</span> 和标准差为 <span
+class="math inline">\(\sigma\)</span> 的正态分布中抽取的独立大小为 <span
+class="math inline">\(m\)</span> 的随机样本。</p>
+<p>设 <span class="math inline">\(S_X^2\)</span> 和 <span
+class="math inline">\(S_Y^2\)</span> 分别是两个样本的样本方差，<span
+class="math inline">\(S_p^2\)</span> 是合并后的方差，定义为：</p>
+<p><span class="math display">\[S_p^2 = \frac{(n-1)S_X^2 +
+(m-1)S_Y^2}{n+m-2} = \frac{\sum_{i=1}^{n}(X_i - \bar{X})^2 +
+\sum_{i=1}^{m}(Y_i - \bar{Y})^2}{n+m-2}\]</span></p>
 <p>则</p>
-<p>$$T_{n+m-2} &#x3D; \frac{\bar{X} - \bar{Y} - (\mu_X - \mu_Y)}{S_p \sqrt{\frac{1}{n} + \frac{1}{m}}}$$</p>
-<p>服从自由度为 $n + m - 2$ 的 Student t 分布。</p>
+<p><span class="math display">\[T_{n+m-2} = \frac{\bar{X} - \bar{Y} -
+(\mu_X - \mu_Y)}{S_p \sqrt{\frac{1}{n} + \frac{1}{m}}}\]</span></p>
+<p>服从自由度为 <span class="math inline">\(n + m - 2\)</span> 的
+Student t 分布。</p>
 <p>证明</p>
 <p>证明方法与定理 7.3.5 类似。首先，等价形式为：</p>
-<p>$$T_{n+m-2} &#x3D; \frac{\bar{X} - \bar{Y} - (\mu_X - \mu_Y)}{\sigma \sqrt{\frac{1}{n} + \frac{1}{m}}} \times \frac{1}{\sqrt{\frac{S_p^2}{\sigma^2}}}$$</p>
+<p><span class="math display">\[T_{n+m-2} = \frac{\bar{X} - \bar{Y} -
+(\mu_X - \mu_Y)}{\sigma \sqrt{\frac{1}{n} + \frac{1}{m}}} \times
+\frac{1}{\sqrt{\frac{S_p^2}{\sigma^2}}}\]</span></p>
 <p>由于</p>
-<p>$$E(\bar{X} - \bar{Y}) &#x3D; \mu_X - \mu_Y, \quad \text{Var}(\bar{X} - \bar{Y}) &#x3D; \frac{\sigma^2}{n} + \frac{\sigma^2}{m}$$</p>
-<p>分子服从标准正态分布 $f_Z(z)$。</p>
+<p><span class="math display">\[E(\bar{X} - \bar{Y}) = \mu_X - \mu_Y,
+\quad \text{Var}(\bar{X} - \bar{Y}) = \frac{\sigma^2}{n} +
+\frac{\sigma^2}{m}\]</span></p>
+<p>分子服从标准正态分布 <span
+class="math inline">\(f_Z(z)\)</span>。</p>
 <p>在分母中，</p>
-<p>$$\sum_{i&#x3D;1}^{n}\left(\frac{X_i - \bar{X}}{\sigma}\right)^2 &#x3D; (n-1)\frac{S_X^2}{\sigma^2}, \quad \sum_{i&#x3D;1}^{m}\left(\frac{Y_i - \bar{Y}}{\sigma}\right)^2 &#x3D; (m-1)\frac{S_Y^2}{\sigma^2}$$</p>
-<p>分别是自由度为 $n-1$ 和 $m-1$ 的独立 $\chi^2$ 分布变量，因此，</p>
-<p>$$\sum_{i&#x3D;1}^{n}\left(\frac{X_i - \bar{X}}{\sigma}\right)^2 + \sum_{i&#x3D;1}^{m}\left(\frac{Y_i - \bar{Y}}{\sigma}\right)^2$$</p>
-<p>服从自由度为 $n+m-2$ 的 $\chi^2$ 分布（参见定理 7.3.1 和定理 4.6.4）。根据附录 7.A.2，分子和分母是独立的。</p>
+<p><span class="math display">\[\sum_{i=1}^{n}\left(\frac{X_i -
+\bar{X}}{\sigma}\right)^2 = (n-1)\frac{S_X^2}{\sigma^2}, \quad
+\sum_{i=1}^{m}\left(\frac{Y_i - \bar{Y}}{\sigma}\right)^2 =
+(m-1)\frac{S_Y^2}{\sigma^2}\]</span></p>
+<p>分别是自由度为 <span class="math inline">\(n-1\)</span> 和 <span
+class="math inline">\(m-1\)</span> 的独立 <span
+class="math inline">\(\chi^2\)</span> 分布变量，因此，</p>
+<p><span class="math display">\[\sum_{i=1}^{n}\left(\frac{X_i -
+\bar{X}}{\sigma}\right)^2 + \sum_{i=1}^{m}\left(\frac{Y_i -
+\bar{Y}}{\sigma}\right)^2\]</span></p>
+<p>服从自由度为 <span class="math inline">\(n+m-2\)</span> 的 <span
+class="math inline">\(\chi^2\)</span> 分布（参见定理 7.3.1 和定理
+4.6.4）。根据附录 7.A.2，分子和分母是独立的。</p>
 <p>因此，根据定义 7.3.3，有：</p>
-<p>$$\frac{\bar{X} - \bar{Y} - (\mu_X - \mu_Y)}{S_p \sqrt{\frac{1}{n} + \frac{1}{m}}}$$</p>
-<p>服从自由度为 $n+m-2$ 的 Student t 分布。</p>
-<h3 id="Theorem-9-2-2"><a href="#Theorem-9-2-2" class="headerlink" title="Theorem 9.2.2"></a>Theorem 9.2.2</h3><p>设 $x_1, x_2, \dots, x_n$ 和 $y_1, y_2, \dots, y_m$ 是从均值分别为 $\mu_X$ 和 $\mu_Y$，标准差为 $\sigma$ 的正态分布中抽取的独立随机样本。定义</p>
-<p>$$t &#x3D; \frac{\bar{x} - \bar{y}}{S_p \sqrt{\frac{1}{n} + \frac{1}{m}}}$$</p>
-<p>其中 $S_p$ 是合并样本方差。</p>
+<p><span class="math display">\[\frac{\bar{X} - \bar{Y} - (\mu_X -
+\mu_Y)}{S_p \sqrt{\frac{1}{n} + \frac{1}{m}}}\]</span></p>
+<p>服从自由度为 <span class="math inline">\(n+m-2\)</span> 的 Student t
+分布。</p>
+<h3 id="theorem-9.2.2">Theorem 9.2.2</h3>
+<p>设 <span class="math inline">\(x_1, x_2, \dots, x_n\)</span> 和 <span
+class="math inline">\(y_1, y_2, \dots, y_m\)</span> 是从均值分别为 <span
+class="math inline">\(\mu_X\)</span> 和 <span
+class="math inline">\(\mu_Y\)</span>，标准差为 <span
+class="math inline">\(\sigma\)</span>
+的正态分布中抽取的独立随机样本。定义</p>
+<p><span class="math display">\[t = \frac{\bar{x} - \bar{y}}{S_p
+\sqrt{\frac{1}{n} + \frac{1}{m}}}\]</span></p>
+<p>其中 <span class="math inline">\(S_p\)</span> 是合并样本方差。</p>
 <ul>
-<li>a. 检验 $H_0: \mu_X &#x3D; \mu_Y$ 对应备择假设 $H_1: \mu_X &gt; \mu_Y$ 时，在显著性水平 $\alpha$ 下，如果 $t \geq t_{\alpha, n+m-2}$，则拒绝 $H_0$。</li>
-<li>b. 检验 $H_0: \mu_X &#x3D; \mu_Y$ 对应备择假设 $H_1: \mu_X &lt; \mu_Y$ 时，在显著性水平 $\alpha$ 下，如果 $t \leq -t_{\alpha, n+m-2}$，则拒绝 $H_0$。</li>
-<li>c. 检验 $H_0: \mu_X &#x3D; \mu_Y$ 对应双侧备择假设 $H_1: \mu_X \neq \mu_Y$ 时，在显著性水平 $\alpha$ 下，如果 $t$ 满足 $t \leq -t_{\alpha&#x2F;2, n+m-2}$ 或 $t \geq t_{\alpha&#x2F;2, n+m-2}$，则拒绝 $H_0$。</li>
+<li><ol type="a">
+<li>检验 <span class="math inline">\(H_0: \mu_X = \mu_Y\)</span>
+对应备择假设 <span class="math inline">\(H_1: \mu_X &gt; \mu_Y\)</span>
+时，在显著性水平 <span class="math inline">\(\alpha\)</span> 下，如果
+<span class="math inline">\(t \geq t_{\alpha, n+m-2}\)</span>，则拒绝
+<span class="math inline">\(H_0\)</span>。</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>检验 <span class="math inline">\(H_0: \mu_X = \mu_Y\)</span>
+对应备择假设 <span class="math inline">\(H_1: \mu_X &lt; \mu_Y\)</span>
+时，在显著性水平 <span class="math inline">\(\alpha\)</span> 下，如果
+<span class="math inline">\(t \leq -t_{\alpha, n+m-2}\)</span>，则拒绝
+<span class="math inline">\(H_0\)</span>。</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>检验 <span class="math inline">\(H_0: \mu_X = \mu_Y\)</span>
+对应双侧备择假设 <span class="math inline">\(H_1: \mu_X \neq
+\mu_Y\)</span> 时，在显著性水平 <span
+class="math inline">\(\alpha\)</span> 下，如果 <span
+class="math inline">\(t\)</span> 满足 <span class="math inline">\(t \leq
+-t_{\alpha/2, n+m-2}\)</span> 或 <span class="math inline">\(t \geq
+t_{\alpha/2, n+m-2}\)</span>，则拒绝 <span
+class="math inline">\(H_0\)</span>。</li>
+</ol></li>
 </ul>
-<h3 id="Theorem-9-2-3"><a href="#Theorem-9-2-3" class="headerlink" title="Theorem 9.2.3"></a>Theorem 9.2.3</h3><p>设 $X_1, X_2, \dots, X_n$ 和 $Y_1, Y_2, \dots, Y_m$ 是来自正态分布的两个独立随机样本，均值分别为 $\mu_X$ 和 $\mu_Y$，标准差分别为 $\sigma_X$ 和 $\sigma_Y$。</p>
-<p>定义统计量 $W$ 为：</p>
-<p>$$W &#x3D; \frac{\overline{X} - \overline{Y} - (\mu_X - \mu_Y)}{\sqrt{\frac{S_X^2}{n} + \frac{S_Y^2}{m}}}$$</p>
-<p>其中，$\overline{X}$ 和 $\overline{Y}$ 分别是两个样本的均值，$S_X^2$ 和 $S_Y^2$ 分别是样本方差，$n$ 和 $m$ 分别是两个样本的大小。</p>
-<p>使用方差比 $\hat{\theta} &#x3D; \frac{S_X^2}{S_Y^2}$，计算自由度 $v$：</p>
-<p>$$v &#x3D; \frac{\left(\hat{\theta} + \frac{n}{m}\right)^2}{\frac{1}{n-1}\hat{\theta}^2 + \frac{1}{m-1}\left(\frac{n}{m}\right)^2}$$</p>
-<p>将 $v$ 取整后，$W$ 近似服从自由度为 $v$ 的学生 t 分布。</p>
-<h3 id="Theorem-9-3-1"><a href="#Theorem-9-3-1" class="headerlink" title="Theorem 9.3.1"></a>Theorem 9.3.1</h3><p>设 $x_1, x_2, \dots, x_n$ 和 $y_1, y_2, \dots, y_m$ 是从正态分布中抽取的独立随机样本，其均值分别为 $\mu_X$ 和 $\mu_Y$，标准差分别为 $\sigma_X$ 和 $\sigma_Y$。为了检验方差的假设，定义以下检验步骤：</p>
+<h3 id="theorem-9.2.3">Theorem 9.2.3</h3>
+<p>设 <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> 和 <span
+class="math inline">\(Y_1, Y_2, \dots, Y_m\)</span>
+是来自正态分布的两个独立随机样本，均值分别为 <span
+class="math inline">\(\mu_X\)</span> 和 <span
+class="math inline">\(\mu_Y\)</span>，标准差分别为 <span
+class="math inline">\(\sigma_X\)</span> 和 <span
+class="math inline">\(\sigma_Y\)</span>。</p>
+<p>定义统计量 <span class="math inline">\(W\)</span> 为：</p>
+<p><span class="math display">\[W = \frac{\overline{X} - \overline{Y} -
+(\mu_X - \mu_Y)}{\sqrt{\frac{S_X^2}{n} + \frac{S_Y^2}{m}}}\]</span></p>
+<p>其中，<span class="math inline">\(\overline{X}\)</span> 和 <span
+class="math inline">\(\overline{Y}\)</span> 分别是两个样本的均值，<span
+class="math inline">\(S_X^2\)</span> 和 <span
+class="math inline">\(S_Y^2\)</span> 分别是样本方差，<span
+class="math inline">\(n\)</span> 和 <span
+class="math inline">\(m\)</span> 分别是两个样本的大小。</p>
+<p>使用方差比 <span class="math inline">\(\hat{\theta} =
+\frac{S_X^2}{S_Y^2}\)</span>，计算自由度 <span
+class="math inline">\(v\)</span>：</p>
+<p><span class="math display">\[v = \frac{\left(\hat{\theta} +
+\frac{n}{m}\right)^2}{\frac{1}{n-1}\hat{\theta}^2 +
+\frac{1}{m-1}\left(\frac{n}{m}\right)^2}\]</span></p>
+<p>将 <span class="math inline">\(v\)</span> 取整后，<span
+class="math inline">\(W\)</span> 近似服从自由度为 <span
+class="math inline">\(v\)</span> 的学生 t 分布。</p>
+<h3 id="theorem-9.3.1">Theorem 9.3.1</h3>
+<p>设 <span class="math inline">\(x_1, x_2, \dots, x_n\)</span> 和 <span
+class="math inline">\(y_1, y_2, \dots, y_m\)</span>
+是从正态分布中抽取的独立随机样本，其均值分别为 <span
+class="math inline">\(\mu_X\)</span> 和 <span
+class="math inline">\(\mu_Y\)</span>，标准差分别为 <span
+class="math inline">\(\sigma_X\)</span> 和 <span
+class="math inline">\(\sigma_Y\)</span>。为了检验方差的假设，定义以下检验步骤：</p>
 <ul>
-<li><p>a. 检验 $H_0: \sigma_X^2 &#x3D; \sigma_Y^2$ 对应备择假设 $H_1: \sigma_X^2 &gt; \sigma_Y^2$，在显著性水平 $\alpha$ 下，如果 $S_Y^2 &#x2F; S_X^2 \leq F_{\alpha, m-1, n-1}$，则拒绝 $H_0$。</p>
-</li>
-<li><p>b. 检验 $H_0: \sigma_X^2 &#x3D; \sigma_Y^2$ 对应备择假设 $H_1: \sigma_X^2 &lt; \sigma_Y^2$，在显著性水平 $\alpha$ 下，如果 $S_Y^2 &#x2F; S_X^2 \geq F_{1-\alpha, m-1, n-1}$，则拒绝 $H_0$。</p>
-</li>
-<li><p>c. 检验 $H_0: \sigma_X^2 &#x3D; \sigma_Y^2$ 对应双侧备择假设 $H_1: \sigma_X^2 \neq \sigma_Y^2$，在显著性水平 $\alpha$ 下，如果 $S_Y^2 &#x2F; S_X^2$ 满足 $S_Y^2 &#x2F; S_X^2 \leq F_{\alpha&#x2F;2, m-1, n-1}$ 或 $S_Y^2 &#x2F; S_X^2 \geq F_{1-\alpha&#x2F;2, m-1, n-1}$，则拒绝 $H_0$。</p>
-</li>
+<li><ol type="a">
+<li>检验 <span class="math inline">\(H_0: \sigma_X^2 =
+\sigma_Y^2\)</span> 对应备择假设 <span class="math inline">\(H_1:
+\sigma_X^2 &gt; \sigma_Y^2\)</span>，在显著性水平 <span
+class="math inline">\(\alpha\)</span> 下，如果 <span
+class="math inline">\(S_Y^2 / S_X^2 \leq F_{\alpha, m-1,
+n-1}\)</span>，则拒绝 <span class="math inline">\(H_0\)</span>。</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>检验 <span class="math inline">\(H_0: \sigma_X^2 =
+\sigma_Y^2\)</span> 对应备择假设 <span class="math inline">\(H_1:
+\sigma_X^2 &lt; \sigma_Y^2\)</span>，在显著性水平 <span
+class="math inline">\(\alpha\)</span> 下，如果 <span
+class="math inline">\(S_Y^2 / S_X^2 \geq F_{1-\alpha, m-1,
+n-1}\)</span>，则拒绝 <span class="math inline">\(H_0\)</span>。</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>检验 <span class="math inline">\(H_0: \sigma_X^2 =
+\sigma_Y^2\)</span> 对应双侧备择假设 <span class="math inline">\(H_1:
+\sigma_X^2 \neq \sigma_Y^2\)</span>，在显著性水平 <span
+class="math inline">\(\alpha\)</span> 下，如果 <span
+class="math inline">\(S_Y^2 / S_X^2\)</span> 满足 <span
+class="math inline">\(S_Y^2 / S_X^2 \leq F_{\alpha/2, m-1, n-1}\)</span>
+或 <span class="math inline">\(S_Y^2 / S_X^2 \geq F_{1-\alpha/2, m-1,
+n-1}\)</span>，则拒绝 <span class="math inline">\(H_0\)</span>。</li>
+</ol></li>
 </ul>
-<h3 id="Theorem-9-4-1"><a href="#Theorem-9-4-1" class="headerlink" title="Theorem 9.4.1"></a>Theorem 9.4.1</h3><p>设 $x$ 和 $y$ 分别表示两个独立伯努利试验中成功的次数，试验次数分别为 $n$ 和 $m$，其中 $p_X$ 和 $p_Y$ 分别是对应的成功概率。定义合并成功概率 $p_e$ 如下：</p>
-<p>$$p_e &#x3D; \frac{x + y}{n + m}$$</p>
-<p>并定义检验统计量 $z$ 为：</p>
-<p>$$z &#x3D; \frac{\frac{x}{n} - \frac{y}{m}}{\sqrt{p_e (1 - p_e) \left( \frac{1}{n} + \frac{1}{m} \right)}}$$</p>
+<h3 id="theorem-9.4.1">Theorem 9.4.1</h3>
+<p>设 <span class="math inline">\(x\)</span> 和 <span
+class="math inline">\(y\)</span>
+分别表示两个独立伯努利试验中成功的次数，试验次数分别为 <span
+class="math inline">\(n\)</span> 和 <span
+class="math inline">\(m\)</span>，其中 <span
+class="math inline">\(p_X\)</span> 和 <span
+class="math inline">\(p_Y\)</span>
+分别是对应的成功概率。定义合并成功概率 <span
+class="math inline">\(p_e\)</span> 如下：</p>
+<p><span class="math display">\[p_e = \frac{x + y}{n + m}\]</span></p>
+<p>并定义检验统计量 <span class="math inline">\(z\)</span> 为：</p>
+<p><span class="math display">\[z = \frac{\frac{x}{n} -
+\frac{y}{m}}{\sqrt{p_e (1 - p_e) \left( \frac{1}{n} + \frac{1}{m}
+\right)}}\]</span></p>
 <p>检验步骤如下：</p>
 <ul>
-<li><p>a. 检验 $H_0: p_X &#x3D; p_Y$ 对应备择假设 $H_1: p_X &gt; p_Y$，在显著性水平 $\alpha$ 下，如果 $z \geq z_\alpha$，则拒绝 $H_0$。</p>
-</li>
-<li><p>b. 检验 $H_0: p_X &#x3D; p_Y$ 对应备择假设 $H_1: p_X &lt; p_Y$，在显著性水平 $\alpha$ 下，如果 $z \leq -z_\alpha$，则拒绝 $H_0$。</p>
-</li>
-<li><p>c. 检验 $H_0: p_X &#x3D; p_Y$ 对应双侧备择假设 $H_1: p_X \neq p_Y$，在显著性水平 $\alpha$ 下，如果 $z \leq -z_{\alpha&#x2F;2}$ 或 $z \geq z_{\alpha&#x2F;2}$，则拒绝 $H_0$。</p>
-</li>
+<li><ol type="a">
+<li>检验 <span class="math inline">\(H_0: p_X = p_Y\)</span>
+对应备择假设 <span class="math inline">\(H_1: p_X &gt;
+p_Y\)</span>，在显著性水平 <span class="math inline">\(\alpha\)</span>
+下，如果 <span class="math inline">\(z \geq z_\alpha\)</span>，则拒绝
+<span class="math inline">\(H_0\)</span>。</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>检验 <span class="math inline">\(H_0: p_X = p_Y\)</span>
+对应备择假设 <span class="math inline">\(H_1: p_X &lt;
+p_Y\)</span>，在显著性水平 <span class="math inline">\(\alpha\)</span>
+下，如果 <span class="math inline">\(z \leq -z_\alpha\)</span>，则拒绝
+<span class="math inline">\(H_0\)</span>。</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>检验 <span class="math inline">\(H_0: p_X = p_Y\)</span>
+对应双侧备择假设 <span class="math inline">\(H_1: p_X \neq
+p_Y\)</span>，在显著性水平 <span class="math inline">\(\alpha\)</span>
+下，如果 <span class="math inline">\(z \leq -z_{\alpha/2}\)</span> 或
+<span class="math inline">\(z \geq z_{\alpha/2}\)</span>，则拒绝 <span
+class="math inline">\(H_0\)</span>。</li>
+</ol></li>
 </ul>
-<h3 id="Theorem-9-5-1"><a href="#Theorem-9-5-1" class="headerlink" title="Theorem 9.5.1"></a>Theorem 9.5.1</h3><p>设 $x_1, x_2, \dots, x_n$ 和 $y_1, y_2, \dots, y_m$ 为从均值分别为 $\mu_X$ 和 $\mu_Y$，标准差为 $\sigma$ 的正态分布中抽取的独立随机样本。设 $s_p$ 为数据的合并标准差。</p>
-<p>对于 $\mu_X - \mu_Y$，置信水平为 $100(1 - \alpha)%$ 的置信区间为：</p>
-<p>$$\left( \bar{x} - \bar{y} - t_{\alpha&#x2F;2, n+m-2} \cdot s_p \sqrt{\frac{1}{n} + \frac{1}{m}}, \bar{x} - \bar{y} + t_{\alpha&#x2F;2, n+m-2} \cdot s_p \sqrt{\frac{1}{n} + \frac{1}{m}} \right)$$</p>
+<h3 id="theorem-9.5.1">Theorem 9.5.1</h3>
+<p>设 <span class="math inline">\(x_1, x_2, \dots, x_n\)</span> 和 <span
+class="math inline">\(y_1, y_2, \dots, y_m\)</span> 为从均值分别为 <span
+class="math inline">\(\mu_X\)</span> 和 <span
+class="math inline">\(\mu_Y\)</span>，标准差为 <span
+class="math inline">\(\sigma\)</span> 的正态分布中抽取的独立随机样本。设
+<span class="math inline">\(s_p\)</span> 为数据的合并标准差。</p>
+<p>对于 <span class="math inline">\(\mu_X - \mu_Y\)</span>，置信水平为
+<span class="math inline">\(100(1 - \alpha)\%\)</span>
+的置信区间为：</p>
+<p><span class="math display">\[\left( \bar{x} - \bar{y} - t_{\alpha/2,
+n+m-2} \cdot s_p \sqrt{\frac{1}{n} + \frac{1}{m}}, \bar{x} - \bar{y} +
+t_{\alpha/2, n+m-2} \cdot s_p \sqrt{\frac{1}{n} + \frac{1}{m}}
+\right)\]</span></p>
 <p>证明部分依赖于定理 9.2.1 中的结论，即</p>
-<p>$$\frac{\bar{x} - \bar{y} - (\mu_X - \mu_Y)}{s_p \sqrt{\frac{1}{n} + \frac{1}{m}}}$$</p>
-<p>具有 $n + m - 2$ 自由度的 Student t 分布。</p>
+<p><span class="math display">\[\frac{\bar{x} - \bar{y} - (\mu_X -
+\mu_Y)}{s_p \sqrt{\frac{1}{n} + \frac{1}{m}}}\]</span></p>
+<p>具有 <span class="math inline">\(n + m - 2\)</span> 自由度的 Student
+t 分布。</p>
 <p>因此，我们可以从不等式</p>
-<p>$$P\left( -t_{\alpha&#x2F;2, n+m-2} \leq \frac{\bar{x} - \bar{y} - (\mu_X - \mu_Y)}{s_p \sqrt{\frac{1}{n} + \frac{1}{m}}} \leq t_{\alpha&#x2F;2, n+m-2} \right) &#x3D; 1 - \alpha$$</p>
+<p><span class="math display">\[P\left( -t_{\alpha/2, n+m-2} \leq
+\frac{\bar{x} - \bar{y} - (\mu_X - \mu_Y)}{s_p \sqrt{\frac{1}{n} +
+\frac{1}{m}}} \leq t_{\alpha/2, n+m-2} \right) = 1 - \alpha\]</span></p>
 <p>中通过代数运算得到定理中的置信区间。</p>
-<h3 id="Theorem-9-5-2"><a href="#Theorem-9-5-2" class="headerlink" title="Theorem 9.5.2"></a>Theorem 9.5.2</h3><p>设 $x_1, x_2, \dots, x_n$ 和 $y_1, y_2, \dots, y_m$ 分别是均值为 $\mu_X$ 和 $\mu_Y$，标准差为 $\sigma_X$ 和 $\sigma_Y$ 的正态分布中抽取的独立随机样本。</p>
-<p>方差比 $\sigma_X^2 &#x2F; \sigma_Y^2$ 的 $100(1 - \alpha)%$ 置信区间为：</p>
-<p>$$\left( \frac{s_X^2}{s_Y^2} F_{\alpha&#x2F;2, m-1, n-1}, \frac{s_X^2}{s_Y^2} F_{1-\alpha&#x2F;2, m-1, n-1} \right)$$</p>
-<p>证明部分从 $\frac{s_Y^2 &#x2F; \sigma_Y^2}{s_X^2 &#x2F; \sigma_X^2}$ 服从 $F$ 分布（自由度为 $m - 1$ 和 $n - 1$）开始，通过类似定理 9.5.1 的策略，将 $\sigma_X^2 &#x2F; \sigma_Y^2$ 放在不等式的中心，从而得到置信区间。</p>
-<h3 id="Theorem-9-5-3"><a href="#Theorem-9-5-3" class="headerlink" title="Theorem 9.5.3"></a>Theorem 9.5.3</h3><p>设 $x$ 和 $y$ 分别表示在两组 $n$ 和 $m$ 次伯努利试验中观察到的成功次数，$p_X$ 和 $p_Y$ 分别表示两组试验的真实成功概率。</p>
-<p>$p_X - p_Y$ 的近似 $100(1 - \alpha)%$ 的置信区间为：</p>
-<p>$$\left( \frac{x}{n} - \frac{y}{m} - z_{\alpha&#x2F;2} \sqrt{\frac{\left(\frac{x}{n}\right)\left(1 - \frac{x}{n}\right)}{n} + \frac{\left(\frac{y}{m}\right)\left(1 - \frac{y}{m}\right)}{m}}, \frac{x}{n} - \frac{y}{m} + z_{\alpha&#x2F;2} \sqrt{\frac{\left(\frac{x}{n}\right)\left(1 - \frac{x}{n}\right)}{n} + \frac{\left(\frac{y}{m}\right)\left(1 - \frac{y}{m}\right)}{m}} \right)$$</p>
+<h3 id="theorem-9.5.2">Theorem 9.5.2</h3>
+<p>设 <span class="math inline">\(x_1, x_2, \dots, x_n\)</span> 和 <span
+class="math inline">\(y_1, y_2, \dots, y_m\)</span> 分别是均值为 <span
+class="math inline">\(\mu_X\)</span> 和 <span
+class="math inline">\(\mu_Y\)</span>，标准差为 <span
+class="math inline">\(\sigma_X\)</span> 和 <span
+class="math inline">\(\sigma_Y\)</span>
+的正态分布中抽取的独立随机样本。</p>
+<p>方差比 <span class="math inline">\(\sigma_X^2 / \sigma_Y^2\)</span>
+的 <span class="math inline">\(100(1 - \alpha)\%\)</span>
+置信区间为：</p>
+<p><span class="math display">\[\left( \frac{s_X^2}{s_Y^2} F_{\alpha/2,
+m-1, n-1}, \frac{s_X^2}{s_Y^2} F_{1-\alpha/2, m-1, n-1}
+\right)\]</span></p>
+<p>证明部分从 <span class="math inline">\(\frac{s_Y^2 /
+\sigma_Y^2}{s_X^2 / \sigma_X^2}\)</span> 服从 <span
+class="math inline">\(F\)</span> 分布（自由度为 <span
+class="math inline">\(m - 1\)</span> 和 <span class="math inline">\(n -
+1\)</span>）开始，通过类似定理 9.5.1 的策略，将 <span
+class="math inline">\(\sigma_X^2 / \sigma_Y^2\)</span>
+放在不等式的中心，从而得到置信区间。</p>
+<h3 id="theorem-9.5.3">Theorem 9.5.3</h3>
+<p>设 <span class="math inline">\(x\)</span> 和 <span
+class="math inline">\(y\)</span> 分别表示在两组 <span
+class="math inline">\(n\)</span> 和 <span
+class="math inline">\(m\)</span> 次伯努利试验中观察到的成功次数，<span
+class="math inline">\(p_X\)</span> 和 <span
+class="math inline">\(p_Y\)</span> 分别表示两组试验的真实成功概率。</p>
+<p><span class="math inline">\(p_X - p_Y\)</span> 的近似 <span
+class="math inline">\(100(1 - \alpha)\%\)</span> 的置信区间为：</p>
+<p><span class="math display">\[\left( \frac{x}{n} - \frac{y}{m} -
+z_{\alpha/2} \sqrt{\frac{\left(\frac{x}{n}\right)\left(1 -
+\frac{x}{n}\right)}{n} + \frac{\left(\frac{y}{m}\right)\left(1 -
+\frac{y}{m}\right)}{m}}, \frac{x}{n} - \frac{y}{m} + z_{\alpha/2}
+\sqrt{\frac{\left(\frac{x}{n}\right)\left(1 - \frac{x}{n}\right)}{n} +
+\frac{\left(\frac{y}{m}\right)\left(1 - \frac{y}{m}\right)}{m}}
+\right)\]</span></p>
 
       
     </div>
@@ -397,11 +777,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p> Utokyo备考<br>要有一个日语的证书<br>托福成绩</p>
-<p>一定要看的科目<br>数值分析、计算机组成原理、操作系统、数字电路、形式语言与自动机、数据结构与算法、机器学习</p>
-<p>数学<br>线性代数 概率统计 数学分析</p>
+        <p>Utokyo备考 要有一个日语的证书 托福成绩</p>
+<p>一定要看的科目
+数值分析、计算机组成原理、操作系统、数字电路、形式语言与自动机、数据结构与算法、机器学习</p>
+<p>数学 线性代数 概率统计 数学分析</p>
 <p>以此文来记录一下Utokyo的一些信息</p>
-<p>考试的范围：<br>数学：<br>解析 线性代数 概率论<br>专业课：<br>情报理工的专业课：<br>信息论 数值计算 离散数学 算法与计算复杂性 形式语言 逻辑 编程语言理论 计算机体系结构 操作系统 数字电路 机器学习</p>
+<p>考试的范围： 数学： 解析 线性代数 概率论 专业课： 情报理工的专业课：
+信息论 数值计算 离散数学 算法与计算复杂性 形式语言 逻辑 编程语言理论
+计算机体系结构 操作系统 数字电路 机器学习</p>
 
       
     </div>
@@ -456,7 +839,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="《Same-as-Ever-A-Guide-to-What-Never-Changes》"><a href="#《Same-as-Ever-A-Guide-to-What-Never-Changes》" class="headerlink" title="《Same as Ever: A Guide to What Never Changes》"></a>《Same as Ever: A Guide to What Never Changes》</h2><h3 id=""><a href="#" class="headerlink" title=""></a></h3>
+        <h2 id="same-as-ever-a-guide-to-what-never-changes">《Same as Ever: A
+Guide to What Never Changes》</h2>
+<h3 id="section"></h3>
+
       
     </div>
     
@@ -510,11 +896,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>以前学习的基础很不扎实<br>重新过一遍<br>CS stack</p>
+        <p>以前学习的基础很不扎实 重新过一遍 CS stack</p>
 <p>Mathematics</p>
 <p>具体是看国内外好的公开课 以及做lab</p>
-<p>先说Mathematics<br>最近在看Introduction to Mathematical Statistics and Its Apolications</p>
-<p>然后把整个cs stack的基础给打扎实 </p>
+<p>先说Mathematics 最近在看Introduction to Mathematical Statistics and
+Its Apolications</p>
+<p>然后把整个cs stack的基础给打扎实</p>
 
       
     </div>
@@ -572,11 +959,13 @@
         <p>本文记录一下知乎答主 朱炫的一些好回答</p>
 <p>怎样戒掉对一个人的喜欢？</p>
 <blockquote>
-<p>不需要戒，该吃吃，该睡睡，不要浪费你的钱，也不要做出伤害别人，以及伤害自己的事情。<br>然后就难受吧，反正人如果产生你这种念头，无非是想要的得不到，再加上年轻，很多事情自己都没有决定权，所以谈恋爱比我们这些人还要付出得多些，有时候，还会有孤注一掷的错觉，就觉得，这个男人也好，女人也好，是自己这辈子，最重要的人了。放弃还有些舍不得，大雨天收了伞，再见啦，我曾经也喜欢过你。自己就把自己感动了。<br>所以双截棍有一首歌，叫转身离开，分手说不出来，因为海鸟和鱼相爱嘛，当年也红了大江南北，最后双截棍娶了混血儿，鸟和鸟在一起了，鱼，还是鱼。那时候我们班女生都觉得双截棍应该和女子体操队员蔡小姐在一起，但最后他们没有在一起，蔡小姐没有嫁给李小鹏我也很难过，好了，总之我们发现，根本不是那么回事。从来都没有什么注定在一起，但最终都会有人拥抱你。所以这个不行，说明不对，不对就不要想了，想了也没什么意义。一个人成长的过程，就是发现自己是海鸟，对方是鱼，而这个生殖隔离，拉钩上吊一百年没法变，然后震惊，最后妥协。我们中的许多人，很小的时候挤在教室里，老师说，你们是未来的雄鹰，我们就以为，未来就是雄鹰，在暗恋，明恋，发骚，闷骚的过程里，我们想过和这个女同学，男同学，白头偕老，也天真的以为，要把自己的第一次留给最心爱的人，因为我们都是雄鹰嘛，我们总会手牵手在PM2.5的蓝天里飞翔，俯瞰大地和女澡堂。最后发现，我们中，有的人是鹰，有的人是鸡，有的人是鸭，还有狗熊，金枪鱼和王八犊子。千奇百怪，这时候你才明白，原来不是这样啊，爱情书里说的两小无猜，简直是公然放屁，教课书里说的功成名就，也是信口开河。生活一定会让我们分道扬镳，而留住一个人，光靠诺言又是多么的可笑。这么多年，我发现最喜欢发誓，最喜欢想未来的年纪，就是学生的年龄，对未来的构思，蓝图，都想好了，因为年纪小，才会容易相信感情，天真，所以容易上当。理解了大自然的规律，参透了感情的真面目，你就发现，它纵然可歌可泣，但也决不存在什么难以戒掉。因为它本来就不神圣，也谈不上天长地久，它需要充足的精力，时间与金钱，还要面对鱼是鱼，鸟是鸟的尴尬，悲伤也好，开心也好，都是片刻的感情，在人生的路上，无足轻重。只有诗人和骗子，才用死亡，痛苦，我欲罢不能，天呐请不要离开我来形容爱情。电影里的稀里哗啦，泪流满面，都是我们这些编故事的，骗你们的。所以我一贯的理念是，反正悲伤也拦不住，那就哭吧，不要自残，不要乱花钱，随意吧，偶尔我也鼓励珍惜这个过程，会成为年长后难得的回忆，如果回过头来，发现谁也没让你难受过，只能说明你的青春也挺空白。年轻的时候，也暗恋过人，和感情交过手，棒。过上大半年，就差不多了。情啊爱啊，都是少不更事。但少不更事，并不是坏事。</p>
+<p>不需要戒，该吃吃，该睡睡，不要浪费你的钱，也不要做出伤害别人，以及伤害自己的事情。
+然后就难受吧，反正人如果产生你这种念头，无非是想要的得不到，再加上年轻，很多事情自己都没有决定权，所以谈恋爱比我们这些人还要付出得多些，有时候，还会有孤注一掷的错觉，就觉得，这个男人也好，女人也好，是自己这辈子，最重要的人了。放弃还有些舍不得，大雨天收了伞，再见啦，我曾经也喜欢过你。自己就把自己感动了。
+所以双截棍有一首歌，叫转身离开，分手说不出来，因为海鸟和鱼相爱嘛，当年也红了大江南北，最后双截棍娶了混血儿，鸟和鸟在一起了，鱼，还是鱼。那时候我们班女生都觉得双截棍应该和女子体操队员蔡小姐在一起，但最后他们没有在一起，蔡小姐没有嫁给李小鹏我也很难过，好了，总之我们发现，根本不是那么回事。从来都没有什么注定在一起，但最终都会有人拥抱你。所以这个不行，说明不对，不对就不要想了，想了也没什么意义。一个人成长的过程，就是发现自己是海鸟，对方是鱼，而这个生殖隔离，拉钩上吊一百年没法变，然后震惊，最后妥协。我们中的许多人，很小的时候挤在教室里，老师说，你们是未来的雄鹰，我们就以为，未来就是雄鹰，在暗恋，明恋，发骚，闷骚的过程里，我们想过和这个女同学，男同学，白头偕老，也天真的以为，要把自己的第一次留给最心爱的人，因为我们都是雄鹰嘛，我们总会手牵手在PM2.5的蓝天里飞翔，俯瞰大地和女澡堂。最后发现，我们中，有的人是鹰，有的人是鸡，有的人是鸭，还有狗熊，金枪鱼和王八犊子。千奇百怪，这时候你才明白，原来不是这样啊，爱情书里说的两小无猜，简直是公然放屁，教课书里说的功成名就，也是信口开河。生活一定会让我们分道扬镳，而留住一个人，光靠诺言又是多么的可笑。这么多年，我发现最喜欢发誓，最喜欢想未来的年纪，就是学生的年龄，对未来的构思，蓝图，都想好了，因为年纪小，才会容易相信感情，天真，所以容易上当。理解了大自然的规律，参透了感情的真面目，你就发现，它纵然可歌可泣，但也决不存在什么难以戒掉。因为它本来就不神圣，也谈不上天长地久，它需要充足的精力，时间与金钱，还要面对鱼是鱼，鸟是鸟的尴尬，悲伤也好，开心也好，都是片刻的感情，在人生的路上，无足轻重。只有诗人和骗子，才用死亡，痛苦，我欲罢不能，天呐请不要离开我来形容爱情。电影里的稀里哗啦，泪流满面，都是我们这些编故事的，骗你们的。所以我一贯的理念是，反正悲伤也拦不住，那就哭吧，不要自残，不要乱花钱，随意吧，偶尔我也鼓励珍惜这个过程，会成为年长后难得的回忆，如果回过头来，发现谁也没让你难受过，只能说明你的青春也挺空白。年轻的时候，也暗恋过人，和感情交过手，棒。过上大半年，就差不多了。情啊爱啊，都是少不更事。但少不更事，并不是坏事。</p>
 </blockquote>
 <p>喜欢一个不可能在一起的人是什么感觉？</p>
 <blockquote>
-<p>喜欢一个不可能在一起的人，无非就是可怜自己。我这么说，一般人多半会想一些夜晚雨后的情景，一定要是巷尾与街头，形单影只的自己翻看对方的短信，然后嗟叹一声，啊，不是没有勇气，而是明知不行。就会两手一摊，没办法，不是路上有猛虎拦路，而是根本没有路。人在山上，你在湖边，池景虽美，佳人无谓。非要形容，大概是隔了一条江，江这边是孤独，江那头是火红，你发现，你不是灯火，甚至你连蛾子都不是，想扑火，也要轰轰烈烈的机会。越是矫情，越是惬意。说白了，你一想她，二想自己，但你最想的，是她&#x2F;他隔着江水，看看你的孤独。这无可厚非，你总是希望他知道你的苦处，也知道你的无奈，好在某一天，桂花树下，小路街旁，转角相遇，你把这么多年的苦给他看，你们抱头痛哭，但大多数现实里，你没有这个机会，你也就看着他&#x2F;她结婚，生子，在朋友圈里晒照片，仅此而已。别人的轰轰烈烈，永远是别人的。你想，这是我曾经的爱也好，恋也好，神也罢，不能在一起，就祝福你。大部分都这样，可怜兮兮，这叫求而不得的人，一点所谓豁达的私心，说到底，都是用蹩脚的谎言，骗一个需要谎言的自己。人其实非常善于可怜自己，把自己想小了，成为一个小小的人，走在长长的路上，见着远处高塔辉煌，听见些个灯声人语，欢闹得紧，且与自己无关，这一刻，就是妥协，也是自我安慰，心里就会好受了些。人最善于可怜自己，生出一种悲情的美，好安慰自己，这也是人不会偏执的原因。我得说，这种事真的谈不上多美妙，也无从有什么伟大，因为这是蝼蚁与日月争辉的事情，那是可怜人的故事，也是无奈人的故事。这就是缘尽，不是尽在时机，而是尽在格局。是的没错，有些人就是不行，谈不起来还好，谈起来更糟，简直是自我欺骗的戏码，这一刻是一刻的欢喜，非要想着下一刻的别离，这种事反正不太好受。但，又能怎么办。毕竟很喜欢。想起一句话，世界这么大，我喜欢你又不犯法。可怜不可怜，难过不难过，苦果自己吞了，谁也没有打扰，不能在一起，就不能在一起，世上不圆满的那么多，我活着这么大，这点还是懂的。说到底，这种事，你想明白也好，想不明白也好，结果不会有太大的改变。因为毕竟很喜欢。确实是可怜人的故事，也是无奈人的故事。确实一点都不美妙，谈不上诗歌，也不需要安慰。苦果，我吞了。喜欢，还是喜欢。人就是贱，但感情就是这样。有时候，挺无解的。</p>
+<p>喜欢一个不可能在一起的人，无非就是可怜自己。我这么说，一般人多半会想一些夜晚雨后的情景，一定要是巷尾与街头，形单影只的自己翻看对方的短信，然后嗟叹一声，啊，不是没有勇气，而是明知不行。就会两手一摊，没办法，不是路上有猛虎拦路，而是根本没有路。人在山上，你在湖边，池景虽美，佳人无谓。非要形容，大概是隔了一条江，江这边是孤独，江那头是火红，你发现，你不是灯火，甚至你连蛾子都不是，想扑火，也要轰轰烈烈的机会。越是矫情，越是惬意。说白了，你一想她，二想自己，但你最想的，是她/他隔着江水，看看你的孤独。这无可厚非，你总是希望他知道你的苦处，也知道你的无奈，好在某一天，桂花树下，小路街旁，转角相遇，你把这么多年的苦给他看，你们抱头痛哭，但大多数现实里，你没有这个机会，你也就看着他/她结婚，生子，在朋友圈里晒照片，仅此而已。别人的轰轰烈烈，永远是别人的。你想，这是我曾经的爱也好，恋也好，神也罢，不能在一起，就祝福你。大部分都这样，可怜兮兮，这叫求而不得的人，一点所谓豁达的私心，说到底，都是用蹩脚的谎言，骗一个需要谎言的自己。人其实非常善于可怜自己，把自己想小了，成为一个小小的人，走在长长的路上，见着远处高塔辉煌，听见些个灯声人语，欢闹得紧，且与自己无关，这一刻，就是妥协，也是自我安慰，心里就会好受了些。人最善于可怜自己，生出一种悲情的美，好安慰自己，这也是人不会偏执的原因。我得说，这种事真的谈不上多美妙，也无从有什么伟大，因为这是蝼蚁与日月争辉的事情，那是可怜人的故事，也是无奈人的故事。这就是缘尽，不是尽在时机，而是尽在格局。是的没错，有些人就是不行，谈不起来还好，谈起来更糟，简直是自我欺骗的戏码，这一刻是一刻的欢喜，非要想着下一刻的别离，这种事反正不太好受。但，又能怎么办。毕竟很喜欢。想起一句话，世界这么大，我喜欢你又不犯法。可怜不可怜，难过不难过，苦果自己吞了，谁也没有打扰，不能在一起，就不能在一起，世上不圆满的那么多，我活着这么大，这点还是懂的。说到底，这种事，你想明白也好，想不明白也好，结果不会有太大的改变。因为毕竟很喜欢。确实是可怜人的故事，也是无奈人的故事。确实一点都不美妙，谈不上诗歌，也不需要安慰。苦果，我吞了。喜欢，还是喜欢。人就是贱，但感情就是这样。有时候，挺无解的。</p>
 </blockquote>
 
       
@@ -737,15 +1126,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="意识红色胶囊"><a href="#意识红色胶囊" class="headerlink" title="意识红色胶囊"></a>意识红色胶囊</h1><p>列出一些有意思的观点 当然也可能全错</p>
-<h3 id="千古问题新解"><a href="#千古问题新解" class="headerlink" title="千古问题新解"></a>千古问题新解</h3><p>简单来说， 意识是主观体验。疼痛不是意识，是感觉，是一种信号。意识是除了疼之外，你还感到了“痛苦”。</p>
+        <h1 id="意识红色胶囊">意识红色胶囊</h1>
+<p>列出一些有意思的观点 当然也可能全错</p>
+<h3 id="千古问题新解">千古问题新解</h3>
+<p>简单来说，
+意识是主观体验。疼痛不是意识，是感觉，是一种信号。意识是除了疼之外，你还感到了“痛苦”。</p>
 <blockquote>
 <p>柏拉图纯粹靠思辨，就论证说除了我们肉体所在的物质世界，必定还存在一个精神世界。柏拉图说，像数学这样的东西，其实并不存在于物质世界中。物质世界中没有数字“2”，也不存在一个完美的圆形。严格来说它们只是数学概念。但是你知道2和圆是存在的—那么它们只能是存在于某个精神世界之中，我们现在称之为「柏拉图世界」。那既然有精神世界，也许人的灵魂就是来自于精神世界。</p>
 </blockquote>
-<p>笛卡尔 我思故思在</p>
-<blockquote>
-<p>你想想，也许你周围的一切事物都是某个大神给你生成的幻象，也许你是在玩一个虚拟现实游戏。笛卡尔要求你把所有可疑的东西都排除掉。<br>也许窗外的山是假的，也许你住的房子是假的，也许你正在触摸的手机也是假的。这一切无非都是电讯号而已，只不过是个脑机接口问题。<br>那么再进一步，你的手、你的脸、你的头，可能也是幻象。可能所有这些感觉信号都是大神故意生成出来骗你的。<br>但是你知道，有一个东西，绝对不是幻象。那就是“我自己正在分析”，这件事。不然刚才这些讨论从何而来呢？是你自己的思根。你的思想，一定存在。</p>
-</blockquote>
+<p>笛卡尔 我思故思在 &gt;
+你想想，也许你周围的一切事物都是某个大神给你生成的幻象，也许你是在玩一个虚拟现实游戏。笛卡尔要求你把所有可疑的东西都排除掉。
+也许窗外的山是假的，也许你住的房子是假的，也许你正在触摸的手机也是假的。这一切无非都是电讯号而已，只不过是个脑机接口问题。
+那么再进一步，你的手、你的脸、你的头，可能也是幻象。可能所有这些感觉信号都是大神故意生成出来骗你的。
+但是你知道，有一个东西，绝对不是幻象。那就是“我自己正在分析”，这件事。不然刚才这些讨论从何而来呢？是你自己的思根。你的思想，一定存在。</p>
 <blockquote>
 <p>物质的一切都可以砍掉，只有精神必定存在。</p>
 </blockquote>
@@ -754,14 +1147,19 @@
 <p>如果说现代各路学者对意识问题的某一方面有一定的共识，那这个共识就是我们应该假设物质世界是真实的——但是人的意识，则很可能是个幻象。</p>
 </blockquote>
 <p>首先，智能不等于意识。 其次，意识也许是一种涌现现象。</p>
-<p>人的大脑是个多元政体 </p>
+<p>人的大脑是个多元政体</p>
 <p>体验自我 和 叙事自我 不是一个东西</p>
-<h3 id="第六感"><a href="#第六感" class="headerlink" title="第六感"></a>第六感</h3><p>这个问题不是手段而是目的，我们活着就得求知，我们不接受浑浑噩噩不明不白地活着。</p>
+<h3 id="第六感">第六感</h3>
+<p>这个问题不是手段而是目的，我们活着就得求知，我们不接受浑浑噩噩不明不白地活着。</p>
 <p>使用身体思考</p>
-<p>人的内感受 interoception </p>
+<p>人的内感受 interoception</p>
 <p>内感力强的人能做出更好的直觉判断</p>
 <blockquote>
-<p>2016 年，一些主要来自剑桥大学的研究者拿在伦敦证券交易大厅工作 的金融交易员做了一项研究 ，也是用数心跳的方法测了他们内感力。 结果发现，交易员的内感力比作为对照组的普通老百姓更强;同时，在 交易员群体之中，也是内感力越强的交易员，盈利能力也越强。更有意 思的是，从事金融行业越久的交易员，他们的内感力也越强。</p>
+<p>2016 年，一些主要来自剑桥大学的研究者拿在伦敦证券交易大厅工作
+的金融交易员做了一项研究 ，也是用数心跳的方法测了他们内感力。
+结果发现，交易员的内感力比作为对照组的普通老百姓更强;同时，在
+交易员群体之中，也是内感力越强的交易员，盈利能力也越强。更有意
+思的是，从事金融行业越久的交易员，他们的内感力也越强。</p>
 </blockquote>
 <blockquote>
 <p>比如你刚刚走过一个摇摇晃晃的吊桥，导致心跳加速。吊桥的这一头有一位美丽的女性，让你填一张表，你跟她也就相处了几分钟而已。可是你感觉自己好像爱上了她——对照组的受试者走过一个结实不摇晃、没让心跳加速的桥，就没有发生爱情反应。</p>
@@ -771,32 +1169,51 @@
 <li>在脸上做出微笑的动作，你就会真的感到高兴;</li>
 <li>实验中在你的眉心肌肉上注射肉毒杆菌，给你造成一个长时间皱眉的感觉，你在阅读一篇文章的时候就会花更多时间去读其中悲伤和愤怒的句子;</li>
 <li>手捧一杯热饮，手上的温暖会让你的大脑感到情感上的温暖，你会觉得身边的人对你更友好更包容;</li>
-<li>而寒冷，则会让你感到更孤独…… 如此说来，想要影响人的情绪，可以从影响身体入手。 但那些都不算什么。更惊人的是，身体对意识的影响，还可以有生产力作用。</li>
+<li>而寒冷，则会让你感到更孤独......
+如此说来，想要影响人的情绪，可以从影响身体入手。
+但那些都不算什么。更惊人的是，身体对意识的影响，还可以有生产力作用。</li>
 </ul>
 </blockquote>
 <blockquote>
-<p>还有个最简单的办法就是左右转动你的两个眼球，据说是能促进横向思 考。所以古人说「眼珠一转，计上心来」是有道理的……</p>
+<p>还有个最简单的办法就是左右转动你的两个眼球，据说是能促进横向思
+考。所以古人说「眼珠一转，计上心来」是有道理的......</p>
+<p>我们传统的理解是大脑直接根据外界信息，自己先决定怎么办，再指挥
+身体去办;现在的认识似乎更像是身体是在大脑之前处理信息，身体告
+诉大脑现在是怎么回事儿。
+利用这个原理，要想影响大脑，可以先影响身体——或者至少可以说，
+身体是影响大脑的捷径。那么古人提高自我修养都是向内求、搞「内观」、
+强调关注自己的呼吸什么的，似乎就是这个道理。</p>
 </blockquote>
-<p>我们传统的理解是大脑直接根据外界信息，自己先决定怎么办，再指挥 身体去办;现在的认识似乎更像是身体是在大脑之前处理信息，身体告 诉大脑现在是怎么回事儿。<br>利用这个原理，要想影响大脑，可以先影响身体——或者至少可以说， 身体是影响大脑的捷径。那么古人提高自我修养都是向内求、搞「内观」、 强调关注自己的呼吸什么的，似乎就是这个道理。</p>
-<h3 id="心血来潮，无意击发"><a href="#心血来潮，无意击发" class="headerlink" title="心血来潮，无意击发"></a>心血来潮，无意击发</h3><p>身体转移错觉实验（<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=qhbVmos9cJ0%EF%BC%89">https://www.youtube.com/watch?v=qhbVmos9cJ0）</a></p>
+<h3 id="心血来潮无意击发">心血来潮，无意击发</h3>
+<p>身体转移错觉实验（https://www.youtube.com/watch?v=qhbVmos9cJ0）</p>
 <p>你对“你的”的感觉是不可靠的。人的自我意识是不可靠的。</p>
 <p>一个人的 HEP 信号越强烈的时候， 他经历的身体幻觉就越强。</p>
-<p>心跳诱发电位是大脑对心跳的实时的、 自动的反应，是一种周期性但不规则的波动。</p>
+<p>心跳诱发电位是大脑对心跳的实时的、
+自动的反应，是一种周期性但不规则的波动。</p>
 <p>你的心脏在书写你的自我意识。</p>
 <p>你的心跳影响了你的视觉感知。</p>
-<p>每个心跳周期中 HEP 信号最强的那一刹那，就是你的自我意识最强的时刻。</p>
+<p>每个心跳周期中 HEP
+信号最强的那一刹那，就是你的自我意识最强的时刻。</p>
 <p>你的大脑越能听见你的心声，你的选择就越肯定。</p>
-<p>不论如何，目前的实验结果指向，身体信号——尤其是心跳信号—— 至少是自我的基础。</p>
+<p>不论如何，目前的实验结果指向，身体信号——尤其是心跳信号——
+至少是自我的基础。</p>
 <p>先有身体感知，后有大脑意识，这原本是最正常的生命现象。</p>
 <blockquote>
-<p>我们以前认为抑郁症、焦虑症这类精神性的疾病都是大脑出了问题，而 近年最新研究提出，这些病很可能是身体先出了问题，造成给大脑 提供的信号发生紊乱，才让大脑感觉不对。</p>
+<p>我们以前认为抑郁症、焦虑症这类精神性的疾病都是大脑出了问题，而
+近年最新研究提出，这些病很可能是身体先出了问题，造成给大脑
+提供的信号发生紊乱，才让大脑感觉不对。</p>
 </blockquote>
 <blockquote>
-<p>总结来说，越来越多的研究证明了身体信号对意识的决定性作用。你以 为先是大脑感知、再思考、再决定、再下命令动作——其实很可能是身 体感知、身体直接做动作、大脑在事后才意识到发生了什么，然后以新 闻发言人的身份出来讲了个故事。</p>
+<p>总结来说，越来越多的研究证明了身体信号对意识的决定性作用。你以
+为先是大脑感知、再思考、再决定、再下命令动作——其实很可能是身
+体感知、身体直接做动作、大脑在事后才意识到发生了什么，然后以新
+闻发言人的身份出来讲了个故事。</p>
 </blockquote>
-<h3 id="情感神经网络"><a href="#情感神经网络" class="headerlink" title="情感神经网络"></a>情感神经网络</h3><p>意识的难题就是精神是如何从物质中产生的。</p>
+<h3 id="情感神经网络">情感神经网络</h3>
+<p>意识的难题就是精神是如何从物质中产生的。</p>
 <p>几种流派</p>
-<p>泛灵论 万物有灵 电子有意识 物质究竟是什么 所有的物理定律描述的是物质的各种行为而不是本质</p>
+<p>泛灵论 万物有灵 电子有意识 物质究竟是什么
+所有的物理定律描述的是物质的各种行为而不是本质</p>
 <p>整体信息论 一个系统的各个部分的信息交流</p>
 <p>Roger Penrose 神秘的量子力学过程</p>
 <p>用脑神经科学解释意识</p>
@@ -854,8 +1271,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>算是一些备忘录</p>
-<h3 id="牙齿"><a href="#牙齿" class="headerlink" title="牙齿"></a>牙齿</h3><p>智齿总是发炎的话 早点拔掉 长痛不如短痛<br>儿童时期应该早点做窝沟封闭 能防蛀<br>定期去洗牙 做检查<br>女生的话 怀孕时因激素变化 智齿容易发炎 建议早拔</p>
+        <p>算是一些备忘录 ### 牙齿 智齿总是发炎的话 早点拔掉 长痛不如短痛
+儿童时期应该早点做窝沟封闭 能防蛀 定期去洗牙 做检查 女生的话
+怀孕时因激素变化 智齿容易发炎 建议早拔</p>
 
       
     </div>
@@ -910,7 +1328,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="万神殿"><a href="#万神殿" class="headerlink" title="万神殿"></a>万神殿</h2><p>有几个很有意思的点<br>女主电脑后面的贴纸是nerv 是eva的机构<br>里面的劳伦很像素子<br>3个中国ui特别有意思<br>这真是一部神作 特别好看</p>
+        <h2 id="万神殿">万神殿</h2>
+<p>有几个很有意思的点 女主电脑后面的贴纸是nerv 是eva的机构
+里面的劳伦很像素子 3个中国ui特别有意思 这真是一部神作 特别好看</p>
 
       
     </div>
