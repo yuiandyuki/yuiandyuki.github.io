@@ -158,6 +158,402 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-go语言精进之路-note" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="../../2023/12/24/go%E8%AF%AD%E8%A8%80%E7%B2%BE%E8%BF%9B%E4%B9%8B%E8%B7%AF-note/" class="article-date">
+  	<time datetime="2023-12-24T09:25:17.000Z" itemprop="datePublished">2023-12-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2023/12/24/go%E8%AF%AD%E8%A8%80%E7%B2%BE%E8%BF%9B%E4%B9%8B%E8%B7%AF-note/">
+        go语言精进之路_note
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="go语言精进之路_note">go语言精进之路_note</h1>
+<h2 id="第一部分-熟知go语言的一切">第一部分 熟知Go语言的一切</h2>
+<h3 id="第1条-了解go语言的诞生与演进">第1条 了解Go语言的诞生与演进</h3>
+<p>略 ### 第2条 选择适当的Go语言版本 建议一直使用最新版本 ### 第3条
+理解Go语言的设计哲学 追求简单，少即是多<br />
+偏好组合，正交解耦 原生并发，轻量高效 面向工程，“自带电池” 看看就好
+用久了才能体会到 #### 第4条 使用Go语言原生编程思维来写Go代码
+“萨丕尔-沃夫假说”，这个假说的内容是这样的:“语言影响或决定人类的思维方式。”
+艾伦·佩利(Alan J. Perlis)
+“不能影响到你的编程思维方式的编程语言不值得学习和使用。” 经典问题 素数筛
+c <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LIMIT 50 </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRIMES 10</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">sieve</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="type">int</span> c,i,j,numbers[LIMIT], primes[PRIMES];</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;LIMIT;i++)&#123;</span><br><span class="line">		numbers[i]=i+<span class="number">2</span>; <span class="comment">/*fill the array with natural numbers*/</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;LIMIT;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span> (numbers[i]!=<span class="number">-1</span>)&#123;</span><br><span class="line">			<span class="keyword">for</span> (j=<span class="number">2</span>*numbers[i]<span class="number">-2</span>;j&lt;LIMIT;j+=numbers[i])</span><br><span class="line">					numbers[j]=<span class="number">-1</span>; <span class="comment">/* 筛除非素数 */</span> </span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	c = j = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;LIMIT&amp;&amp;j&lt;PRIMES;i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (numbers[i]!=<span class="number">-1</span>) &#123;</span><br><span class="line">			primes[j++] = numbers[i]; <span class="comment">/*transfer the primes to their own array*/</span> </span><br><span class="line">			c++;</span><br><span class="line">			&#125; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;c;i++) <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,primes[i]); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Haskell <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">sieve</span> [] = []</span><br><span class="line"><span class="title">sieve</span> (x:xs) = x : sieve (filter (\a -&gt; not $ a `mod` x == <span class="number">0</span>) xs)</span><br><span class="line"><span class="title">n</span> = <span class="number">100</span></span><br><span class="line"><span class="title">main</span> = print $ sieve [<span class="number">2</span>..n]</span><br></pre></td></tr></table></figure> 不懂 去看看haskell</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Generate</span><span class="params">(ch <span class="keyword">chan</span>&lt;- <span class="type">int</span>)</span></span> &#123; </span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">2</span>; ; i++ &#123;</span><br><span class="line">		ch &lt;- i </span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Filter</span><span class="params">(in &lt;-<span class="keyword">chan</span> <span class="type">int</span>, out <span class="keyword">chan</span>&lt;- <span class="type">int</span>, prime <span class="type">int</span>)</span></span> &#123; </span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		i := &lt;-in</span><br><span class="line">		<span class="keyword">if</span> i%prime != <span class="number">0</span> &#123;</span><br><span class="line">				out &lt;- i </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;		 </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>) </span><br><span class="line">	<span class="keyword">go</span> Generate(ch)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		prime := &lt;-ch <span class="built_in">print</span>(prime, <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">		ch1 := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>) </span><br><span class="line">		<span class="keyword">go</span> Filter(ch, ch1, prime) </span><br><span class="line">		ch = ch1</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>C版本的素数筛程序是一个常规实现。它定义了两个数组
+numbers和primes，“筛”的过程在numbers这个数组中进行(基于纯内存修改)，非素数的数组元素被设置为-1，
+便于后续提取。</p>
+<p>Haskell版本采用了函数递归的思路，通过“filter操作集合”，用谓词(过滤条件)-&gt;
+not $ a <code>mod</code> x ==
+0筛除素数的倍数，将未筛除的数的集合作为参数传递归递给下去。</p>
+<p>Go版本程序实现了一个并发素数筛，它采用的是goroutine的并发组合。程序从素数2开始，依次为每个素数建立一个goroutine，用于作为筛除该素数的倍数。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-十字路口" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="../../2023/12/21/%E5%8D%81%E5%AD%97%E8%B7%AF%E5%8F%A3/" class="article-date">
+  	<time datetime="2023-12-21T03:26:50.000Z" itemprop="datePublished">2023-12-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2023/12/21/%E5%8D%81%E5%AD%97%E8%B7%AF%E5%8F%A3/">
+        十字路口
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="十字路口">十字路口</h2>
+<blockquote>
+<p>不要责备自己以前的选择，他站在人生十字路口的浓雾前也很迷茫。</p>
+</blockquote>
+<p>决策是一个很难的事情 当然我们需要做一点科学决策
+第一点就是尽量的把更多的选项给列出来</p>
+<p>别信鸡汤</p>
+<p>先说几个基本的科学思考（到时候再补充点例子）（当然接下来说的可能全是错的）</p>
+<p>并没有任何科学证据说有强烈目标对人的成功有好处--而且可能还有坏处
+。过于强烈的“目标”已经不仅仅是目标了，“目标”已经成为了他们的自我身份认同。目标提供了一种追求的确定性。（例如不惜违反规则也要登珠峰的登山者）</p>
+<p>正确的做法应该是见机行事，随其自然，没有机会就不要硬做，机会来了就上。世界非常复杂，本身就充满不确定性，而且不可能围着你转。</p>
+<p>不要只问自己想要什么，还要看看自己手里有什么工具和条件。不顾条件凭空设定目标是妄想。</p>
+<p>决定做一件事的时候，先别想成功了是多大的成就，先想想如果失败，这个损失能不能承受。</p>
+<p>人生的常态是根本不知道自己到底应该干什么，就算知道自己该干什么，也不知道怎么干才是对的。</p>
+<p>所以定目标的话，应该是定一个大的方向，然后随时调整。大概就是不要all
+in。有点像梯度下降法。</p>
+<p>自己的偏好</p>
+<p>如果卷有收益的话 卷其实也可以 或者说如果是自己很热爱的事情的话
+也可以去卷 但是我现在还没发现 现在自己倒是挺喜欢cs的
+在这一行干下去也不错</p>
+<p>然后自己的兴趣爱好其实很广泛 就是说 想干的事情很多 这个世界很有趣
+但是我想干的大多数都是需要烧时间的 1. 读万卷书 之前列了一个list
+到时候再找出来看看</p>
+<ol start="2" type="1">
+<li><p>番剧 已经看了很多 但是还是很多很想看的 需要时间</p></li>
+<li><p>自己写文学作品</p></li>
+<li><p>自己创造动画</p></li>
+<li><p>自己做游戏</p></li>
+<li><p>玩那些想玩的游戏</p></li>
+<li><p>研究计算机科学 写代码</p></li>
+<li><p>多交点朋友 聊天 交流思想</p></li>
+<li><p>还想认真学习其他领域的知识 数学 物理 经济学 心理学
+历史等等</p></li>
+</ol>
+<p>多学习 多交流新思想 这是很重要 不然只会变得很狭隘和偏激</p>
+<p>再加几条可能是错误的判断就是 在这里的民营企业打工是没有任何前途的
+（除非卷到比较高的位置 大概是阿里p8这种 就算是这样
+也没有超额收益只是一分耕耘一分收获罢了）
+讨论互联网什么时候能重回巅峰就好像国企大下岗的工人讨论隔壁的钢铁厂什么时候重回巅峰
+遍地是黄金的年代早已经过去 高增长时代已经过去了
+除非下一轮新技术的突破（其实也不是 因为任何时候企业的存活率都是差不多的
+只能说现在不像以前那样有很多低垂的果实
+但个人环境和大环境之间可能有巨大的偏差）
+人口结构问题是这边土地最大的问题 而且基本看不到解决的希望
+还有资产负债表衰退 和日本一样 也就是说 如果不润的话
+留在这里可能基本上只考虑体制了 可能还有国外remote的工作 就是在这生活
+不在这挣钱 当然还有自己搞个体户之类的（这挺难说的）
+总之给民营企业打工是没啥前途的 除非能卷上去 或者 自己特别喜欢</p>
+<p>东亚特色的做题家心态和道德教育，让我们经常把个人的成功归结于勤奋、认真等美德，却忘记了运气其实是人生最重要的因素之一。</p>
+<p>简单的列一下 自己的可能出路 暂时不考虑后代及婚恋
+其实分的也不是很清楚</p>
+<p>好像润比成为北京人还简单一点 去北京的能给户口的单位的话
+不可能买的起房 去不给户口的地方 也要 掏空6个钱包才能买郊区
+户口排队10年起步 清除低端人口是这样的（草 危险发言了）</p>
+<p>有一些是win的选项 个人感觉</p>
+<p>学术：也就是说读研读博然后一直卷下去 卷下去 卷赢了
+当然是一个win的选项 但是问题在于这条路太难了 一是上面说的兴趣广泛
+其实对科研不是很感兴趣 除非利益比较大
+而且国内可能只有华五及以上的cs博士才有比较好的收益
+国外估计也申请不到好的学校
+看硕士（读不读研究生还不好说呢）能不能出成果吧
+还有就是美国排名靠后的博士 可能是低垂的果实 容易申请
+而且读个博比较容易混个身份 海外好学校的博士 关键是我也不可能进去
+科研也是很看运气的吧 个人暂时不倾向于选择这条路
+自己也没能在同龄人中做到很好 能不读就不读吧 具体到时候在看</p>
+<p>考研：感觉自己考试的底子还是在的 数学 英语 专业课 政治
+其中英语和专业课本来就应该学好 考哪里 基本上只有2个选择吧
+中大/北大（软微，深研院） 选中大 可以说完全没有任何收益
+对以后的润不太友好 普通985硕也没有到乱杀的存在 而且感觉环境相对封闭
+可能过的还不如本科 3年的机会成本太高了 北大或许有收益
+如果只是去互联网卷的话 我觉得是没收益的
+但是可能能靠学校的牌子混个好一点的央企和国企吧
+（这个其实也很难说是不是一个win的选项）如果不考虑进互联网的话
+那研究生就努力搞科研 看看自己到底是不是那块料吧 就是稳定
+当然我觉得挺难考的 或许可以看看 选这条路的2个前提
+起码要花一年时间备考</p>
+<p>总体来说 海外码农如果不是税特别高的话 是大于广深公务员的</p>
+<p>还是有工作经验再润会好很多</p>
+<p>出国：这个要说很多 先分地区吧</p>
+<p>日本：有英文项目 但是整英文项目的话
+以我的bg根本申请不到东大，或者京都这种层次的学校 只能考 花费倒也不是很多
+感觉难度其实和考北大差不多 多学个日语 读2年 而且估计只能绑定在日本了吧
+（能拿remote的机会吗 有 但不多） 回国完全没优势 不过东大的硕士
+还是能难进东京google的 还是要挺努力 进日本的本土互联网大厂（indeed
+乐天之类的） 给的比国内互联网大厂少 但是轻松很多
+google可能还有转岗的机会润到美国（基本别想了
+就是L1）但是那几年估计可以专心搞一下科研 看看自己是不是那块料 这么看的话
+日本还行吧 remote才爽 看时间线</p>
+<p>美国： 高风险 高收益 感觉以我现在的实力过去 就是炮灰 硕士的话
+好学校申请不到的 四大没啥希望 但也是一条收益很高的路吧
+大厂起薪就差不多20w刀了 多干几年之后 可能收入会有40w刀
+差不多是智力一般的打工的天花板了 暂时不考虑了 因为自己太弱了
+如果能卷进美帝大厂 绝对是最优解</p>
+<p>欧陆 ：具体再研究 好像工资很低 但是有很多remote的岗位吧 申请欧陆硕
+就要有读博的打算了</p>
+<p>加拿大 ：bcpnp 很好拿身份 但是里面的好学校 感觉我也申请不上 试一试
+3.5到4年 拿pr 读书2年 好像也有10个月的项目 一下好的学校sfu ubc neu uofV
+msc 9月入学7月毕业 有3年工签 省提名 但是在温哥华也是一辈子买不起房的
+具体到时候再看吧 只能说 有去美帝的机会吧
+但是感觉在国内积攒一点工作经验比较好 去那感觉也很难找工 有政策风险</p>
+<p>新加坡 ：很难留的 但是排名高 也不算水吧 听说很累
+而且nus不一定申请的到 这bg还真不好说 有工作经历会好很多
+也不太好找工作</p>
+<p>香港：感觉很一般呀 在那里工作也不可能买房 最多是念个一年水硕
+混个研究生学历 然后再考选调</p>
+<p>考公：分2块说 怎么考上 以及 考上了又怎么样</p>
+<p>怎么考上 毕业那年能考3次 （选调 省考 国考）</p>
+<p>个人感觉一次根本考不上 多考几次才能上岸 要考的话 要提高概率的话
+得入党（这玩意我估计是搞不来了 本科期间无望 ）
+搞个法学的学位（成人高考或者网络教育）法考
+还有搞个硕士学位（这个估计考虑的是香港的水硕了 这还能再考一次选调）原来
+花个几年 估计也能上岸</p>
+<p>没什么好说的 考上了 那也不折腾了 可能就考珠三角这一块吧
+然后有充足时间探索自己的其他事情 坏处就是基本上跳不出去了 也没啥升职空间
+是一个躺平的选项 不是一个赢的选项 如果是读海外硕的话 也能考选调
+但是那润了 其实也不怎么考虑这个了</p>
+<p>工作： 分2种</p>
+<p>其他 比如说 家里蹲 回家思考上一年 其实也还好 毕竟本来也没那么焦虑</p>
+<p>不想读研的原因 3年的机会成本太高了 而且没收益</p>
+<p>公务员&gt;国企</p>
+<p>日本&gt;香港</p>
+<p>选择倒是一个很有意思的东西 可能以后还有</p>
+<p>一个小思考</p>
+<p>润出去容易 还是成为北京人容易</p>
+<p>突然发现要整个香港的身份的话 不读港硕 读海外硕 然后国际工作经验
+硕士学位 2个或以上硕士学位 然后去大公司工作3年的话 那个计划打分会很高
+只不过之后还要7年 那这东西太鸡肋了 如果润了</p>
+<p>就算润欧了 以后还是可以润美 以后再说吧 以后多做一点考虑</p>
+<p>找不到工作也没啥关系 就家里蹲先吧</p>
+<p>整理一条时间线</p>
+<p>要投的厂 多多益善</p>
+<p>字节 腾讯 阿里 拼多多 小红书 知乎 美团 京东 百度 滴滴 小米</p>
+<p>找互联网工作</p>
+<p>日常实习 全年都有</p>
+<p>2024.2月中旬 暑期实习招聘</p>
+<p>2024.7 有提前批 但是有可能有面评 别全投了 （有些有可能有预面试
+没面评）</p>
+<p>2024.7-9 秋招</p>
+<p>2025.3-4 春招</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-高林桑" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="../../2023/12/19/%E9%AB%98%E6%9E%97%E6%A1%91/" class="article-date">
+  	<time datetime="2023-12-19T08:52:15.000Z" itemprop="datePublished">2023-12-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2023/12/19/%E9%AB%98%E6%9E%97%E6%A1%91/">
+        高林
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以读书笔记的方式记录一下 阅读<a
+target="_blank" rel="noopener" href="https://www.zhihu.com/people/gao-lin-54-88">高林</a>老师的精彩回答和一些精彩的话吧</p>
+<h3 id="q-你是一个少数派吗作为一位少数派的经历和心态是什么样的">Q:
+你是一个少数派吗？作为一位少数派的经历和心态是什么样的？</h3>
+<blockquote>
+<p>其实重要的不是你处在什么样的立场上，现代社会的宽容或者冷漠就体现在除了收支平衡、社会地位之外没人关心你其他的东西。</p>
+<p>你打扮的说得过去，不找人借钱，不蹭饭，还会帮人些惠而不费的小忙，出国旅游会给大家带点十几欧的小礼物而不是那个钥匙链糊弄你就是个好朋友。</p>
+<p>至于说你的观点立场什么的，没人在乎你也犯不着去提，除非你碰到讨厌的人，那你就把你的观点包装一下轻松愉快的谈一谈顺便挖苦你看的不顺眼的人一番让他不爽也就够了。</p>
+<p>至于网上少数派就更无所谓了，只要个人隐私不要在网上乱说，最好别太伤害处境糟糕的人就行了。因为处境糟糕的人心态容易失衡生活容易出轨，就跟火药桶一样好不好你挨着它抽根烟，它把你炸死了。</p>
+</blockquote>
+<h3 id="q-既然都看不到未来为何你不及时行乐">Q:
+既然都看不到未来，为何你不及时行乐？</h3>
+<blockquote>
+<p>谢邀我觉得问题不太对，不应该是“既然看不到未来，为何你不及时行乐”，应该是“结局尽人皆知为什么你不及时行乐？”</p>
+<p>因为如果人生真的是一出戏剧，那么它的结局是最没意思的，就是死！</p>
+<p>从那句法国某女士留下的格言的前半句，也就是“没有什么比死更确定的了”出发，那么人生说到底就是一条从摇篮到坟墓的不能回头的单向旅程。那么在这个旅程中不管你作了多少事，说到底都是虚妄的。奥古斯都皇帝在生命的最后说得“我人生的这出闹剧终于结束了”就揭示了这一点。</p>
+<p>那么既然结局尽人皆知，作为一个从出生就注定要死的凡人，我们该不该及时行乐呢？</p>
+<p>太TM该了啊盆友！人生和游戏一样是有结局的，但人生和游戏的不同之处在于，人生的结局到来的时候没有通关评价，如果没有大意外也没有二周目不能继承存档的。所以当你的死的时候，你和奥古斯都皇帝没什么两样。跟更伟大的人物也没什么两样。</p>
+<p>有人在塞维鲁皇帝的骨灰瓮上刻了一行字，以高氏翻译法翻译成中文大概就是“世界都装不下的你，现在被这玩意装了”。想到人生如此凄凉虚妄，难道唯一正确的结论不就是及时行乐么？</p>
+<p>但是！但是来了啊！及时行乐具体要怎么及时行乐呢？如前所述，人生万事皆虚妄，升官发财是虚妄！征服世界也是虚妄！立德立言立功也是虚妄！如果这些都是虚妄，难道吃喝玩乐就不是虚妄了？吃好的是虚妄，喝好的是虚妄，漂亮姑娘或者小鲜肉一样是虚妄。</p>
+<p>你当了一辈子的唐璜或者卡萨诺瓦，跟不知道多少姑娘都是真爱，和你当了一辈子机智的批评者，崇拜者遍欧洲，或者当了一辈子伤感作家，夫人们一提到你就热泪盈眶，其实和你当奥古斯都、当拿破仑、当罗斯恰尔德都没有本质区别。因为万事皆虚妄。</p>
+<p>既然吃喝玩乐和功名利禄没有本质区别，那还及时行得什么乐？因为这个世界上本来就没有乐了啊？这时候我们就要把那位法国女士的格言的后半句祭出来了。</p>
+<p>那位法国无名女士的格言写全了是“没有什么比死再确定的了，也没有什么比什么时候死更不确定的了！”前半句宣布了我们生命的虚妄，后半句告诉我们一更糟糕的事实，就是这个虚妄的生命的搞不好还TM嗷嗷长！</p>
+<p>不做蠢事何以度无涯之人生？所以说到底人生在世并不是为了不做蠢事，而是把有限的生命投入到少数能让我们觉得温暖的蠢事上去。是的这句话原本是雷锋说的，高氏翻译把它翻译成中文了！</p>
+<p>如果我们承认了这个前提，那么及时行乐的标准就有了，或许我追求的东西在别人看来一文不值，或许我做的每一件事在别人看来都是浪费时间，但是人生虚妄啊，你们干的事在我看来一样愚蠢一样一文不值。反正最后通关的时候不打分，不给整体评价，我为什么不可以走到这里就停下来？</p>
+<p>反正世界会一刻不停的把我们推向坟墓，我为什么不可以在这个我觉得温暖的地方坐下来？是的我追求的东西是虚妄的，我的审美、爱憎都是别人灌输的，很可能我就是被一个儿时的童话误导了，但那又怎么样？难道我因此就跟你们有什么不同？</p>
+<p>所谓及时行乐，就是为了自己生活，追求自己想要追求的东西。不被别人引导，听凭内心的召唤。这就是最大的及时行乐。歌德在《少年维特》里让维特说“告诉你个秘密，我最骄纵的就是我的这颗心”（大意如此），这句话就最深刻的揭示了一种及时行乐的态度。</p>
+<p>既然都是干蠢事，为什么我还要排在别人后边干每个人都要干的蠢事？为什么我不干点我想干的蠢事？乔治三世时代伦敦社交界的三大风流浪子里，排第三的是大诗人拜伦，排第二的是日后的乔治四世，排第一的是伟大的布吕迈尔。后来拜伦死了、乔治四世胖到进马车需要坐滑梯，只有布吕迈尔，把摄政时期的风流浮华之风保持到了人生的最后。当他因为躲债流亡到巴黎的时候，法国的一票诗人作家艺术家把他当成一尊活神崇拜。有一天他跟崇拜者们一起吃午饭，有人问他“您生平最刻骨铭心的爱情是什么？”</p>
+<p>布吕迈尔回答“哦那是在一个下午，我坐在阳光里，看着她无声的走来，又无声的远去！”</p>
+<p>人生万事皆虚妄，但只要你在某一个瞬间感受到了这样的温暖，你的人生的这出闹剧，就至少有了一首温柔的插曲！</p>
+</blockquote>
+<h3 id="q-你会认为人类诞生于世界就是一种荒唐一种错误吗">Q:
+你会认为，人类诞生于世界就是一种荒唐，一种错误吗？</h3>
+<blockquote>
+<p>荒唐或者错误都是用来评价选择的。也就是说你有可能不荒唐、不错误，才有荒唐、错误可言。但出生这事没得选，出生之前我们当中的绝大部分人都没有被征求过意见。既然没被征求过意见，也就可以认为绝大部分人并没有选择过自己要出生。</p>
+</blockquote>
+<blockquote>
+<p>当然你可以说不想活可以去死啊。但死是存在选择的，所以死本身事有轻于鸿毛或者重于泰山的。这刚好是死和出生最大的区别，死可以选择但出生没得选。</p>
+</blockquote>
+<blockquote>
+<p>从这个意义上说“不想活可以死”的逻辑套到出生这事上应该是“不想出生我给你塞回去啊！”但截至目前为止还没有塞回去的技术。所以我们还是得面对出生是一个我们被迫接受的既成事实这个局面。</p>
+</blockquote>
+<blockquote>
+<p>所以既然没得选、也没人让我们选，那出生就无所谓错或者对、荒唐或者不荒唐，因为我们压根没选过。</p>
+</blockquote>
+<blockquote>
+<p>那么从生命是一个被动接受的既成事实这个前提出发另一个既成事实也就好接受多了。那就是这个无法抗拒的生命终究是有尽头的。</p>
+</blockquote>
+<blockquote>
+<p>我们不由自主的被带到这个人间，幸好还有一个不由分说把我们弄走的阶段。从这个意义上说贪生怕死反而是很奇怪的。你出生就说什么都不肯死，这和到了一个地方就说什么都不肯走有什么区别呢？</p>
+</blockquote>
+<blockquote>
+<p>当然人贪生怕死的理由很多，比如人生的各种快乐、各种羁绊、让你舍不得死。但客观上随着年龄的增长你会发现两个事实。
+第一你给自己找到的所有爱好、所有快乐，其实在别人眼中很可能都根本不是快乐。客观的角度说读书、听音乐、骑马、打马球、集邮、玩ps5、打奖杯都是没有任何意义的。它们的意义都是我们自己赋予它们的。吾之蜜糖人之砒霜。我们觉得撒不开手的东西其实根本没什么可撒不开手的。</p>
+</blockquote>
+<blockquote>
+<p>第二是你在爱、爱好、兴趣里花费的情感越多，你就越不怕死。因为随着时间的推移你爱的人、动物、风景，都会消亡。生命尽头的德加经常用仅存的视力出门散步，但十次有八次他都会走回过去的家。那套房子值三十万法郎，他认为一个艺术家不该为了房子浪费三十万法郎所以他选择搬走。但搬走之后那房子就被拆了，他站在曾经是他的家的那条街上，背后的一切都没有改变，眼前的一切却已经物是人非。这种情况很多体验过拆迁、卖房子的人都有体会。</p>
+</blockquote>
+<blockquote>
+<p>人还活着“但足迹已经被人擦去”，但相比这些没有生命的东西，更脆弱的其实是人。我们认为有些东西是坚强的、不言自明的。比如亲情、比如爱情。但亲人这个身份在独生子女时代往往意味着年龄的差距。当他们离去的时候我们其实无能为力。至于爱情就更是如此，我们相信爱情是人生第一大事，为了这个付出一切在所不惜。但事实上如果你要在恋爱开始的时候买个什么东西跟爱情比比寿命，我建议你买iPhone，为什么呢？因为苹果一年一换。为什么送女朋友的礼物默认都是iPhone呢？也是为了提醒大家人世无常。</p>
+</blockquote>
+<blockquote>
+<p>生活这个乏味的旅程里，我们给自己找了各种各样的意义、追求，最后却是两手空空。但这种两手空空刚好是为了我们好。</p>
+</blockquote>
+<blockquote>
+<p>当你意识到你体验到的爱里绝大部分是欺骗，爱你的人、动物，你爱的东西、场景、生活都已经成了灰烬。这时候默默降下的死亡的大幕就成了一种安慰。</p>
+</blockquote>
+<blockquote>
+<p>如果有死后的世界，我爱的人、物、事都在那一边，我有什么可恐惧？如果没有死后的世界，让这个不断持续的闹剧就此收场也没什么不好。</p>
+</blockquote>
+<blockquote>
+<p>最终让我们不畏惧死亡的其实不是智慧，而是一种厌倦。</p>
+</blockquote>
+<p>自己为啥写不出这样的文字 中心思想就是follow your heart</p>
+<p>To be continued...</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-Soviet-political-jokes" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
