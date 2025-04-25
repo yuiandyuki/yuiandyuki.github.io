@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>My New Hugo Site</title>
+    <link>https://yuiandyuki.github.io/</link>
+    <description>Recent content on My New Hugo Site</description>
+    <generator>Hugo -- 0.146.7</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 25 Apr 2025 11:11:52 +0800</lastBuildDate>
+    <atom:link href="https://yuiandyuki.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test</title>
+      <link>https://yuiandyuki.github.io/posts/test/</link>
+      <pubDate>Fri, 25 Apr 2025 11:11:52 +0800</pubDate>
+      <guid>https://yuiandyuki.github.io/posts/test/</guid>
+      <description>&lt;p&gt;TEST&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
