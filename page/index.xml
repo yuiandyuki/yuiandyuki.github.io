@@ -2,34 +2,34 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Pages on 拉康的a</title>
-        <link>luvstar.top/page/</link>
+        <link>https://yuiandyuki.github.io/page/</link>
         <description>Recent content in Pages on 拉康的a</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>lakang</copyright>
-        <lastBuildDate>Fri, 25 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="luvstar.top/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 25 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://yuiandyuki.github.io/page/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>About</title>
-        <link>luvstar.top/about/</link>
+        <link>https://yuiandyuki.github.io/about/</link>
         <pubDate>Fri, 25 Apr 2025 00:00:00 +0000</pubDate>
         
-        <guid>luvstar.top/about/</guid>
+        <guid>https://yuiandyuki.github.io/about/</guid>
         <description>&lt;p&gt;生活，读书，思考&lt;/p&gt;
 </description>
         </item>
         <item>
         <title>Archives</title>
-        <link>luvstar.top/archives/</link>
+        <link>https://yuiandyuki.github.io/archives/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
         
-        <guid>luvstar.top/archives/</guid>
+        <guid>https://yuiandyuki.github.io/archives/</guid>
         <description></description>
         </item>
         <item>
         <title>Links</title>
-        <link>luvstar.top/links/</link>
+        <link>https://yuiandyuki.github.io/links/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>luvstar.top/links/</guid>
+        <guid>https://yuiandyuki.github.io/links/</guid>
         <description>&lt;p&gt;友链&lt;/p&gt;
 &lt;p&gt;有待完善&lt;/p&gt;
 &lt;!-- To use this feature, add `links` section to frontmatter.
@@ -52,10 +52,10 @@ links:
         </item>
         <item>
         <title>Search</title>
-        <link>luvstar.top/search/</link>
+        <link>https://yuiandyuki.github.io/search/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>luvstar.top/search/</guid>
+        <guid>https://yuiandyuki.github.io/search/</guid>
         <description></description>
         </item>
         

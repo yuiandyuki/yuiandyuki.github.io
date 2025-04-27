@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Categories on 拉康的a</title>
-        <link>luvstar.top/categories/</link>
+        <link>https://yuiandyuki.github.io/categories/</link>
         <description>Recent content in Categories on 拉康的a</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>lakang</copyright>
-        <lastBuildDate>Sat, 26 Apr 2025 18:24:19 +0800</lastBuildDate><atom:link href="luvstar.top/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 26 Apr 2025 18:24:19 +0800</lastBuildDate><atom:link href="https://yuiandyuki.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Reading</title>
-        <link>luvstar.top/categories/reading/</link>
+        <link>https://yuiandyuki.github.io/categories/reading/</link>
         <pubDate>Sat, 26 Apr 2025 18:24:19 +0800</pubDate>
         
-        <guid>luvstar.top/categories/reading/</guid>
+        <guid>https://yuiandyuki.github.io/categories/reading/</guid>
         <description></description>
         </item>
         
