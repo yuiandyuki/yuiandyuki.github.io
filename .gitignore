@@ -1,0 +1,18 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# private work in progress — never pushed to the public repo
+drafts/
+
+# design explorations (screenshots are large)
+design/
+
+# local tooling
+.claude/
+.DS_Store
+*.log
+.env*

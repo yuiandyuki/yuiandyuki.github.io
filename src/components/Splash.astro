@@ -1,0 +1,53 @@
+---
+// The newest post as the big opening panel of the home page.
+import { Image } from 'astro:assets';
+import type { Post } from '../lib/posts';
+import { postUrl, ymd } from '../lib/posts';
+import { isVerticalFriendly, kindOf, seedOf, splitTitle, titleColumns, verticalFit } from '../lib/manga';
+import { HTML_LANG, t } from '../i18n';
+import Balloon from './Balloon.astro';
+
+interface Props { post: Post }
+const { post } = Astro.props;
+const d = post.data;
+const seed = seedOf(post);
+const { main, sub } = splitTitle(d.title);
+const vertical = isVerticalFriendly(main) && [...main].length <= 16;
+const fit = verticalFit(main, 360, 68);
+// Break into columns at word boundaries: 为什么 / 又开始 / 写博客.
+const columns = vertical ? titleColumns(main, Math.ceil([...main].length / fit.perColumn), post.contentLang === 'ja' ? 'ja' : 'zh') : [];
+const perColumn = Math.max(fit.perColumn, ...columns.map((c) => [...c].length));
+// A flat title keeps its subtitle, unless the subtitle can have the narration box to
+// itself (no description), as it does under a vertical title.
+const hTitle = sub && !d.description ? main : d.title;
+const len = [...hTitle].length;
+const hSize = len <= 12 ? 52 : len <= 22 ? 44 : 36;
+const narration = d.description || sub;
+const { year, month, day } = ymd(d.date);
+const pad = (n: number) => String(n).padStart(2, '0');
+const ui = t(post.lang);
+// An untranslated post shows its Chinese words inside a page in another language.
+const wordsLang = post.contentLang !== post.lang ? HTML_LANG[post.contentLang] : undefined;
+---
+<a class:list={['pn', 'splash', { 'h-title': !vertical }]} href={postUrl(post)} aria-label={`${ui.latest}: ${d.title} (${kindOf(post)}, ${year}-${pad(month)}-${pad(day)})`}>
+  {d.cover ? (
+    <Image class="cover-img" src={d.cover} alt="" widths={[800, 1600]} sizes="(max-width: 900px) 100vw, 850px" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+  ) : (
+    <>
+      <div class="tn red g-red"></div>
+      <div class="gen" data-gen="focus" data-fx={vertical ? '.30' : '.36'} data-fy=".45" data-ix=".24" data-iy=".36" data-n="460" data-seed={seed}></div>
+    </>
+  )}
+  <p class="badge">{ui.latest}</p>
+  <p class="epno"><b>{pad(month)}.{pad(day)}</b></p>
+  {vertical ? (
+    <h2 class="sp-title" lang={wordsLang} style={`--tfs:${fit.size}px;--per:${perColumn}`}><span class="ttl">{columns.map((c, i) => <>{i > 0 && <br />}{c}</>)}</span></h2>
+  ) : (
+    <h2 class="sp-title h" lang={wordsLang} style={`--tfs:${hSize}px`}><span class="ttl">{hTitle}</span></h2>
+  )}
+  <p class="sp-kind">{kindOf(post)}</p>
+  {d.balloon && <Balloon text={d.balloon} type={d.balloonType} vertical={vertical} tail={vertical ? '.78,-.34' : '-.3,1.3'} class="sp-bl" seed={seed} lang={wordsLang} />}
+  {narration && <p class="cap sp-narr" lang={wordsLang}>{narration}</p>}
+  <p class="sp-meta">{year} · {pad(month)} · {pad(day)}</p>
+  <p class="sp-go">{ui.read}</p>
+</a>

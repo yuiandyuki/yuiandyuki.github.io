@@ -1,0 +1,32 @@
+---
+import 'katex/dist/katex.min.css';
+import Layout from '../layouts/Layout.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import { localePath, t, type Lang } from '../i18n';
+import { Content as Zh } from '../content/about.md';
+import { Content as En } from '../content/about.en.md';
+import { Content as Ja } from '../content/about.ja.md';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const ui = t(lang);
+const Content = { zh: Zh, en: En, ja: Ja }[lang];
+const letters = [...ui.aboutPage.sfx];
+---
+<Layout lang={lang} title={ui.aboutPage.title} mini current={localePath(lang, '/about/')}>
+  <section class="pg page-pg" aria-labelledby="h-about">
+    <header class="toc-head">
+      <div class="tn red g-corner"></div>
+      <div class="gen" data-gen="focus" data-fx=".22" data-fy=".5" data-ix=".16" data-iy=".3" data-n="240" data-seed="9"></div>
+      <h1 id="h-about" aria-label={ui.aboutPage.title}>{letters.map((c) => <span class="sh" data-c={c}>{c}</span>)}<small>{ui.aboutPage.sub}</small></h1>
+    </header>
+    <div class="page-body">
+      <div class="prose">
+        <Content />
+      </div>
+      <aside class="toc-side" aria-label={ui.author}>
+        <AuthorBox lang={lang} />
+      </aside>
+    </div>
+  </section>
+</Layout>

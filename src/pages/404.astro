@@ -1,0 +1,23 @@
+---
+// One 404 for every language, so it speaks all three.
+import Layout from '../layouts/Layout.astro';
+import Sfx from '../components/Sfx.astro';
+import { ui } from '../i18n';
+---
+<Layout lang="zh" title="404" mini>
+  <section class="pg page-pg" aria-label="404">
+    <div class="pn lost">
+      <div class="gen" data-gen="focus" data-fx=".5" data-fy=".5" data-ix=".34" data-iy=".32" data-n="520" data-seed="404"></div>
+      <Sfx text="咦？！" seed={404} class="ol" />
+      <p class="bl" data-gen="balloon" data-b="shout" data-sp="24" data-seed="4">
+        {ui.zh.notFound.title}
+        <small>
+          <a href="/">{ui.zh.notFound.back}</a><br />
+          <span lang="en">{ui.en.notFound.title} <a href="/en/">{ui.en.notFound.back}</a></span><br />
+          <span lang="ja">{ui.ja.notFound.title} <a href="/ja/">{ui.ja.notFound.back}</a></span>
+        </small>
+      </p>
+      <p class="nombre-big" aria-hidden="true">404</p>
+    </div>
+  </section>
+</Layout>

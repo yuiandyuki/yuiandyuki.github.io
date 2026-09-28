@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TocList from '../components/TocList.astro';
+import type { Post } from '../lib/posts';
+import { localePath, t, tagLabel, type Lang } from '../i18n';
+
+interface Props { lang: Lang; tag: string; volume: number; posts: Post[] }
+const { lang, tag, volume, posts } = Astro.props;
+const ui = t(lang);
+const label = tagLabel(tag, lang);
+const letters = [...label];
+---
+<Layout lang={lang} title={`${ui.volumePage.title}「${label}」`} mini current={localePath(lang, '/tags/')}>
+  <section class="pg toc-pg wide" aria-labelledby="h-vol">
+    <header class="toc-head">
+      <div class="tn red g-corner"></div>
+      <div class="gen" data-gen="speed" data-n="46" data-seed={volume * 13 + 5}></div>
+      <h1 id="h-vol">{letters.map((c) => <span class="sh" data-c={c}>{c}</span>)}<small>{ui.volumePage.title} {ui.volumePage.vol(volume)}</small></h1>
+      <p class="issue"><b>{ui.volumePage.count(posts.length)}</b><a href={localePath(lang, '/tags/')}>{ui.volumePage.back}</a></p>
+    </header>
+    <div class="toc-main">
+      <TocList lang={lang} posts={posts} showYear />
+    </div>
+  </section>
+</Layout>

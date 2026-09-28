@@ -1,0 +1,17 @@
+---
+// 描き文字: hand-lettered sound effect; each character tilts on its own.
+import { sfxLetters } from '../lib/manga';
+
+interface Props {
+  text: string;
+  seed: number;
+  class?: string;
+  style?: string;
+  lang?: string;
+}
+const { text, seed, class: extra = '', style, lang } = Astro.props;
+const letters = sfxLetters(text, seed);
+---
+<p class:list={['sfx', extra]} style={style} lang={lang} aria-hidden="true">
+  {letters.map(({ c, style }) => <span data-c={c} style={style}>{c}</span>)}
+</p>

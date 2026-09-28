@@ -1,0 +1,18 @@
+---
+import { site } from '../site.config';
+import { localePath, t, type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const ui = t(lang);
+const year = new Date().getFullYear();
+---
+<footer class="oku">
+  <div class="oku-box">
+    {/* 徒然 stays in kanji in every language; English adds its reading. */}
+    <h2><span lang="ja">徒然</span>{lang === 'en' && <em class="reading">Tsurezure</em>}<small>{ui.tagline}</small></h2>
+    <p class="fine">
+      © {site.since}–{year} {site.author}　·　<a href={localePath(lang, '/rss.xml')}>RSS</a>　·　<a href={site.github}>GitHub</a>　·　{ui.footer.rights}
+    </p>
+  </div>
+</footer>

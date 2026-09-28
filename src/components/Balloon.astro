@@ -1,0 +1,24 @@
+---
+// A speech balloon; the page script draws its outline to fit the text.
+// Line breaks: a newline or " / " in the text.
+interface Props {
+  text: string;
+  type?: 'talk' | 'shout' | 'think' | 'elec';
+  vertical?: boolean;
+  tail?: string; // "x,y" relative to the balloon box, where the tail points
+  class?: string;
+  seed?: number;
+  lang?: string;
+}
+const { text, type = 'talk', vertical = false, tail, class: extra = '', seed = 0, lang } = Astro.props;
+const TAILS = { talk: '-.2,1.35', think: '-.2,1.5', shout: '-.3,1.25', elec: '-.62,.18' };
+const lines = text.split(/\n|\s\/\s/);
+---
+<p
+  class:list={['bl', { v: vertical }, extra]}
+  data-gen="balloon"
+  data-b={type}
+  data-tail={tail ?? TAILS[type]}
+  data-seed={seed}
+  lang={lang}
+>{lines.map((line, i) => <>{i > 0 && <br />}{line}</>)}</p>

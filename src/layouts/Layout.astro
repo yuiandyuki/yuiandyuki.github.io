@@ -1,0 +1,72 @@
+---
+import { site } from '../site.config';
+import { getPosts } from '../lib/posts';
+import { wordCount } from '../lib/manga';
+import { HTML_LANG, LANGS, localePath, splitLocale, t, type Lang } from '../i18n';
+import Defs from '../components/Defs.astro';
+import Masthead from '../components/Masthead.astro';
+import Colophon from '../components/Colophon.astro';
+import '../styles/manga.css';
+
+interface Props {
+  lang: Lang;
+  title?: string;
+  description?: string;
+  mini?: boolean; // compact masthead for inner pages
+  current?: string; // active nav href
+  image?: string; // og:image
+}
+const { lang, title, description = t(lang).description, mini = false, current, image } = Astro.props;
+const ui = t(lang);
+const pageTitle = title ? `${title} · ${site.title}` : `${site.title} · ${ui.tagline}`;
+const canonical = new URL(Astro.url.pathname, site.url);
+// The same page in every language (every page exists in all three).
+const [, basePath] = splitLocale(Astro.url.pathname);
+const alternates = LANGS.map((l) => ({ lang: l, href: new URL(localePath(l, basePath), site.url).href }));
+
+// The counter counts the Chinese originals, whatever the page language.
+const posts = await getPosts();
+// Chinese fonts always load (untranslated posts show through in Chinese); the page's own set on top.
+const fontSets = lang === 'zh' ? ['zh'] : ['zh', lang];
+---
+<!doctype html>
+<html lang={HTML_LANG[lang]}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {alternates.map(({ lang: l, href }) => <link rel="alternate" hreflang={HTML_LANG[l]} href={href} />)}
+    <link rel="alternate" hreflang="x-default" href={alternates[0].href} />
+    <link rel="alternate" type="application/rss+xml" title={`${site.title} (${ui.nav.rss})`} href={localePath(lang, '/rss.xml')} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#FAF8F3" />
+    <meta property="og:type" content={title ? 'article' : 'website'} />
+    <meta property="og:title" content={title ?? site.title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={site.title} />
+    <meta property="og:locale" content={HTML_LANG[lang].replace('-', '_')} />
+    {image && <meta property="og:image" content={new URL(image, site.url)} />}
+    <meta name="generator" content={Astro.generator} />
+    {/* Fonts load without blocking the first paint; the CSS names fallbacks until they arrive. */}
+    {fontSets.map((set) => (
+      <link rel="stylesheet" href={`/fonts/${set}.css`} media="print" onload="this.media='all'" />
+    ))}
+    <noscript>{fontSets.map((set) => <link rel="stylesheet" href={`/fonts/${set}.css`} />)}</noscript>
+  </head>
+  <body>
+    <a class="skip" href="#main">{ui.skip}</a>
+    <Defs />
+    <Masthead lang={lang} mini={mini} current={current} words={wordCount(posts)} basePath={basePath} />
+    <main id="main">
+      <slot />
+    </main>
+    <Colophon lang={lang} />
+    <script>
+      import '../scripts/manga.ts';
+    </script>
+  </body>
+</html>

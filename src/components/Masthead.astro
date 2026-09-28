@@ -1,0 +1,51 @@
+---
+import { site } from '../site.config';
+import { LANGS, SWITCH_LABEL, localePath, navFor, t, type Lang } from '../i18n';
+import Nixie from './Nixie.astro';
+
+interface Props {
+  lang: Lang;
+  mini?: boolean;
+  current?: string; // href of the active nav item
+  words: number;
+  basePath: string; // this page's path without the language prefix
+}
+const { lang, mini = false, current, words, basePath } = Astro.props;
+const ui = t(lang);
+const Logo = mini ? 'div' : 'h1';
+// Distance to a famously long novel, for the joke under the counter.
+const SANTI = 880000;
+---
+<header class:list={['mast', { mini }]}>
+  <div class="mast-top">
+    <span class="motto-top">「{ui.tagline}」</span>
+    <nav class="langs push" aria-label="Language">
+      {LANGS.map((l) => (
+        <a href={localePath(l, basePath)} hreflang={l} lang={l} aria-current={l === lang ? 'true' : undefined}>{SWITCH_LABEL[l]}</a>
+      ))}
+    </nav>
+    <a class="url" href={localePath(lang, '/')}>LUVSTAR.TOP</a>
+  </div>
+  <div class="mast-main">
+    <Logo class="logo">
+      <a href={localePath(lang, '/')} style="display:flex;align-items:flex-end;text-decoration:none" aria-label={`${site.title} · ${ui.nav.cover}`}>
+        <span class="cn" lang="zh-CN">{site.logo.main}</span><span class="a">{site.logo.accent}</span>
+      </a>
+    </Logo>
+    <div class="mast-mid">
+      <nav aria-label={ui.nav.contents}>
+        <ul class="nav">
+          {navFor(lang).map((item) => (
+            <li><a href={item.href} aria-current={item.href === current ? 'page' : undefined}><b>{item.label}</b></a></li>
+          ))}
+          <li><a href={localePath(lang, '/rss.xml')}><b>{ui.nav.rss}<i>RSS</i></b></a></li>
+        </ul>
+      </nav>
+    </div>
+    {!mini && (
+      <Nixie value={words} caption={ui.counter.caption} unit={ui.counter.unit} label={ui.counter.label(words)}>
+        {ui.counter.note}<span class="nx-joke">{ui.counter.joke(Math.max(0, SANTI - words).toLocaleString('en-US'))}</span>
+      </Nixie>
+    )}
+  </div>
+</header>

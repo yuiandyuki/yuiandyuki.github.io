@@ -1,0 +1,40 @@
+---
+// The drawn layer of a panel: tone / speed lines / focus lines, plus a scene.
+// Priority: the author's own drawing (cover) > a scene > a tone.
+import { Image } from 'astro:assets';
+import type { Post } from '../lib/posts';
+import { builtinScene, customScene, seedOf, toneOf, type Tone } from '../lib/manga';
+import { ymd } from '../lib/posts';
+
+interface Props {
+  post: Post;
+  big?: boolean; // title page: denser tone, more stars
+}
+const { post, big = false } = Astro.props;
+const seed = seedOf(post);
+const scene = builtinScene(post);
+const custom = customScene(post);
+const SCENE_TONE: Record<string, Tone | 'none'> = { pole: 'sky', trees: 'night', tv: 'none', calendar: 'none' };
+const tone: Tone | 'none' = post.data.cover
+  ? 'none'
+  : post.data.tone ?? (scene ? SCENE_TONE[scene] : custom ? 'none' : toneOf(post));
+const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+const { month, day } = ymd(post.data.date);
+---
+{post.data.cover && <Image class="cover-img" src={post.data.cover} alt="" widths={[640, 1280]} sizes="(max-width: 900px) 100vw, 1184px" />}
+{tone === 'speed' && <div class="gen" data-gen="speed" data-n={big ? 110 : 78} data-seed={seed}></div>}
+{tone === 'focus' && <div class="gen" data-gen="focus" data-fx=".5" data-fy=".42" data-ix=".34" data-iy=".3" data-n={big ? 420 : 300} data-seed={seed} data-wt=".8"></div>}
+{tone === 'tone' && <div class="tf flat"></div>}
+{tone === 'sky' && <div class="tn g-sky"></div>}
+{tone === 'red' && <div class="tn red g-red"></div>}
+{tone === 'night' && (
+  <>
+    <div class:list={['tn', big ? 'g-night-l' : 'g-night']}></div>
+    <div class="gen stars" data-gen="stars" data-n={big ? 46 : 26} data-top={big ? '.6' : '.55'} data-seed={seed}></div>
+  </>
+)}
+{scene === 'pole' && <svg class="pole" aria-hidden="true" preserveAspectRatio="xMaxYMax meet"><use href="#pole" /></svg>}
+{scene === 'trees' && <svg class="trees" aria-hidden="true" preserveAspectRatio="xMidYMax meet"><use href="#trees" /></svg>}
+{scene === 'tv' && <div class="tv" aria-hidden="true"><div class="tf"></div><span lang="ja">次回予告</span></div>}
+{scene === 'calendar' && <div class="cal" aria-hidden="true"><span>{MONTHS[month - 1]}</span><b>{day}</b></div>}
+{custom && <Fragment set:html={custom} />}

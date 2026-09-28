@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TocList from '../components/TocList.astro';
+import { getPosts, groupByYear } from '../lib/posts';
+import { localePath, t, type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const ui = t(lang);
+const posts = await getPosts({ lang });
+const years = groupByYear(posts);
+const letters = [...ui.contents.title];
+---
+<Layout lang={lang} title={ui.contents.title} mini current={localePath(lang, '/archive/')}>
+  <section class="pg toc-pg wide" aria-labelledby="h-all">
+    <header class="toc-head">
+      <div class="tn red g-corner"></div>
+      <div class="gen" data-gen="speed" data-n="46" data-seed="31"></div>
+      <h1 id="h-all">{letters.map((c) => <span class="sh" data-c={c}>{c}</span>)}<small>{ui.contents.total(posts.length)}</small></h1>
+    </header>
+    <div class="toc-main">
+      {years.length === 0 && <p class="toc-empty"><b>空</b>{ui.contents.empty}</p>}
+      {years.map(([year, list]) => (
+        <section aria-label={String(year)}>
+          <h2 class="toc-year">{year}<small>{ui.contents.year(list.length)}</small></h2>
+          <TocList lang={lang} posts={list} />
+        </section>
+      ))}
+    </div>
+  </section>
+</Layout>

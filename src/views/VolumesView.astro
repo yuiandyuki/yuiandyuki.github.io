@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getPosts, tagCounts } from '../lib/posts';
+import { hashString } from '../lib/manga';
+import { localePath, t, tagLabel, type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const ui = t(lang);
+const tags = tagCounts(await getPosts({ lang }));
+const TONES = ['g-sky', 'g-night', 'g-red', 'g-corner'];
+const letters = [...ui.volumePage.title];
+---
+<Layout lang={lang} title={ui.volumePage.title} mini current={localePath(lang, '/tags/')}>
+  <section class="pg toc-pg wide" aria-labelledby="h-vols">
+    <header class="toc-head">
+      <div class="tn red g-corner"></div>
+      <div class="gen" data-gen="speed" data-n="46" data-seed="17"></div>
+      <h1 id="h-vols">{letters.map((c) => <span class="sh" data-c={c}>{c}</span>)}<small>{ui.volumePage.sub}</small></h1>
+    </header>
+    {tags.length === 0 ? (
+      <p class="toc-empty"><b>空</b>{ui.volumePage.empty}</p>
+    ) : (
+      <ul class="vols">
+        {tags.map(([tag, count], i) => (
+          <li>
+            <a class="pn vol" href={localePath(lang, `/tags/${tag}/`)} aria-label={`${ui.volumePage.vol(i + 1)} ${tagLabel(tag, lang)} · ${ui.volumePage.count(count)}`}>
+              <div class:list={['tn', TONES[hashString(tag) % TONES.length], { red: hashString(tag) % 3 === 0 }]}></div>
+              <p class="vn">{ui.volumePage.vol(i + 1)}</p>
+              <p class:list={['vt', { latin: /^[\x00-\x7f]+$/.test(tagLabel(tag, lang)) }]}>{tagLabel(tag, lang)}</p>
+              <p class="vc">{ui.volumePage.count(count)}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+</Layout>

@@ -1,0 +1,105 @@
+---
+import { render } from 'astro:content';
+import 'katex/dist/katex.min.css';
+import Layout from '../layouts/Layout.astro';
+import PanelArt from '../components/PanelArt.astro';
+import PostPanel from '../components/PostPanel.astro';
+import Balloon from '../components/Balloon.astro';
+import Sfx from '../components/Sfx.astro';
+import { isDraft, postUrl, ymd, type Post } from '../lib/posts';
+import { builtinScene, dotDate, isVerticalFriendly, kindOf, seedOf, splitTitle, titleColumns } from '../lib/manga';
+import { HTML_LANG, localePath, t, type Lang } from '../i18n';
+import { site } from '../site.config';
+
+interface Props { lang: Lang; post: Post; newer?: Post; older?: Post }
+const { lang, post, newer, older } = Astro.props;
+const ui = t(lang);
+const d = post.data;
+const { Content, remarkPluginFrontmatter: stats } = await render(post.translation ?? post.source);
+const seed = seedOf(post);
+const kind = kindOf(post);
+const { year, month, day } = ymd(d.date);
+const pad = (n: number) => String(n).padStart(2, '0');
+// When there is no translation yet, the Chinese original shows through, marked as Chinese.
+const wordsLang = post.contentLang !== lang ? HTML_LANG[post.contentLang] : undefined;
+
+// Title page lettering: short Chinese/Japanese titles stand top-to-bottom; the rest lie flat.
+const { main, sub } = splitTitle(d.title);
+const mainLength = [...main].length;
+const vertical = isVerticalFriendly(main) && mainLength <= 12;
+// Up to five characters stand in one column; longer titles break into two or three
+// columns at word boundaries (为什么 / 又开始 / 写博客).
+const columns = vertical ? titleColumns(main, mainLength <= 5 ? 1 : mainLength <= 8 ? 2 : 3, post.contentLang === 'ja' ? 'ja' : 'zh') : [];
+const perColumn = Math.max(0, ...columns.map((c) => [...c].length));
+const titleSize = vertical ? Math.min(118, Math.floor(500 / Math.max(3, perColumn))) : mainLength <= 10 ? 64 : mainLength <= 18 ? 52 : mainLength <= 32 ? 44 : 36;
+const subVertical = sub && isVerticalFriendly(sub) && [...sub].length <= 18;
+// The title hangs 50px in from the right edge; the vertical subtitle stands just left of it.
+const subRight = vertical ? Math.round(50 + columns.length * titleSize * 1.04 + 26) : 198;
+const letters = [...main];
+const BRACKETS = new Set(['《', '》', '「', '」', '『', '』', '（', '）']);
+const smallFirst = vertical && letters.length >= 3 && /^[读看写听谈论记読]$/.test(letters[0]);
+const darkArt = d.tone === 'night' || builtinScene(post) === 'trees';
+const words = stats.words.toLocaleString(lang === 'en' ? 'en-US' : 'zh-CN');
+const letterUrl = `${site.repo}/issues/new?title=${encodeURIComponent(`${ui.post.letterTitle}: ${d.title}`)}`;
+// At the end: the newer post if there is one, otherwise the older one.
+const neighbour = newer ?? older;
+const translated = post.translation?.data;
+---
+<Layout lang={lang} title={d.title} description={d.description} mini current={localePath(lang, '/archive/')}>
+  <article>
+    <section class="pg tobira-pg" aria-label={d.title}>
+      <div class="tb-wrap">
+        <div class="pn tobira" data-htitle={vertical ? undefined : ''}>
+          <PanelArt post={post} big />
+          <p class="tb-no"><span>{kind}</span>{d.series && <b>{d.series}</b>}{isDraft(post.source) && <span style="background:var(--ink)">{ui.post.draft}</span>}</p>
+          {sub && <p class:list={['cap', 'tb-sub', subVertical ? 'v' : 'h']} lang={wordsLang} style={subVertical ? `--subr:${subRight}px` : undefined} aria-hidden="true">{sub}</p>}
+          <p class="cap tb-meta"><b>{year}-{pad(month)}-{pad(day)}</b> · {ui.post.meta(words, stats.minutes)}</p>
+          {d.balloon && <Balloon text={d.balloon} type={d.balloonType} seed={seed} lang={wordsLang} />}
+          {d.sfx && <Sfx text={d.sfx} seed={seed} class={darkArt ? 'brush w' : 'ol'} lang={HTML_LANG[post.sfxLang]} />}
+        </div>
+        <h1 class:list={['tb-title', { h: !vertical }]} lang={wordsLang} style={`--tfs:${titleSize}px;--per:${perColumn}`} data-cols={columns.length || undefined} aria-label={d.title}>
+          {vertical
+            ? columns.map((column, ci) => (
+                <>
+                  {ci > 0 && <i class="br" aria-hidden="true"></i>}
+                  {[...column].map((c, i) => (
+                    <span class:list={{ s: smallFirst && ci === 0 && i === 0, bk: BRACKETS.has(c) }} data-c={c}>{c}</span>
+                  ))}
+                </>
+              ))
+            : <span data-c={main}>{main}</span>}
+        </h1>
+      </div>
+      {translated && <p class="tr-note">{ui.post.translated(translated.translator, translated.reviewed)}</p>}
+    </section>
+
+    <section class="pg text-pg" aria-label={d.title}>
+      <p class="hashira r" aria-hidden="true" lang={wordsLang}>{main}{sub && <><b>　◆　</b>{sub}</>}</p>
+      <div class="prose" lang={wordsLang}>
+        {wordsLang && <aside class="narr" lang={HTML_LANG[lang]}><span class="lbl">※</span><p>{ui.post.original}</p></aside>}
+        <Content />
+      </div>
+    </section>
+
+    <section class:list={['pg', 'end-pg', { solo: !neighbour }]} aria-label={ui.post.fin}>
+      <div class="tsuzuku-row">
+        {d.aori && <p class="aori" lang={wordsLang}>★ {d.aori}</p>}
+        <p class="fin" aria-label={ui.post.fin}><span data-c={ui.post.fin}>{ui.post.fin}</span></p>
+      </div>
+      {neighbour && <PostPanel post={neighbour} label={newer ? ui.post.next : ui.post.prev} class="next-pn" />}
+      <div class="end-side">
+        <ul class="pager" aria-label={`${ui.post.prev} / ${ui.post.next}`}>
+          {older && <li><a href={postUrl(older)}><span class="d" aria-hidden="true">←</span><span class="s">{ui.post.prev} · {dotDate(older.data.date)}</span><span class="t" lang={older.contentLang !== lang ? HTML_LANG[older.contentLang] : undefined}>{older.data.title}</span></a></li>}
+          {newer && <li><a href={postUrl(newer)}><span class="d" aria-hidden="true">→</span><span class="s">{ui.post.next} · {dotDate(newer.data.date)}</span><span class="t" lang={newer.contentLang !== lang ? HTML_LANG[newer.contentLang] : undefined}>{newer.data.title}</span></a></li>}
+          <li><a href={localePath(lang, '/archive/')}><span class="d" aria-hidden="true">≡</span><span class="s">{ui.post.all}</span><span class="t">{ui.post.backToContents}</span></a></li>
+        </ul>
+        <div class="letter">
+          <h2>{ui.post.letter}</h2>
+          <p>{ui.post.letterText}</p>
+          <a class="send" href={letterUrl} target="_blank" rel="noopener">{ui.post.letterButton}</a>
+          <p class="to">{ui.post.letterTo}</p>
+        </div>
+      </div>
+    </section>
+  </article>
+</Layout>

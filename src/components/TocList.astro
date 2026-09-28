@@ -1,0 +1,44 @@
+---
+// Post list: the date in big red numerals, then kind · tags, title, and the one-line
+// description in handwriting.
+import type { Post } from '../lib/posts';
+import { isDraft, postUrl, ymd } from '../lib/posts';
+import { kindOf, kindTag } from '../lib/manga';
+import { HTML_LANG, localePath, t, tagLabel, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  posts: Post[];
+  showYear?: boolean; // show the year under the date (lists that span years)
+}
+const { lang, posts, showYear = false } = Astro.props;
+const ui = t(lang);
+const pad = (n: number) => String(n).padStart(2, '0');
+const tagHref = (tag: string) => localePath(lang, `/tags/${tag}/`);
+---
+<ol class="toc">
+  {posts.map((post) => {
+    const d = post.data;
+    const kind = kindOf(post);
+    const kindSlug = kindTag(post);
+    const others = d.tags.filter((tag) => tag !== kindSlug);
+    const { year, month, day } = ymd(d.date);
+    const wordsLang = post.contentLang !== lang ? HTML_LANG[post.contentLang] : undefined;
+    return (
+      <li>
+        <a class="pno" href={postUrl(post)} tabindex="-1" aria-hidden="true">
+          {pad(month)}.{pad(day)}{showYear && <small>{year}</small>}
+        </a>
+        <div class="body">
+          <p class="ep">
+            {kindSlug ? <a class="k" href={tagHref(kindSlug)}>{kind}</a> : <span class="k">{kind}</span>}
+            {isDraft(post.source) && <span class="draft">{ui.post.draft}</span>}
+            {others.length > 0 && <span>{others.map((tag) => tagLabel(tag, lang)).join(' / ')}</span>}
+          </p>
+          <h3 lang={wordsLang}><a href={postUrl(post)}>{d.title}</a></h3>
+          {d.description && <p class="cm" lang={wordsLang}>{d.description}</p>}
+        </div>
+      </li>
+    );
+  })}
+</ol>

@@ -1,0 +1,8 @@
+---
+import AboutView from '../../views/AboutView.astro';
+import { OTHER_LANGS } from '../../lib/paths';
+
+export const getStaticPaths = () => OTHER_LANGS.map((lang) => ({ params: { lang } }));
+const { lang } = Astro.params as { lang: (typeof OTHER_LANGS)[number] };
+---
+<AboutView lang={lang} />

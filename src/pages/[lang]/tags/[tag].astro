@@ -1,0 +1,11 @@
+---
+import VolumeView from '../../../views/VolumeView.astro';
+import { OTHER_LANGS, tagPaths } from '../../../lib/paths';
+
+export async function getStaticPaths() {
+  const paths = await Promise.all(OTHER_LANGS.map(async (lang) =>
+    (await tagPaths(lang)).map(({ params, props }) => ({ params: { ...params, lang }, props }))));
+  return paths.flat();
+}
+---
+<VolumeView {...Astro.props} />

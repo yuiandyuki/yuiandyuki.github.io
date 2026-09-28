@@ -1,0 +1,35 @@
+---
+// 立绘位: the panel reserved for the author's own drawing.
+import { profile } from '../site.config';
+import { t, type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const art = t(lang).art;
+---
+{profile.art === 'image' && profile.artImage ? (
+  <figure class="pn art">
+    <div class="tf"></div>
+    <img class="art-img" src={profile.artImage} alt="" loading="eager" />
+    <span class="tombo tl"></span><span class="tombo tr"></span><span class="tombo bl2"></span><span class="tombo br"></span>
+  </figure>
+) : (
+  <figure class="pn art slot" aria-label={art.label}>
+    <div class="tf"></div>
+    <svg class="art-guides" viewBox="0 0 200 300" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 0 L200 300 M200 0 L0 300" />
+      <path class="dash" d="M100 0 V300 M0 150 H200" />
+      <rect class="dash" x="8" y="8" width="184" height="284" />
+      <path d="M0 37.5 H14 M0 75 H14 M0 112.5 H14 M0 150 H20 M0 187.5 H14 M0 225 H14 M0 262.5 H14 M200 37.5 H186 M200 75 H186 M200 112.5 H186 M200 187.5 H186 M200 225 H186 M200 262.5 H186" />
+      <path d="M60 0 L100 150 L140 0" opacity=".6" />
+    </svg>
+    <span class="tombo tl"></span><span class="tombo tr"></span><span class="tombo bl2"></span><span class="tombo br"></span>
+    <figcaption class="art-label">
+      <span class="big">{art.big}</span>
+      <span class="s1">{art.s1}</span>
+      <span class="s2" lang="ja">ここに絵が入ります</span>
+      <span class="s3">{art.s3}</span>
+    </figcaption>
+    <p class="redpen art-note" aria-hidden="true">{art.note}</p>
+  </figure>
+)}

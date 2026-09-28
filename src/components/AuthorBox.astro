@@ -1,0 +1,20 @@
+---
+import { profile, site } from '../site.config';
+import { localePath, t, type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const ui = t(lang);
+// "拉康的a": the Latin tail is set in the red italic of the logo.
+const [, han, latin] = profile.name.match(/^(.*?)([A-Za-z]*)$/) ?? ['', profile.name, ''];
+---
+<section class="pn author" aria-labelledby="h-au">
+  <p class="lbl" id="h-au">{ui.author}</p>
+  <p class="nm"><span lang="zh-CN">{han}</span>{latin && <i>{latin}</i>}</p>
+  <p>{ui.bio}</p>
+  <p class="au-q">{ui.tagline}{lang === 'en' ? '.' : '。'}</p>
+  <dl>
+    <dt>GitHub</dt><dd><a href={site.github}>{site.githubUser}</a></dd>
+    <dt>RSS</dt><dd><a href={localePath(lang, '/rss.xml')}>{localePath(lang, '/rss.xml')}</a></dd>
+  </dl>
+</section>

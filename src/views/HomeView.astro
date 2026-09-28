@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Splash from '../components/Splash.astro';
+import ArtSlot from '../components/ArtSlot.astro';
+import PostPanel from '../components/PostPanel.astro';
+import Sfx from '../components/Sfx.astro';
+import TocList from '../components/TocList.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import { getPosts, tagCounts } from '../lib/posts';
+import { seedOf } from '../lib/manga';
+import { HTML_LANG, localePath, t, tagLabel, type Lang } from '../i18n';
+import { profile } from '../site.config';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const ui = t(lang);
+const posts = await getPosts({ lang });
+const [lead, ...rest] = posts;
+// The newest post is the big panel; the next six fill two rows of panels.
+const tier2 = rest.slice(0, 3);
+const tier3 = rest.slice(3, 6);
+const more = rest.slice(6);
+const withArt = profile.art !== 'off';
+const SLANTS = { 1: ['plain'], 2: ['r', 'l'], 3: ['r', 'lr', 'l'] } as const;
+const slants = SLANTS[tier2.length as 1 | 2 | 3] ?? [];
+const tags = tagCounts(posts);
+const sfxLetters = [...ui.contentsSfx];
+---
+<Layout lang={lang} current={localePath(lang, '/')}>
+  <section class="pg cover" aria-label={ui.latest}>
+    <div class:list={['t1', { 'no-art': !withArt }]}>
+      {lead ? (
+        <>
+          <Splash post={lead} />
+          {lead.data.sfx && <Sfx text={lead.data.sfx} seed={seedOf(lead)} class="sfx-splash" style="--rot:-9deg;--sk:-6deg" lang={HTML_LANG[lead.sfxLang]} />}
+        </>
+      ) : (
+        <div class="pn splash" role="note" aria-label={ui.empty[0]}>
+          <div class="tn red g-red"></div>
+          <div class="gen" data-gen="focus" data-fx=".42" data-fy=".5" data-ix=".3" data-iy=".34" data-n="460" data-seed="7"></div>
+          <p class="bl" data-gen="balloon" data-b="shout" data-sp="26" style="left:50%;top:50%;transform:translate(-50%,-50%);font-size:22px;padding:40px 48px">{ui.empty[0]}<br /><small style="font:500 14px/1.6 var(--sans)">{ui.empty[1]}</small></p>
+        </div>
+      )}
+      {withArt && <ArtSlot lang={lang} />}
+    </div>
+
+    {tier2.length > 0 && (
+      <div class="t2" data-count={tier2.length}>
+        {tier2.map((post, i) => <PostPanel post={post} slant={slants[i]} />)}
+      </div>
+    )}
+    {tier3.length > 0 && (
+      <div class="t3" data-count={tier3.length}>
+        {tier3.map((post) => <PostPanel post={post} />)}
+      </div>
+    )}
+  </section>
+
+  <section class="pg home-more" aria-label={ui.allPosts}>
+    {more.length > 0 && (
+      <>
+        <h2 class="list-h">{ui.earlier}</h2>
+        <TocList lang={lang} posts={more.slice(0, 8)} showYear />
+      </>
+    )}
+    <div class="strip">
+      <AuthorBox lang={lang} />
+      <section class="pn tagbox" aria-labelledby="h-tags">
+        <p class="lbl" id="h-tags">{ui.volumes}</p>
+        {tags.length > 0 ? (
+          <ul>
+            {tags.map(([tag, count]) => <li><a href={localePath(lang, `/tags/${tag}/`)}>{tagLabel(tag, lang)}<span>{count}</span></a></li>)}
+          </ul>
+        ) : <p class="empty">{ui.noVolumes}</p>}
+      </section>
+      <a class="pn allposts" href={localePath(lang, '/archive/')}>
+        <div class="gen" data-gen="speed" data-n="54" data-seed="88"></div>
+        <span class="lbl">{ui.allPosts}</span>
+        <b>{sfxLetters.map((c) => <span class="sh" data-c={c}>{c}</span>)}</b>
+        <span class="go">{ui.postCount(posts.length)}</span>
+      </a>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,7 @@
+---
+import VolumeView from '../../views/VolumeView.astro';
+import { tagPaths } from '../../lib/paths';
+
+export const getStaticPaths = () => tagPaths('zh');
+---
+<VolumeView {...Astro.props} />

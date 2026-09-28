@@ -1,0 +1,57 @@
+---
+// One post as a manga panel: art layer, optional balloon and SFX, caption.
+import type { Post } from '../lib/posts';
+import { postUrl } from '../lib/posts';
+import { builtinScene, customScene, dotDate, kindOf, seedOf, toneOf } from '../lib/manga';
+import { HTML_LANG, tagLabel } from '../i18n';
+import PanelArt from './PanelArt.astro';
+import Balloon from './Balloon.astro';
+import Sfx from './Sfx.astro';
+
+interface Props {
+  post: Post;
+  // Slanted gutters: 'r' slants the right edge, 'l' the left, 'lr' both; 'plain' is square.
+  slant?: 'r' | 'l' | 'lr' | 'plain';
+  label?: string; // big stamp in the corner, e.g. 下一篇
+  class?: string;
+}
+const { post, slant = 'plain', label, class: extra = '' } = Astro.props;
+const seed = seedOf(post);
+const scene = builtinScene(post) ?? (customScene(post) ? 'custom' : undefined);
+const tone = post.data.tone ?? (scene ? undefined : toneOf(post));
+const d = post.data;
+const sfxClass = scene === 'pole' ? 'brush w vt' : tone === 'night' || scene === 'trees' ? 'brush w' : '';
+const balloonTail = scene === 'pole' ? '-.25,1.45' : undefined;
+const meta = d.tags.filter((t) => tagLabel(t, post.lang) !== kindOf(post)).slice(0, 3).map((t) => tagLabel(t, post.lang)).join(' / ');
+// An untranslated post shows its Chinese words inside a page in another language.
+const wordsLang = post.contentLang !== post.lang ? HTML_LANG[post.contentLang] : undefined;
+const aria = `${d.title} (${kindOf(post)}, ${dotDate(d.date)})`;
+const inner = { 'data-scene': scene, 'data-tone': tone };
+---
+{slant === 'plain' ? (
+  <a class:list={['pn', 'pc', extra]} href={postUrl(post)} aria-label={aria} {...inner}>
+    <PanelArt post={post} />
+    {label && <p class="yk-l" aria-hidden="true">{label}</p>}
+    {d.balloon && <Balloon text={d.balloon} type={d.balloonType} tail={balloonTail} seed={seed} lang={wordsLang} />}
+    {d.sfx && <Sfx text={d.sfx} seed={seed} class={sfxClass} lang={HTML_LANG[post.sfxLang]} />}
+    <div class="cap tcap">
+      <span class="no"><em>{kindOf(post)}</em> · {dotDate(d.date)}</span>
+      <h3 lang={wordsLang}><span class="ttl">{d.title}</span></h3>
+      {meta && <span class="mt">{meta}</span>}
+    </div>
+  </a>
+) : (
+  <a class:list={['pw', { 'sl-r': slant.includes('r'), 'sl-l': slant.includes('l') }, extra]} href={postUrl(post)} aria-label={aria}>
+    <div class="pi pc" {...inner}>
+      <PanelArt post={post} />
+      {label && <p class="yk-l" aria-hidden="true">{label}</p>}
+      {d.balloon && <Balloon text={d.balloon} type={d.balloonType} tail={balloonTail} seed={seed} lang={wordsLang} />}
+      {d.sfx && <Sfx text={d.sfx} seed={seed} class={sfxClass} lang={HTML_LANG[post.sfxLang]} />}
+      <div class="cap tcap">
+        <span class="no"><em>{kindOf(post)}</em> · {dotDate(d.date)}</span>
+        <h3 lang={wordsLang}><span class="ttl">{d.title}</span></h3>
+        {meta && <span class="mt">{meta}</span>}
+      </div>
+    </div>
+  </a>
+)}

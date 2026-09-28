@@ -1,0 +1,22 @@
+---
+// A row of nixie tubes on a small black panel. The page script lights the digits.
+interface Props {
+  value: number;
+  digits?: number;
+  caption: string; // vertical label on the left, e.g. 累计写作
+  unit: string; // e.g. 字 / 部
+  label: string; // full sentence for screen readers
+}
+const { value, digits = 7, caption, unit, label } = Astro.props;
+const text = String(Math.max(0, Math.round(value))).padStart(digits, '0').slice(-digits);
+---
+<div class="nx-pn" role="img" aria-label={label}>
+  <span class="nx-cap" aria-hidden="true">{caption}</span>
+  <div class="nixie" data-value={text} data-changed={String(digits - 1)} aria-hidden="true">
+    {[...text].map((d) => (
+      <span class="tube">{[...'0123456789'].map((x) => <i>{x}</i>)}<b>{d}</b></span>
+    ))}
+  </div>
+  <span class="nx-bu" aria-hidden="true">{unit}</span>
+  <p class="nx-note" aria-hidden="true"><slot /></p>
+</div>

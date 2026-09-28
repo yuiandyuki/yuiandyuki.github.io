@@ -1,0 +1,11 @@
+---
+import PostView from '../../../views/PostView.astro';
+import { OTHER_LANGS, postPaths } from '../../../lib/paths';
+
+export async function getStaticPaths() {
+  const paths = await Promise.all(OTHER_LANGS.map(async (lang) =>
+    (await postPaths(lang)).map(({ params, props }) => ({ params: { ...params, lang }, props }))));
+  return paths.flat();
+}
+---
+<PostView {...Astro.props} />
