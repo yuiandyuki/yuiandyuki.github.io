@@ -13,8 +13,9 @@ interface Props {
 const { lang, mini = false, current, words, basePath } = Astro.props;
 const ui = t(lang);
 const Logo = mini ? 'div' : 'h1';
-// Distance to a famously long novel, for the joke under the counter.
-const SANTI = 880000;
+// Distance to a famously long novel, for the joke under the counter:
+// Legend of the Galactic Heroes, ten volumes, ~2.12 million characters in Chinese.
+const GALACTIC_HEROES = 2120000;
 ---
 <header class:list={['mast', { mini }]}>
   <div class="mast-top">
@@ -44,7 +45,7 @@ const SANTI = 880000;
     </div>
     {!mini && (
       <Nixie value={words} caption={ui.counter.caption} unit={ui.counter.unit} label={ui.counter.label(words)}>
-        {ui.counter.note}<span class="nx-joke">{ui.counter.joke(Math.max(0, SANTI - words).toLocaleString('en-US'))}</span>
+        {ui.counter.note}<span class="nx-joke">{ui.counter.joke(Math.max(0, GALACTIC_HEROES - words).toLocaleString('en-US'))}</span>
       </Nixie>
     )}
   </div>

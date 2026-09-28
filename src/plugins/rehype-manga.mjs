@@ -185,7 +185,6 @@ export function rehypeManga() {
     footnotesToSidenotes(tree, L);
     const seedBase = hashString(String(file.path ?? ''));
     let section = 0;
-    let firstParagraphSeen = false;
 
     tree.children = tree.children.map((node, i) => {
       if (node.type !== 'element') return node;
@@ -198,10 +197,6 @@ export function rehypeManga() {
             const img = content[0];
             const alt = String(img.properties.alt ?? '').trim();
             return el('figure', { className: ['koma-img'] }, alt ? [img, el('figcaption', {}, [text(alt)])] : [img]);
-          }
-          if (!firstParagraphSeen) {
-            firstParagraphSeen = true;
-            node.properties.className = [...cls(node), 'lead'];
           }
           return node;
         }

@@ -22,7 +22,7 @@ export const site = {
 export const profile = {
   // The author box on the home and about pages.
   name: '拉康的a',
-  bio: '写代码，读闲书，偶尔画画。',
+  bio: '读读闲书，看看动画。',
   // 立绘位: 'slot' shows the reserved panel for your own drawing, 'off' hides it,
   // 'image' shows `artImage` (put the file in public/, e.g. /art/cover.png).
   art: 'slot' as 'slot' | 'off' | 'image',
